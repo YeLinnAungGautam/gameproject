@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/neptrior/game.myanmarseoguru.com/
+    - /bin/cp -R images $DEPLOYPATH
+--- 
