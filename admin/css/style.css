@@ -19,3 +19,7 @@
     background-position: center;
     
     }
+    .pager li .active_link {
+        color: white;
+        background: #337ab7!important;
+    }
