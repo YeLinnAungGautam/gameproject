@@ -3,6 +3,7 @@
 // define('DB_USER','root');
 // define('DB_PASS','');
 // define('DB_NAME','gameproject');
+
 define('DB_HOST','localhost');
 define('DB_USER','neptrior_gameadmin');
 define('DB_PASS','neptrior_GAME');

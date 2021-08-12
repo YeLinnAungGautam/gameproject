@@ -18,7 +18,7 @@
 <div class="col-md-12">
 <table class="table table-bordered table-hover">
   <thead>
-    <tr>  
+    <tr>   
       <th><input type="checkbox" id="selectAllBoxes"></th>
       <th>ID</th>
       <th>Category</th>
@@ -37,8 +37,19 @@
     <?php viewAllPost(); ?>
     <?php deletePosts(); ?>
     <?php resetPostViews() ?>
-    
   </tbody>
 </table>
 </div>
 </form>
+<ul class="pager">
+  <?php 
+    for($i = 1; $i <= $count; $i++){
+      if($i == $page){
+        echo "<li><a class='active_link' href='posts.php?page={$i}'>{$i}</a></li>";
+      }
+      else{
+        echo "<li><a href='posts.php?page={$i}'>{$i}</a></li>";
+      }
+    } 
+  ?>
+</ul>
