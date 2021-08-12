@@ -15,7 +15,7 @@ function findAllCategories(){
             echo "</tr>";
         }
     }
-}  
+}   
 function insertCategories(){
     global $connection;
     if(isset($_POST['submit_categories'])){
@@ -57,7 +57,31 @@ function displayInNav(){
 }
 function viewAllPost(){
     global $connection;
-    $sql = "SELECT * FROM posts ORDER BY post_id DESC";
+    global $count;
+    global $page;
+    $per_page = 10;
+    if(isset($_GET['page'])){ 
+        $page = $_GET['page'];
+    }else{
+        $page = "";
+        // header("Location: posts.php");
+    }
+    if($page == "" || $page == 1){
+        $page_1 = 0;
+    }else{
+        $page_1 = ($page * $per_page) - $per_page;
+    }
+
+    $select_post_count_sql = "SELECT * FROM posts";
+    $select_post_count_query = $connection->prepare($select_post_count_sql);
+    $select_post_count_query->execute();
+    $count = $select_post_count_query->rowCount();
+    
+    $count = ceil($count / $per_page);
+    
+    
+
+    $sql = "SELECT * FROM posts ORDER BY post_id DESC LIMIT $page_1,$per_page";
     $query = $connection->prepare($sql);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_OBJ);

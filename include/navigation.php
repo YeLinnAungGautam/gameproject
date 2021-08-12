@@ -22,9 +22,9 @@
                     <li>
                         <a href="registration.php">Register</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="registration.php">Testing</a>
-                    </li>
+                    </li> -->
                     <?php  
                         if(isset($_SESSION['userrole'])){
                             if(isset($_GET['p_id'])){
