@@ -1,7 +1,6 @@
 <?php include('includes/header.php') ?>
 
-    <div id="wrapper">
-
+    <div id="wrapper"> 
         <!-- Navigation -->
         <?php include('includes/navigation.php') ?>
         
@@ -16,6 +15,9 @@
                             Welcome
                             <small><?php echo $_SESSION['username'] ?></small>
                         </h1>
+                        <h1>
+                        </h1>
+                        
                     </div> 
                 </div>
                 <!-- /.row -->

@@ -1,11 +1,12 @@
 <?php ob_start(); ?>
 <?php session_start(); ?>
+<?php include("db.php") ?>
 <?php 
     if(!isset($_SESSION['userrole'])){
             header("Location: ../index.php");
 } 
 ?> 
-<?php include("db.php") ?>
+
 <?php include('function.php') ?>
 <!DOCTYPE html>
 <html lang="en">
