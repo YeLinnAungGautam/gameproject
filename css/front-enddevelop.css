@@ -1,0 +1,238 @@
+body{
+    background-color: black;
+}
+#title{
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+}
+#subtitle{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(228, 228, 228);
+    margin-bottom: 40px;
+}
+.recomreq{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:white;
+    padding-left:20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.highlight{
+    background-color: #E60704; 
+    width: fit-content;
+}
+.para{
+    color: #BCB6B6;
+    font-size:medium;
+    padding-top:15px;
+    line-height: 28px;
+    margin-bottom: 10px;
+}
+#minireq{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:white;
+    padding-left:20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.highlightmini{
+    background-color: #342525; 
+    width: fit-content;
+}
+
+#buynow{
+    background: #700202;
+    color: rgb(197, 195, 195);
+    padding: 10px 20px;
+    border:  #8a0202;
+    outline: none;
+    margin-left: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+#buynow:hover{
+    background: #E60704;
+    color:white;
+}
+.price{
+  box-shadow:1px 1px 3px white; 
+  /* border: 1px solid #707070; */
+  border:none;
+  width: fit-content;
+  background-color: black;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: white;
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+}
+
+
+/* ----------About This Game--------- */
+.titletext{
+    color: white;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+#about{
+   background-color: #AA0000;
+   margin-top: 50px;
+   margin-bottom: 65px;
+}
+#para{
+   margin-top: 50px; 
+}
+.residentpara{
+    color: #cfcece;
+    font-size:20px;
+    text-align: justify;
+    padding-right: 20px;
+    padding-left: 20px;
+    line-height: 28px;
+    font-family:'Times New Roman', Times, serif;
+}
+#gallerybackground{
+    background-color:#0000001e ;
+    padding-top: 5px;
+    
+
+}
+
+.gallery{
+    margin: auto;  /*parent m thone chin lo*/
+    display:flex;
+    justify-content:center;
+    align-items:center; /*daung luk center kya*/
+    padding-left: 15px;
+    padding-right: 13px;
+}
+
+.gallery > div { 
+    margin-top: 30px;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+   
+
+}
+.gallery > div > div {
+    width: 100%;
+     
+}
+.gallery > div > div > div{
+   margin-right:2px ;
+   margin-bottom: 2px;  
+}
+.gallery img{
+    transition: transform .2s;
+}
+.gallery img:hover {
+    transform: scale(1.2);
+}
+.addinfo{
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 37px;
+    margin-bottom: 15px;
+}
+#datetitle{
+    color: #ececec;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
+#date{
+    color: #e6e4e4;
+    font-family:'Times New Roman', Times, serif;
+}
+#calendar{
+    color: #e6e4e4;
+    margin-right: 5px;
+}
+#age{
+    margin-right: 5px;
+    color: #e6e4e4;
+}
+#mode{
+    margin-right: 5px;
+    color: #e6e4e4;
+}
+.calensub{
+    color: #BCB6B6;
+    font-size: 15px;
+  
+}
+.agesub{
+    color: #BCB6B6;
+    font-size: 15px;
+    padding-left: 12px;
+   
+}
+.modesub{
+    color: #BCB6B6;
+    font-size: 15px;
+    padding-left: 12px; 
+}
+.row > div{
+    margin-bottom: 40px;
+}
+
+/* ----------You May Also Like--------- */
+.youmayalso{
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 20px;
+}
+#background{
+ 
+    border: 2px solid #AA0000;
+    margin-right: 20px;
+}
+/* for responsive center rows*/
+.card{
+    width: 16rem;
+    padding-top:15px;
+
+}
+#card>div{
+  margin-top: 11px;
+  background-color:rgba(128, 128, 128, 0.192);
+  width:fit-content;
+  border-radius: 5px;
+  transition: transform .2s;
+}
+#card h5{
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-bottom: 15px;
+    padding-top: 5px;
+
+}
+#card img{
+    border: 2px solid rgb(133, 132, 132); 
+}
+#firstcard{
+    margin-left: 20px;
+    margin-right:10px;
+}
+#secondcard{
+    margin-right: 10px;
+    margin-left:20px;
+}
+#thirdcard{
+    margin-left: 20px;
+}
+/* ............ */
+/* card hover */
+#card>div:hover{
+    background-color: #E60704;
+  
+}
