@@ -39,6 +39,7 @@
                                    <tr> 
                                        <th>ID</th>
                                        <th>Category Title</th>
+                                       <th colspan="2">Actions</th>
                                    </tr>
                                </thead>
                                <tbody> 
