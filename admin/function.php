@@ -10,8 +10,10 @@ function findAllCategories(){
             echo "<tr>";
             echo "<td>$row->cat_id</td>";
             echo "<td>$row->cat_title</td>";
-            echo "<td><a href='categories.php?edit=$row->cat_id'>Edit</td>";
-            echo "<td><a href='categories.php?delete=$row->cat_id'>Delete</td>";
+            echo "<td>
+                    <a class='btn btn-success' href='categories.php?edit=$row->cat_id'>Edit </a>
+                    <a class='btn btn-danger' href='categories.php?delete=$row->cat_id'>Delete</a>
+                </td>";
             echo "</tr>";
         }
     }
@@ -103,14 +105,15 @@ function viewAllPost(){
                 } 
             }
             echo "<td>$row->post_title</td>";
-            echo "<td>$row->post_status</td>";
-            echo "<td><img src='../img/$row->post_img' alt='image' style='width: 100%;object-fit: cover;height: 50px;'></td>";
-            echo "<td>$row->post_tags</td>";
+            // echo "<td>$row->post_status</td>";
+            echo "<td><img src='../img/$row->post_img' alt='image' style='object-fit: cover;height: 50px;'></td>";
             echo "<td>$row->post_date</td>";
-            echo "<td><a href='../post.php?p_id={$row->post_id}'>View</a></td>";
-            echo "<td><a href='posts.php?source=edit_post.php&p_id={$row->post_id}'>Edit</a></td>";
-            echo "<td><a onClick=\"javascript: return confirm('Are You Sure You Want To Delete'); \" href='posts.php?delete={$row->post_id}'>Delete</a></td>";
-            echo "<td><a href='posts.php?reset={$row->post_id}'>{$row->post_views_count}</a></td>"; 
+            // echo "<td><a href='../post.php?p_id={$row->post_id}'>View</a></td>";
+            echo "<td>
+                    <a href='posts.php?source=edit_post.php&p_id={$row->post_id}' class='btn btn-info'>Edit</a>
+                    <a onClick=\"javascript: return confirm('Are You Sure You Want To Delete'); \" href='posts.php?delete={$row->post_id}' class='btn btn-danger'>Delete</a>
+                    <a href='posts.php?reset={$row->post_id}'>{$row->post_views_count}</a>
+                </td>"; 
             echo "</tr>";
         }
     } 
