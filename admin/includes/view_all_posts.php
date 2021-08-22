@@ -21,16 +21,11 @@
     <tr>   
       <th><input type="checkbox" id="selectAllBoxes"></th>
       <th>ID</th>
-      <th>Category</th>
       <th>Title</th> 
-      <th>Status</th>
       <th>Image</th>
-      <th>Tags</th>
-      <th>Date</th>
-      <th>View</th>
-      <th>Edit</th>
-      <th>Delete</th>   
-      <th>Views</th>                  
+      <th>Created Date</th>
+      <th>Actions</th>
+                      
     </tr>
   </thead>
   <tbody>
