@@ -25,7 +25,7 @@
       <th>Image</th>
       <th>Created Date</th>
       <th>Actions</th>
-                      
+      <th>View Post</th>             
     </tr>
   </thead>
   <tbody>

@@ -112,8 +112,9 @@ function viewAllPost(){
             echo "<td>
                     <a href='posts.php?source=edit_post.php&p_id={$row->post_id}' class='btn btn-info'>Edit</a>
                     <a onClick=\"javascript: return confirm('Are You Sure You Want To Delete'); \" href='posts.php?delete={$row->post_id}' class='btn btn-danger'>Delete</a>
-                    <a href='posts.php?reset={$row->post_id}'>{$row->post_views_count}</a>
+                    
                 </td>"; 
+            echo "<td><a href='posts.php?reset={$row->post_id}'>{$row->post_views_count}</a></td>";
             echo "</tr>";
         }
     } 
@@ -328,4 +329,5 @@ function usersOnline(){
     }
 } 
 usersOnline();
+
 ?>

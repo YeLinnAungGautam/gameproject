@@ -36,7 +36,7 @@ if($query->rowCount()>0){
     $arr= array($row->category_id);
 
     }
-}
+} 
 
     // print_r($arr);
      
@@ -99,17 +99,17 @@ updatePosts();
 
         <div class="form-group">
             <label for="summernote">Post Description</label>
-            <textarea name="post_description"  cols="30" rows="10" class="form-control"><?php echo $post_description ?></textarea>
+            <textarea name="post_description" id="summernote_editdescription"  cols="30" rows="10" class="form-control"><?php echo $post_description ?></textarea>
         </div> 
 
         <div class="form-group">
             <label for="requirement-description-one">Minimum Requirements</label>
-            <textarea name="requirement_description_one"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
+            <textarea name="requirement_description_one" id="summernote_editminimum"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
         </div> 
 
         <div class="form-group">
             <label for="requirement-description-two">Recommended Requirements</label>
-            <textarea name="requirement_description_two"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
+            <textarea name="requirement_description_two" id="summernote_recommended"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
         </div> 
 
         
