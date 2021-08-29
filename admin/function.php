@@ -159,9 +159,11 @@ function updatePosts(){
         $post_description = $_POST['post_description'];
         $minimum_requirement = $_POST['requirement_description_one'];
         $recommended_requirement = $_POST['requirement_description_two'];
+        $release_date = $_POST['releasedate'];
+        $age_rating = $_POST['agerating'];
+        $game_mode = $_POST['gamemode'];
         $price = $_POST['price'];
         $post_status = $_POST['post_status'];
-
         $post_image = $_FILES['image']['name'];
         $post_image_temp = $_FILES['image']['tmp_name'];
         move_uploaded_file($post_image_temp,"../img/$post_image");
@@ -186,7 +188,10 @@ function updatePosts(){
                                         requirement_description_one = :requirement_description_one,
                                         requirement_description_two = :requirement_description_two,
                                         post_img = :postimg, 
-                                        price = :price
+                                        price = :price,
+                                        releasegame_date = :releasedate,
+                                        gamerage_rating = :rating,
+                                        game_mode = :mode
                                         WHERE 
                                         post_id =:postid";
         $update_query = $connection->prepare($update_sql);
@@ -198,8 +203,12 @@ function updatePosts(){
         $update_query->bindParam(':requirement_description_two',$recommended_requirement,PDO::PARAM_STR);
         $update_query->bindParam(':postimg',$post_image,PDO::PARAM_STR);
         $update_query->bindParam(':price',$price,PDO::PARAM_STR);
+        $update_query->bindParam(':releasedate',$release_date,PDO::PARAM_STR);
+        $update_query->bindParam(':rating',$age_rating,PDO::PARAM_STR);
+        $update_query->bindParam(':mode',$game_mode,PDO::PARAM_STR);
         $update_query->bindParam(':postid',$post_id,PDO::PARAM_STR);
-        $update_query->execute(); 
+        $update_query->execute();
+        print_r($update_query->errorInfo());
 
             $sql = "DELETE FROM game_category WHERE game_id = :gameid";
             $query = $connection->prepare($sql);
@@ -220,11 +229,6 @@ function updatePosts(){
                     print_r($query->errorInfo());
                 }
         
-                echo 
-                "<div class='col-lg-12'> 
-                    <h3 class='msg'>Data is Successfully Inserted!</h3>
-                </div>
-                ";
                 header("Refresh:0");
             }
     }
@@ -334,52 +338,4 @@ function registerUser(){
         $message ="";
     }
 }
-
-function usersOnline(){
-    global $connection;
-    if(isset($_GET['onlineusers'])){
-        if(!$connection){
-            session_start();
-            include("includes/db.php");
-            $session = session_id();
-            $time = time();
-            $time_out_in_seconds = 30;
-            $time_out = $time - $time_out_in_seconds; 
-
-            $useronline_sql = "SELECT * FROM users_online WHERE session = :session";
-            $useronline_query = $connection->prepare($useronline_sql);
-            $useronline_query->bindParam(':session',$session,PDO::PARAM_STR);
-            $useronline_query->execute();
-            $countusers = $useronline_query->rowCount();
-
-            // $useronline_sql = "SELECT * FROM users_online WHERE session = :session";
-            // $useronline_query = $connection->prepare($useronline_sql);
-            // $useronline_query->execute();
-            // $countusers = $useronline_query->rowCount();
-            // echo $countusers; 
-    
-            if($countusers == NULL){ 
-                $addonlineusers_sql = "INSERT INTO users_online(session,time) VALUES (:usersession,:usertime)"; 
-                $addonlineusers_query = $connection->prepare($addonlineusers_sql);
-                $addonlineusers_query->bindParam(':usersession',$session,PDO::PARAM_STR);
-                $addonlineusers_query->bindParam(':usertime',$time,PDO::PARAM_STR);
-                $addonlineusers_query->execute();
-            }
-            else{
-                $olduser_sql ="UPDATE users_online SET time =:oldusertime WHERE session = :oldusersession";
-                $olduser_query = $connection->prepare($olduser_sql);
-                $olduser_query -> bindParam(':oldusersession',$session,PDO::PARAM_STR);
-                $olduser_query -> bindParam(':oldusertime',$time,PDO::PARAM_STR);
-                $olduser_query->execute();
-            } 
-            $useronline_count_sql = "SELECT * FROM users_online WHERE time > :usertime";
-            $useronline_count_query = $connection->prepare($useronline_count_sql);
-            $useronline_count_query->bindParam(':usertime',$time_out,PDO::PARAM_STR);
-            $useronline_count_query->execute();
-            echo $count_user = $useronline_count_query->rowCount(); 
-        }
-    }
-} 
-usersOnline();
-
 ?>
