@@ -338,4 +338,50 @@ function registerUser(){
         $message ="";
     }
 }
+
+function usersOnline(){
+    global $connection;
+    if(isset($_GET['onlineusers'])){
+        if(!$connection){
+            session_start();
+            include("includes/db.php");
+            $session = session_id();
+            $time = time();
+            $time_out_in_seconds = 30;
+            $time_out = $time - $time_out_in_seconds; 
+
+            $useronline_sql = "SELECT * FROM users_online WHERE session = :session";
+            $useronline_query = $connection->prepare($useronline_sql);
+            $useronline_query->bindParam(':session',$session,PDO::PARAM_STR);
+            $useronline_query->execute();
+            $countusers = $useronline_query->rowCount();
+
+            // $useronline_sql = "SELECT * FROM users_online WHERE session = :session";
+            // $useronline_query = $connection->prepare($useronline_sql);
+            // $useronline_query->execute();
+            // $countusers = $useronline_query->rowCount();
+            // echo $countusers; 
+    
+            if($countusers == NULL){ 
+                $addonlineusers_sql = "INSERT INTO users_online(session,time) VALUES (:usersession,:usertime)"; 
+                $addonlineusers_query = $connection->prepare($addonlineusers_sql);
+                $addonlineusers_query->bindParam(':usersession',$session,PDO::PARAM_STR);
+                $addonlineusers_query->bindParam(':usertime',$time,PDO::PARAM_STR);
+                $addonlineusers_query->execute();
+            }
+            else{
+                $olduser_sql ="UPDATE users_online SET time =:oldusertime WHERE session = :oldusersession";
+                $olduser_query = $connection->prepare($olduser_sql);
+                $olduser_query -> bindParam(':oldusersession',$session,PDO::PARAM_STR);
+                $olduser_query -> bindParam(':oldusertime',$time,PDO::PARAM_STR);
+                $olduser_query->execute();
+            } 
+            $useronline_count_sql = "SELECT * FROM users_online WHERE time > :usertime";
+            $useronline_count_query = $connection->prepare($useronline_count_sql);
+            $useronline_count_query->bindParam(':usertime',$time_out,PDO::PARAM_STR);
+            $useronline_count_query->execute();
+            echo $count_user = $useronline_count_query->rowCount(); 
+        }
+    }
+}
 ?>

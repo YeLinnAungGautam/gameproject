@@ -23,7 +23,11 @@ if($query->rowCount()>0){
         $minimum_requirement = $row->requirement_description_one;
         $recommended_requirement = $row->requirement_description_two;
         $price = $row->price;
+        $release_date = $row->releasegame_date;
+        $gameage = $row->gamerage_rating;
+        $gamemode = $row->game_mode;
         $post_status= $row->post_status;
+
     }
 }
 
@@ -41,8 +45,6 @@ if($query->rowCount()>0){
 
     }
 } 
-
-    // print_r($arr);
      
 updatePosts();
 ?>
@@ -96,17 +98,17 @@ updatePosts();
 
         <div class="form-group">
             <label for="summernote">Post Description</label>
-            <textarea name="post_description" id="summernote_editdescription"  cols="30" rows="10" class="form-control"><?php echo $post_description ?></textarea>
+            <textarea name="post_description" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $post_description ?></textarea>
         </div> 
 
         <div class="form-group">
             <label for="requirement-description-one">Minimum Requirements</label>
-            <textarea name="requirement_description_one" id="summernote_editminimum"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
+            <textarea name="requirement_description_one" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
         </div> 
 
         <div class="form-group">
             <label for="requirement-description-two">Recommended Requirements</label>
-            <textarea name="requirement_description_two" id="summernote_recommended"  cols="30" rows="10" class="form-control"><?php echo $recommended_requirement; ?></textarea>
+            <textarea name="requirement_description_two" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $recommended_requirement; ?></textarea>
         </div> 
 
         
@@ -117,6 +119,25 @@ updatePosts();
             <div class="form-group">
                 <label for="price"> Price </label>
                 <input type="text" name="price" value="<?php echo $price;?>" class="form-control" pattern='[0-9]+(\\.[0-9][0-9]?)?' >
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="gamerelasedate">Game Release Date</label>
+                    <input type="date" name="releasedate" value="<?php echo $release_date;?>" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="agerating">Age Rating</label>
+                    <input type="text" name="agerating" value="<?php echo $gameage;?>" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="gamemode">Game Mode</label>
+                    <input type="text" name="gamemode" value="<?php echo $gamemode;?>" class="form-control">
+                </div>
             </div>
                     
 
