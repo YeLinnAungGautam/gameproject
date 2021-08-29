@@ -103,8 +103,6 @@ body{
 #gallerybackground{
     background-color:#0000001e ;
     padding-top: 5px;
-    
-
 }
 
 .gallery{
@@ -233,6 +231,114 @@ body{
 /* ............ */
 /* card hover */
 #card>div:hover{
-    background-color: #E60704;
-  
+    background-color: #E60704; 
 }
+
+/*---- Registration form------ */
+
+#signup{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(226, 226, 226);
+    margin-left:25%;
+    margin-top:50px; 
+}
+#gamehub h1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #E60704;
+}
+#gamehub h5{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:#AA0000 ;
+    margin-bottom: 4%;
+}
+.form-group>input{
+    border: 1px solid white;
+    border-radius: 4px; 
+    height: 38px;
+}
+/* .formbuttons{
+    display: flex;
+    justify-content:center;
+} */
+#btn-register{
+    background-color: #e608049d;
+    color:rgb(194, 191, 191);
+    font-size: medium;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    outline: none;  
+    margin-top: 5px;
+}
+#btn-register:hover{
+    background-color:#b90303 ;
+    color: white;   
+}
+/* #btn-cancel{
+    font-size: medium;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    outline: none;
+    margin-top: 10px;
+    background-color: black;
+    color:gray;
+}
+#btn-cancel:hover{
+    background-color:rgba(128, 128, 128, 0.534);
+    color:white; 
+} */
+#accountcheck{
+    color: rgb(170, 170, 170);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align:center;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    margin-top: 3%;
+}
+#accountcheck>a{
+    color:gray;
+    margin-left: 10px;
+}
+#accountcheck>a:hover{
+    color:rgb(231, 229, 229); 
+}
+
+/* ----Log In----- */
+#gamehubtitle{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #E60704;
+}
+#gamehubsubtitle{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:#AA0000 ;
+}
+#logincontainer{
+    margin-top: 4%;
+}
+#loginbutton> button{
+    background-color: #e608049d;
+    color:rgb(194, 191, 191);
+    font-size: medium;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    outline: none;  
+    margin-top: 5px;
+}
+#loginbutton>button:hover{
+    background-color:#b90303 ;
+    color: white;  
+}
+#checkboxtitle{
+    color: rgb(170, 170, 170);
+    margin-bottom: 20px;
+}
+#passrecover>a{
+    color: gray;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-right: 10px;
+}
+#passrecover>a:hover{
+    color:rgb(231, 229, 229);
+}
+
+#passrecover{
+    margin-top: 15%;
+}
+
+

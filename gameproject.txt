@@ -9,10 +9,13 @@ issues
     
     -- bootstrap version is outdated atleast to use version 4.
 
-    -- remove tags. (Have to confirm with all)
-
     -- When post is added who is the one that adds it.
 
+    -- age restriction column
+
+    -- release date
+
+    -- When the session timeout it redirects to home page of website ( It should be the only in dashboard )
     
 
 tasks --

@@ -1,4 +1,9 @@
 <?php 
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 function findAllCategories(){
     global $connection;
     $sql = "SELECT * FROM categories";
@@ -149,16 +154,17 @@ function updatePosts(){
         $post_id = $_GET['p_id'];
     }
     if(isset($_POST['update_post'])){
-        $post_title=$_POST['post_title'];
-        $post_category=$_POST['post_category'];
-    
-        $post_image=$_FILES['image']['name'];
+        $post_title = $_POST['post_title'];
+        $slug = slug($post_title);
+        $post_description = $_POST['post_description'];
+        $minimum_requirement = $_POST['requirement_description_one'];
+        $recommended_requirement = $_POST['requirement_description_two'];
+        $price = $_POST['price'];
+        $post_status = $_POST['post_status'];
+
+        $post_image = $_FILES['image']['name'];
         $post_image_temp = $_FILES['image']['tmp_name'];
         move_uploaded_file($post_image_temp,"../img/$post_image");
-    
-        $post_tags=$_POST['post_tags'];
-        $post_description=$_POST['post_description'];
-        $post_status=$_POST['post_status'];
         // $post_date = now();
     
         if(empty($post_image)){
@@ -173,19 +179,65 @@ function updatePosts(){
                 }
             }
         }
-        $update_sql = "UPDATE posts SET post_category_id = :postcategoryid, post_title = :posttitle, post_status = :poststatus, post_description = :postdescription, post_img = :postimg, post_tags = :posttags WHERE post_id =:postid";
+        $update_sql = "UPDATE posts SET post_title = :posttitle, 
+                                        slug = :slug,
+                                        post_status = :poststatus, 
+                                        post_description = :postdescription, 
+                                        requirement_description_one = :requirement_description_one,
+                                        requirement_description_two = :requirement_description_two,
+                                        post_img = :postimg, 
+                                        price = :price
+                                        WHERE 
+                                        post_id =:postid";
         $update_query = $connection->prepare($update_sql);
-        $update_query->bindParam(':postcategoryid',$post_category,PDO::PARAM_INT);
         $update_query->bindParam(':posttitle',$post_title,PDO::PARAM_STR);
+        $update_query->bindParam(':slug',$slug,PDO::PARAM_STR);
         $update_query->bindParam(':poststatus',$post_status,PDO::PARAM_STR);
         $update_query->bindParam(':postdescription',$post_description,PDO::PARAM_STR);
+        $update_query->bindParam(':requirement_description_one',$minimum_requirement,PDO::PARAM_STR);
+        $update_query->bindParam(':requirement_description_two',$recommended_requirement,PDO::PARAM_STR);
         $update_query->bindParam(':postimg',$post_image,PDO::PARAM_STR);
-        $update_query->bindParam(':posttags',$post_tags,PDO::PARAM_STR);
+        $update_query->bindParam(':price',$price,PDO::PARAM_STR);
         $update_query->bindParam(':postid',$post_id,PDO::PARAM_STR);
         $update_query->execute(); 
-        header("Location: posts.php");
+
+            $sql = "DELETE FROM game_category WHERE game_id = :gameid";
+            $query = $connection->prepare($sql);
+            $query->bindParam(':gameid',$post_id,PDO::PARAM_INT);
+            $value = $query->execute();
+
+            if($value) {
+
+                $post_category = $_POST['post_category'];
+
+                foreach ($post_category as $category) {
+        
+                    $sql = "INSERT INTO game_category(game_id,category_id) VALUE (:gameid,:categoryid)";
+                    $query = $connection->prepare($sql);
+                    $query->bindParam(':gameid',$post_id,PDO::PARAM_STR);
+                    $query->bindParam(':categoryid',$category,PDO::PARAM_STR);
+                    $query->execute();
+                    print_r($query->errorInfo());
+                }
+        
+                echo 
+                "<div class='col-lg-12'> 
+                    <h3 class='msg'>Data is Successfully Inserted!</h3>
+                </div>
+                ";
+                header("Refresh:0");
+            }
     }
 }
+
+function slug($string){
+    $slug = trim($string); // trim the string
+    $slug= preg_replace('/[^a-zA-Z0-9 -]/','',$slug ); 
+    $slug= str_replace(' ','-', $slug); // replace spaces by dashes
+    $slug= strtolower($slug);  // make it lowercase
+    return $slug;
+}
+
 
 function buldOptions(){
     global $connection;

@@ -4,7 +4,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
- 
 if(isset($_POST['create_post'])){
     
     $post_title = $_POST['post_title'];
@@ -12,10 +11,9 @@ if(isset($_POST['create_post'])){
     $post_description = $_POST['post_description'];
     $minimum_requirement = $_POST['requirement_description_one'];
     $recommended_requirement = $_POST['requirement_description_two'];
-    $price = $_POST['price'];
+    $price = trim($_POST['price']);
     $post_status = $_POST['post_status'];
-    var_dump($post_status);
-     
+
     $post_image = $_FILES['image']['name'];
     $post_image_temp = $_FILES['image']['tmp_name'];
     move_uploaded_file($post_image_temp,"../img/$post_image");
@@ -90,13 +88,11 @@ if(isset($_POST['create_post'])){
 
         foreach ($post_category as $category) {
 
-            print_r($category);
             $sql = "INSERT INTO game_category(game_id,category_id) VALUE (:gameid,:categoryid)";
             $query = $connection->prepare($sql);
             $query->bindParam(':gameid',$lastInsertid,PDO::PARAM_STR);
             $query->bindParam(':categoryid',$category,PDO::PARAM_STR);
             $query->execute();
-            print_r($query->errorInfo());
         }
         
         echo 
