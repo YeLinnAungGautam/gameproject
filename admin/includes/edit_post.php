@@ -4,9 +4,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-  if(isset($_GET['p_id'])){
+if(isset($_GET['p_id'])){
     $post_id = $_GET['p_id'];
 }
+
+// Fetching Games data
 $sql = "SELECT * FROM posts WHERE post_id = :postid ";
 $query=$connection->prepare($sql);
 $query->bindParam(':postid',$post_id,PDO::PARAM_INT);
@@ -24,42 +26,22 @@ if($query->rowCount()>0){
         $post_status= $row->post_status;
     }
 }
-//INNER JOIN categories as c on c.cat_id = gc.category_id
-$sql = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id  INNER JOIN categories as c on c.cat_id = gc.category_id where p.post_id = '116'";
+
+// Fetching Categories
+$sql = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id  INNER JOIN categories as c on c.cat_id = gc.category_id where p.post_id = :postid";
 $query=$connection->prepare($sql);
+$query->bindParam(':postid',$post_id,PDO::PARAM_INT);
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_OBJ);
 if($query->rowCount()>0){
     
     foreach($result as $row){ 
 
-    $arr= array($row->category_id);
+    $arr[]= $row->category_id;
 
     }
 }
-
-    // print_r($arr);
      
-    // $sql = "SELECT * FROM categories";
-    // $query = $connection->prepare($sql);
-    // $query->execute();
-    // $result = $query->fetchAll(PDO::FETCH_OBJ);
-    // if($query->rowCount()>0){
-    //     foreach($result as $cat_row){
-        
-    //         if(in_array($cat_row->cat_id, $arr)) {
-
-    //             echo "Great";
-                
-    //         } else {
-    //             // $value = "";
-    //             echo "Not so great<br/>";
-    //         }
-                
-    //     } 
-    // }
-
-
 updatePosts();
 ?>
     <form action="" method="post" enctype="multipart/form-data">
@@ -75,15 +57,28 @@ updatePosts();
                 <label for="category">Category</label>
                 <select multiple name="post_category[]" class="form-control" >
                 <?php
-                        $sql = "SELECT * FROM categories";
-                        $query = $connection->prepare($sql);
-                        $query->execute();
-                        $result = $query->fetchAll(PDO::FETCH_OBJ);
-                        if($query->rowCount()>0){
-                            foreach($result as $row){
-                                echo "<option value='$row->cat_id'>$row->cat_title</option>";
-                            } 
-                        } 
+                         $sql = "SELECT * FROM categories";
+                         $query = $connection->prepare($sql);
+                         $query->execute();
+                         $result = $query->fetchAll(PDO::FETCH_OBJ);
+                         if($query->rowCount()>0){
+                             foreach($result as $cat_row){
+
+                                 if(in_array($cat_row->cat_id, $arr)) {
+
+                                     $color = 'selected';
+                                        
+                                 } else {
+                                     // $value = "";
+                                     // print_r($cat_row->cat_id);
+                     
+                                     $color = '';
+                                 }
+                     
+                                 echo "<option value=$cat_row->cat_id $color>$cat_row->cat_title</option>";
+                             } 
+                         }
+                     
                     ?>
                 </select>
             </div>
@@ -104,12 +99,12 @@ updatePosts();
 
         <div class="form-group">
             <label for="requirement-description-one">Minimum Requirements</label>
-            <textarea name="requirement_description_one"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
+            <textarea name="requirement_description_one"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement;?></textarea>
         </div> 
 
         <div class="form-group">
             <label for="requirement-description-two">Recommended Requirements</label>
-            <textarea name="requirement_description_two"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
+            <textarea name="requirement_description_two"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement;?></textarea>
         </div> 
 
         
@@ -119,14 +114,14 @@ updatePosts();
 
             <div class="form-group">
                 <label for="price"> Price </label>
-                <input type="text" name="price" value="<?php echo $price; ?> " class="form-control" pattern='[0-9]+(\\.[0-9][0-9]?)?' >
+                <input type="text" name="price" value="<?php echo $price;?>" class="form-control" pattern='[0-9]+(\\.[0-9][0-9]?)?' >
             </div>
                     
 
             <div class="form-group">
                 <label for="Status"> Status </label>
                 <select name="post_status" class="form-control">
-                <option value='<?php echo $post_status ?>'><?php echo $post_status ?></option>
+                <option value='<?php echo $post_status;?>'><?php echo $post_status ?></option>
                     <?php
 
                     if($post_status == 'published'){
