@@ -18,7 +18,7 @@ if(isset($_POST['create_post'])){
     $post_image_temp = $_FILES['image']['tmp_name'];
     move_uploaded_file($post_image_temp,"../img/$post_image");
     
-    $relase_date = $_POST['relasedate'];
+    $relase_date = $_POST['releasedate'];
     $age_rating = $_POST['agerating'];
     $game_mode = $_POST['gamemode'];
     
@@ -30,7 +30,7 @@ if(isset($_POST['create_post'])){
                             requirement_description_two,
                             post_status,
                             price,
-                            relasegame_date,
+                            releasegame_date,
                             gamerage_rating,
                             game_mode)
                         VALUE(:ptitle,
@@ -107,23 +107,6 @@ if(isset($_POST['create_post'])){
         Something Wrong
         </div>";
     }
-
-    // $post_category = $_POST['post_category'];
-
-    // foreach ($post_category as $category) {
-    //     $sql = "INSERT INTO game-category(game-id,category-id) VALUE (:game-id,:category-id)";
-    //     $query = $connection->prepare($sql);
-    //     $query->bindParam(':game-id',$category,PDO::PARAM_STR);
-    //     // $query->bindParam(':category-id',$c)
-    // }
-}
-
-function slug($string){
-    $slug = trim($string); // trim the string
-    $slug= preg_replace('/[^a-zA-Z0-9 -]/','',$slug ); 
-    $slug= str_replace(' ','-', $slug); // replace spaces by dashes
-    $slug= strtolower($slug);  // make it lowercase
-    return $slug;
 }
 
 ?>
@@ -196,11 +179,11 @@ function slug($string){
 
             <div class="form-group">
                 <label for="requirement-description-one">Minimum Requirements</label>
-                <textarea name="requirement_description_one" id="summernote_minimum" cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="requirement_description_one" id="summernote" cols="30" rows="10" class="form-control"></textarea>
             </div> 
             <div class="form-group">
                 <label for="requirement-description-two">Recommended Requirements</label>
-                <textarea name="requirement_description_two" id="summernote_recommended"  cols="30" rows="10" class="form-control"></textarea>
+                <textarea name="requirement_description_two" id="summernote"  cols="30" rows="10" class="form-control"></textarea>
             </div> 
 
     </div>
@@ -211,7 +194,24 @@ function slug($string){
                 <label for="price"> Price </label>
                 <input type="text" name="price" class="form-control" pattern='[0-9]+(\\.[0-9][0-9]?)?' >
             </div>
-
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="gamereleasedate">Game Release Date</label>
+                    <input type="date" name="releasedate" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="agerating">Age Rating</label>
+                    <input type="text" name="agerating" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="gamemode">Game Mode</label>
+                    <input type="text" name="gamemode" class="form-control">
+                </div>
+            </div>
             <div class="form-group">
                 <label for="status"> Status </label>
                 <select name="post_status" class="form-control">
@@ -219,26 +219,6 @@ function slug($string){
                     <option value="published">Published</option>
                     <option value="draft">Draft</option>
                 </select>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="gamerelasedate">Game Relase Date</label>
-                        <input type="date" name="relasedate" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="agerating">Age Rating</label>
-                        <input type="text" name="agerating" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="gamemode">Game Mode</label>
-                        <input type="text" name="gamemode" class="form-control">
-                    </div>
-                </div>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" name="create_post" value="Publish Post">
