@@ -1,7 +1,7 @@
 <?php 
 define('DB_HOST','localhost');
 define('DB_USER','root');
-define('DB_PASS','J^JCH6j8Jhk49A9');
+define('DB_PASS','');
 define('DB_NAME','gamehouse');
 
 // define('DB_HOST','localhost');
