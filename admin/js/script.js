@@ -17,22 +17,7 @@ $(document).ready(function(){
         $(this).remove();
     });
 
-    $('#summernote').summernote({
-        height: 200
-    });
-    $('#summernote_minimum').summernote({
-        height: 200
-    });
-    $('#summernote_recommended').summernote({
-        height: 200
-    });
-    $('#summernote_editdescription').summernote({
-        height: 200
-    });
-    $('#summernote_editminimum').summernote({
-        height: 200
-    });
-    $('#summernote_recommended').summernote({
+    $('[id=summernote]').summernote({
         height: 200
     });
 });
@@ -42,9 +27,9 @@ function loadUsersOnline() {
     });
 }
 
-setInterval(function(){
-    loadUsersOnline();
-},500);
+// setInterval(function(){
+//     loadUsersOnline();
+// },500);
 
-loadUsersOnline();
+// loadUsersOnline();
 
