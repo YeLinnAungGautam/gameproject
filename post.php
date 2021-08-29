@@ -129,15 +129,15 @@
                 <div class="row">
                     <div class="col-md-4 text-center">
                         <h4 id="datetitle"> <i class="far fa-calendar-alt" id="calendar"></i> Release Date</h4> 
-                        <h6 class="calensub"><?php echo $row->relasegame_date ?></h6>
+                        <h6 class="calensub"><?php echo $row->releasegame_date;?></h6>
                     </div>
                     <div class="col-md-4 text-center">
                         <h4 id="datetitle"> <i class='fas fa-user-slash' id="age"></i> Age Rating</h4> 
-                        <h6 class="agesub"><?php echo $row->gamerage_rating ?></h6>
+                        <h6 class="agesub"><?php echo $row->gamerage_rating;?></h6>
                     </div>
                     <div class="col-md-4 text-center">
                     <h4 id="datetitle"> <i class='fas fa-gamepad' id="mode"></i> Mode</h4> 
-                        <h6 class="modesub"> <?php echo $row->game_mode ?> </h6>
+                        <h6 class="modesub"> <?php echo $row->game_mode;?> </h6>
                     </div>
                 </div>
             </div>
