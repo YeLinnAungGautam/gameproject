@@ -4,6 +4,46 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Forget Password
+function ifItIsMethod($method=null){
+    
+    if($_SERVER['REQUEST_METHOD'] == strtoupper($method)){
+        return true;
+    }
+    return false;
+}
+
+function isLoggedIn(){
+    if(isset($_SESSION['userrole'])){
+        return true;
+    }
+    return false;
+}
+
+function checkIfUserIsLoggedInAndRedirect($redirectLocation = null){
+    if(isLoggedIn()){
+        redirect($redirectLocation);
+    }
+}
+function email_exists($email){
+    global $connection;
+
+    $sql = "SELECT user_email FROM users WHERE user_email = :checkmail";
+    $query = $connection->prepare($sql);
+    $query->bindParam(':checkmail',$email,PDO::PARAM_STR);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    if($query->rowCount() > 0){
+            return true;
+    }
+    else{
+        return false;
+    }
+
+}
+//Forget Password
+
+
 function findAllCategories(){
     global $connection;
     $sql = "SELECT * FROM categories";
