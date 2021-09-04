@@ -1,68 +1,74 @@
-body{
-    background-color: black;
-}
-#title{
-    text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: white;
-}
-#subtitle{
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(228, 228, 228);
-    margin-bottom: 40px;
-}
-.recomreq{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:white;
-    padding-left:20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.highlight{
-    background-color: #E60704; 
-    width: fit-content;
-}
-.para{
-    color: #BCB6B6;
-    font-size:medium;
-    padding-top:15px;
-    line-height: 28px;
-    margin-bottom: 10px;
-}
-#minireq{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:white;
-    padding-left:20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.highlightmini{
-    background-color: #342525; 
-    width: fit-content;
+:root {
+  --background: black;
+  --red: #aa0000;
 }
 
-#buynow{
-    background: #700202;
-    color: rgb(197, 195, 195);
-    padding: 10px 20px;
-    border:  #8a0202;
-    outline: none;
-    margin-left: 20px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    letter-spacing: 1px;
-    font-size: 15px;
+body,
+html {
+  background-color: var(--background);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-#buynow:hover{
-    background: #E60704;
-    color:white;
+#title {
+  text-align: center;
+
+  color: white;
 }
-.price{
-  box-shadow:1px 1px 3px white; 
+#subtitle {
+  text-align: center;
+
+  color: rgb(228, 228, 228);
+  margin-bottom: 40px;
+}
+.recomreq {
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.highlight {
+  background-color: #e60704;
+  width: fit-content;
+}
+.para {
+  color: #bcb6b6;
+  font-size: medium;
+  padding-top: 15px;
+  line-height: 28px;
+  margin-bottom: 10px;
+}
+#minireq {
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.highlightmini {
+  background-color: #342525;
+  width: fit-content;
+}
+
+#buynow {
+  background: #700202;
+  color: rgb(197, 195, 195);
+  padding: 10px 20px;
+  border: #8a0202;
+  outline: none;
+  margin-left: 20px;
+
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+#buynow:hover {
+  background: #e60704;
+  color: white;
+}
+.price {
+  box-shadow: 1px 1px 3px white;
   /* border: 1px solid #707070; */
-  border:none;
+  border: none;
   width: fit-content;
   background-color: black;
   margin: auto;
@@ -70,275 +76,261 @@ body{
   margin-bottom: 30px;
   color: white;
   font-size: 18px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans";
 }
-
 
 /* ----------About This Game--------- */
-.titletext{
-    color: white;
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 25px;
-    margin-bottom: 30px;
+.titletext {
+  color: white;
+  text-align: center;
+
+  margin-top: 25px;
+  margin-bottom: 30px;
 }
 
-#about{
-   background-color: #AA0000;
-   margin-top: 50px;
-   margin-bottom: 65px;
+#about {
+  background-color: #aa0000;
+  margin-top: 50px;
+  margin-bottom: 65px;
 }
-#para{
-   margin-top: 50px; 
+#para {
+  margin-top: 50px;
 }
-.residentpara{
-    color: #cfcece;
-    font-size:20px;
-    text-align: justify;
-    padding-right: 20px;
-    padding-left: 20px;
-    line-height: 28px;
-    font-family:'Times New Roman', Times, serif;
+.residentpara {
+  color: #cfcece;
+  font-size: 20px;
+  text-align: justify;
+  padding-right: 20px;
+  padding-left: 20px;
+  line-height: 28px;
+  font-family: "Times New Roman", Times, serif;
 }
-#gallerybackground{
-    background-color:#0000001e ;
-    padding-top: 5px;
-}
-
-.gallery{
-    margin: auto;  /*parent m thone chin lo*/
-    display:flex;
-    justify-content:center;
-    align-items:center; /*daung luk center kya*/
-    padding-left: 15px;
-    padding-right: 13px;
+#gallerybackground {
+  background-color: #0000001e;
+  padding-top: 5px;
 }
 
-.gallery > div { 
-    margin-top: 30px;
-    width: 100%;
-    display:flex;
-    justify-content:center;
-   
+.gallery {
+  margin: auto; /*parent m thone chin lo*/
+  display: flex;
+  justify-content: center;
+  align-items: center; /*daung luk center kya*/
+  padding-left: 15px;
+  padding-right: 13px;
+}
 
+.gallery > div {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .gallery > div > div {
-    width: 100%;
-     
+  width: 100%;
 }
-.gallery > div > div > div{
-   margin-right:2px ;
-   margin-bottom: 2px;  
+.gallery > div > div > div {
+  margin-right: 2px;
+  margin-bottom: 2px;
 }
-.gallery img{
-    transition: transform .2s;
+.gallery img {
+  transition: transform 0.2s;
 }
 .gallery img:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
-.addinfo{
-    color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 37px;
-    margin-bottom: 15px;
+.addinfo {
+  color: white;
+
+  margin-top: 37px;
+  margin-bottom: 15px;
 }
-#datetitle{
-    color: #ececec;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 20px;
+#datetitle {
+  color: #ececec;
+
+  font-size: 20px;
 }
-#date{
-    color: #e6e4e4;
-    font-family:'Times New Roman', Times, serif;
+#date {
+  color: #e6e4e4;
+  font-family: "Times New Roman", Times, serif;
 }
-#calendar{
-    color: #e6e4e4;
-    margin-right: 5px;
+#calendar {
+  color: #e6e4e4;
+  margin-right: 5px;
 }
-#age{
-    margin-right: 5px;
-    color: #e6e4e4;
+#age {
+  margin-right: 5px;
+  color: #e6e4e4;
 }
-#mode{
-    margin-right: 5px;
-    color: #e6e4e4;
+#mode {
+  margin-right: 5px;
+  color: #e6e4e4;
 }
-.calensub{
-    color: #BCB6B6;
-    font-size: 15px;
-  
+.calensub {
+  color: #bcb6b6;
+  font-size: 15px;
 }
-.agesub{
-    color: #BCB6B6;
-    font-size: 15px;
-    padding-left: 12px;
-   
+.agesub {
+  color: #bcb6b6;
+  font-size: 15px;
+  padding-left: 12px;
 }
-.modesub{
-    color: #BCB6B6;
-    font-size: 15px;
-    padding-left: 12px; 
+.modesub {
+  color: #bcb6b6;
+  font-size: 15px;
+  padding-left: 12px;
 }
-.row > div{
-    margin-bottom: 40px;
-}
+
+/* .row > div {
+  margin-bottom: 40px;
+} */
 
 /* ----------You May Also Like--------- */
-.youmayalso{
-    color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-bottom: 20px;
+.youmayalso {
+  color: white;
+
+  margin-bottom: 20px;
 }
-#background{
- 
-    border: 2px solid #AA0000;
-    margin-right: 20px;
+#background {
+  border: 2px solid #aa0000;
+  margin-right: 20px;
 }
 /* for responsive center rows*/
-.card{
-    width: 16rem;
-    padding-top:15px;
-
+.card {
+  width: 16rem;
+  padding-top: 15px;
 }
-#card>div{
+#card > div {
   margin-top: 11px;
-  background-color:rgba(128, 128, 128, 0.192);
-  width:fit-content;
+  background-color: rgba(128, 128, 128, 0.192);
+  width: fit-content;
   border-radius: 5px;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
-#card h5{
-    color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding-bottom: 15px;
-    padding-top: 5px;
+#card h5 {
+  color: white;
 
+  padding-bottom: 15px;
+  padding-top: 5px;
 }
-#card img{
-    border: 2px solid rgb(133, 132, 132); 
+#card img {
+  border: 2px solid rgb(133, 132, 132);
 }
-#firstcard{
-    margin-left: 20px;
-    margin-right:10px;
+#firstcard {
+  margin-left: 20px;
+  margin-right: 10px;
 }
-#secondcard{
-    margin-right: 10px;
-    margin-left:20px;
+#secondcard {
+  margin-right: 10px;
+  margin-left: 20px;
 }
-#thirdcard{
-    margin-left: 20px;
+#thirdcard {
+  margin-left: 20px;
 }
 /* ............ */
 /* card hover */
-#card>div:hover{
-    background-color: #E60704; 
+#card > div:hover {
+  background-color: #e60704;
 }
 
 /*---- Registration form------ */
 
-#signup{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(226, 226, 226);
-    margin-left:25%;
-    margin-top:50px; 
+#signup {
+  color: rgb(226, 226, 226);
+  margin-left: 25%;
+  margin-top: 50px;
 }
-#gamehub h1{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #E60704;
+#gamehub h1 {
+  color: #e60704;
 }
-#gamehub h5{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:#AA0000 ;
-    margin-bottom: 4%;
+#gamehub h5 {
+  color: #aa0000;
+  margin-bottom: 4%;
 }
-.form-group>input{
-    border: 1px solid white;
-    border-radius: 4px; 
-    height: 38px;
+.form-group > input {
+  border: 1px solid white;
+  border-radius: 4px;
+  height: 38px;
 }
 /* .formbuttons{
-    display: flex;
-    justify-content:center;
-} */
-#btn-register{
-    background-color: #e608049d;
-    color:rgb(194, 191, 191);
-    font-size: medium;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    outline: none;  
-    margin-top: 5px;
+      display: flex;
+      justify-content:center;
+  } */
+#btn-register {
+  background-color: #e608049d;
+  color: rgb(194, 191, 191);
+  font-size: medium;
+
+  outline: none;
+  margin-top: 5px;
 }
-#btn-register:hover{
-    background-color:#b90303 ;
-    color: white;   
+#btn-register:hover {
+  background-color: #b90303;
+  color: white;
 }
 /* #btn-cancel{
-    font-size: medium;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    outline: none;
-    margin-top: 10px;
-    background-color: black;
-    color:gray;
+      font-size: medium;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      outline: none;
+      margin-top: 10px;
+      background-color: black;
+      color:gray;
+  }
+  #btn-cancel:hover{
+      background-color:rgba(128, 128, 128, 0.534);
+      color:white; 
+  } */
+#accountcheck {
+  color: rgb(170, 170, 170);
+
+  text-align: center;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  margin-top: 3%;
 }
-#btn-cancel:hover{
-    background-color:rgba(128, 128, 128, 0.534);
-    color:white; 
-} */
-#accountcheck{
-    color: rgb(170, 170, 170);
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align:center;
-    letter-spacing: 1px;
-    word-spacing: 5px;
-    margin-top: 3%;
+#accountcheck > a {
+  color: gray;
+  margin-left: 10px;
 }
-#accountcheck>a{
-    color:gray;
-    margin-left: 10px;
-}
-#accountcheck>a:hover{
-    color:rgb(231, 229, 229); 
+#accountcheck > a:hover {
+  color: rgb(231, 229, 229);
 }
 
 /* ----Log In----- */
-#gamehubtitle{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #E60704;
+#gamehubtitle {
+  color: #e60704;
 }
-#gamehubsubtitle{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:#AA0000 ;
+#gamehubsubtitle {
+  color: #aa0000;
 }
-#logincontainer{
-    margin-top: 4%;
+#logincontainer {
+  margin-top: 4%;
 }
-#loginbutton> button{
-    background-color: #e608049d;
-    color:rgb(194, 191, 191);
-    font-size: medium;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    outline: none;  
-    margin-top: 5px;
+#loginbutton > button {
+  background-color: #e608049d;
+  color: rgb(194, 191, 191);
+  font-size: medium;
+
+  outline: none;
+  margin-top: 5px;
 }
-#loginbutton>button:hover{
-    background-color:#b90303 ;
-    color: white;  
+#loginbutton > button:hover {
+  background-color: #b90303;
+  color: white;
 }
-#checkboxtitle{
-    color: rgb(170, 170, 170);
-    margin-bottom: 20px;
+#checkboxtitle {
+  color: rgb(170, 170, 170);
+  margin-bottom: 20px;
 }
-#passrecover>a{
-    color: gray;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-right: 10px;
+#passrecover > a {
+  color: gray;
+
+  margin-right: 10px;
 }
-#passrecover>a:hover{
-    color:rgb(231, 229, 229);
+#passrecover > a:hover {
+  color: rgb(231, 229, 229);
 }
 
-#passrecover{
-    margin-top: 15%;
+#passrecover {
+  margin-top: 15%;
 }
-
-
