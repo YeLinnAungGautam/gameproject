@@ -1,6 +1,7 @@
     <?php 
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
+        use PHPMailer\PHPMailer\SMTP;
     ?>
     
     <!-- Database Connection -->
@@ -19,9 +20,12 @@
 
 <?php 
      
-     require './vendor/autoload.php';
+      require './vendor/autoload.php';
+    //  require './vendor/phpmailer/phpmailer/src/SMTP.php';
+    require './classes/Config.php';
+    require 'vendor/phpmailer/phpmailer/src/Exception.php';
+    require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
     require 'vendor/phpmailer/phpmailer/src/SMTP.php';
-     require './classes/Config.php';
      
 
     if(!ifItIsMethod('get') && !isset($_GET['forgot'])){
@@ -41,10 +45,11 @@
                 $query->execute();
 
                 /**Configure PHPMailer */
-                try{
+                
 
-                 $mail = new PHPMailer();
-                // $mail = new PHPMailer\PHPMailer\PHPMailer();
+                 $mail = new PHPMailer(true);
+                // $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
+                try {
                 $mail->SMTPDebug = SMTP::DEBUG_SERVER;           //Enable verbose debug output
                 $mail->isSMTP();                                 //Send using SMTP
                 $mail->Host       = Config::SMTP_HOST;           //Set the SMTP server to send through
@@ -53,17 +58,17 @@
                 $mail->Port       = Config::SMTP_PORT;
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
                 $mail->SMTPAuth   = true;                        //Enable SMTP authentication
-                $main->isHTML(true);
-
-                $mail->setFrom('davidgautam.1234@gmail.com');
+                $mail->isHTML(true);
+                $mail->setFrom('davidgautam.1234@gmail.com','Dev Gautam');
                 $mail->addAddress($email);
-
                 $mail->Subject = 'This is a test email';
-
                 $mail->Body = 'Email body';
-            }catch (Exception $e){
-                echo "It is not";
+                $mail->send();
+                echo 'Message has been sent';
+            }catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
+
                 // if($mail->send()){
                 //     echo "It was sent";
                 // }else{
