@@ -50,7 +50,8 @@
                  $mail = new PHPMailer(true);
                 // $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
                 try {
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;           //Enable verbose debug output
+                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;           //Enable verbose debug output
+                $mail->SMTPDebug = 4; 
                 $mail->isSMTP();                                 //Send using SMTP
                 $mail->Host       = Config::SMTP_HOST;           //Set the SMTP server to send through
                 $mail->Username   = Config::SMTP_USER;           //SMTP username
