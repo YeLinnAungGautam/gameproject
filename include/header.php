@@ -1,5 +1,9 @@
 <?php session_start();?>
-<?php include("admin/function.php") ?>
+<?php include("admin/function.php");
+
+$activePage = basename($_SERVER['PHP_SELF'], ".php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Gamehub Myanmar - Best Video Games Reseller in Myanmar</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +29,14 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <![endif]-->    
+    
+    <!-- Custom Fonts -->
+    <link href="fontawesome-pack/css/all.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+
+    <!-- Splide CSS  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 
 </head>
 
