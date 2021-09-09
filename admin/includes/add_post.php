@@ -61,28 +61,34 @@ if(isset($_POST['create_post'])){
     $lastInsertid = $connection->lastInsertId();
 
     // Additional Images
-    $extension = array('jpeg','jpg','png','gif');
-    foreach($_FILES['images']['tmp_name'] as $items => $item){
-        $filename = $_FILES['images']['name'][$items];
-        $filename_tmp = $_FILES['images']['tmp_name'][$items];
-        $ext = pathinfo($filename,PATHINFO_EXTENSION);
+    
+    
+    if($lastInsertid){
+
+        $extension = array('jpeg','jpg','png','gif');
+
+        foreach($_FILES['images']['tmp_name'] as $items => $item){
+            $filename = $_FILES['images']['name'][$items];
+            $filename_tmp = $_FILES['images']['tmp_name'][$items];
+            $ext = pathinfo($filename,PATHINFO_EXTENSION);
+
         if(in_array($ext,$extension)){
             move_uploaded_file($filename_tmp, './additionalimages/'.$filename);
         }
+
         else{
             echo "File Format is not correct";
         }
+
         $sql_additional_images = "INSERT INTO game_images(game_id,
-                              images) 
-                              VALUE(:gameid,
-                              :images)";
-    $query_additional_images = $connection->prepare($sql_additional_images);
-    $query_additional_images->bindParam(':gameid',$lastInsertid, PDO::PARAM_STR);
-    $query_additional_images->bindParam(':images',$filename, PDO::PARAM_STR);
-    $query_additional_images->execute();
-    }
-    
-    if($lastInsertid){
+                                images) 
+                                VALUE(:gameid,
+                                :images)";
+        $query_additional_images = $connection->prepare($sql_additional_images);
+        $query_additional_images->bindParam(':gameid',$lastInsertid, PDO::PARAM_STR);
+        $query_additional_images->bindParam(':images',$filename, PDO::PARAM_STR);
+        $query_additional_images->execute();
+        }
 
         $post_category = $_POST['post_category'];
 
@@ -146,7 +152,7 @@ if(isset($_POST['create_post'])){
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <input type="file" class="form-control" name="images[]" multiple />
+                            <input type="file" class="form-control" name="images[]"  required multiple />
                         </div>
                     </div>
                     <!-- <div class="col-md-6">
