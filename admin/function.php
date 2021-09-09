@@ -126,8 +126,6 @@ function viewAllPost(){
     
     $count = ceil($count / $per_page);
     
-    
-
     $sql = "SELECT * FROM posts ORDER BY post_id DESC LIMIT $page_1,$per_page";
     $query = $connection->prepare($sql);
     $query->execute();
@@ -206,6 +204,8 @@ function updatePosts(){
         $post_status = $_POST['post_status'];
         $post_image = $_FILES['image']['name'];
         $post_image_temp = $_FILES['image']['tmp_name'];
+        $post_images = $_FILES['images']['name']; //for additional_images
+
         move_uploaded_file($post_image_temp,"../img/$post_image");
         // $post_date = now();
     
@@ -221,6 +221,42 @@ function updatePosts(){
                 }
             }
         }
+
+        if(!empty($post_images)){
+
+            $sql = "DELETE FROM game_images WHERE game_id = :gameid";
+            $query = $connection->prepare($sql);
+            $query->bindParam(':gameid',$post_id,PDO::PARAM_INT);
+            $value = $query->execute();
+
+            $extension = array('jpeg','jpg','png','gif');
+
+            foreach($_FILES['images']['tmp_name'] as $items => $item){
+                $filename = $_FILES['images']['name'][$items];
+                $filename_tmp = $_FILES['images']['tmp_name'][$items];
+                $ext = pathinfo($filename,PATHINFO_EXTENSION);
+
+            if(in_array($ext,$extension)){
+                move_uploaded_file($filename_tmp, './additionalimages/'.$filename);
+            }
+
+            else{
+                echo "File Format is not correct";
+            }
+
+            $sql_additional_images = "INSERT INTO game_images(game_id,
+                                    images) 
+                                    VALUE(:gameid,
+                                    :images)";
+            $query_additional_images = $connection->prepare($sql_additional_images);
+            $query_additional_images->bindParam(':gameid',$post_id, PDO::PARAM_STR);
+            $query_additional_images->bindParam(':images',$filename, PDO::PARAM_STR);
+            $query_additional_images->execute();
+            }
+
+        }
+
+
         $update_sql = "UPDATE posts SET post_title = :posttitle, 
                                         slug = :slug,
                                         post_status = :poststatus, 
@@ -248,7 +284,6 @@ function updatePosts(){
         $update_query->bindParam(':mode',$game_mode,PDO::PARAM_STR);
         $update_query->bindParam(':postid',$post_id,PDO::PARAM_STR);
         $update_query->execute();
-        print_r($update_query->errorInfo());
 
             $sql = "DELETE FROM game_category WHERE game_id = :gameid";
             $query = $connection->prepare($sql);

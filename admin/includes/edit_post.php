@@ -44,7 +44,10 @@ if($query->rowCount()>0){
     $arr[]= $row->category_id;
 
     }
+
 } 
+
+
      
 updatePosts();
 ?>
@@ -59,7 +62,7 @@ updatePosts();
 
             <div class="form-group mx-sm-3 mb-2">
                 <label for="category">Category</label>
-                <select multiple name="post_category[]" class="form-control" >
+                <select multiple name="post_category[]" class="form-control" required>
                 <?php
                          $sql = "SELECT * FROM categories";
                          $query = $connection->prepare($sql);
@@ -87,13 +90,52 @@ updatePosts();
                 </select>
             </div>
             <div class="form-group">
-                <img src="../img/<?php echo $post_img;?>" alt="" style="width: 125px;margin-bottom: 1%;">
+                <img src="../img/<?php echo $post_img;?>" alt="Primary Image" style="width: 125px;margin-bottom: 1%;">
                 <input type="file" name="image"> 
             </div>
 
-            <div class="form-group mx-sm-3 mb-2">
-                <label for="category">Category</label>
-                
+            <div class="section">
+                <h5><b>Additional Images</b></h5>
+                <div class="row">
+                    <div class="col-md-12">
+                    
+
+                        <div class="form-group">
+                        <?php
+                        $sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id  where p.post_id = :postid";
+                            $query=$connection->prepare($sql);
+                            $query->bindParam(':postid',$post_id,PDO::PARAM_INT);
+                            $query->execute();
+                            $result = $query->fetchAll(PDO::FETCH_OBJ);
+                            if($query->rowCount()>0){
+                                
+                                foreach($result as $row){ 
+
+
+                                echo "<img src='../admin/additionalimages/$row->images' alt='Primary Image' style='width: 125px;margin-bottom: 1%;'  class='img-fluid'/>&nbsp;";
+                                }
+
+                            } 
+                         ?>
+                            <input type="file" class="form-control" name="images[]" multiple />
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="images[]">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="images[]">
+                        </div>
+                    </div>
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="images[]">
+                        </div>
+                    </div> -->
+                </div> 
             </div>
 
         <div class="form-group">
