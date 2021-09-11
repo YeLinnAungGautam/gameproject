@@ -17,8 +17,7 @@
 
     <link rel="stylesheet" href="css/front-enddevelop.css">
 
-    <?php 
-        
+<?php 
         if(!isset($_GET['email']) && !isset($_GET['token'])){
             header("Location: index.php");
         }
@@ -48,21 +47,14 @@
                     $query_fornewpassword->bindParam(':updatedpassword',$hashedPassword,PDO::PARAM_STR);
                     $query_fornewpassword->bindParam(':registeremail',$_GET['email'],PDO::PARAM_STR);
                     $query_fornewpassword->execute();
-                    
-                    header("Location: login.php");
-                   
+                    header("Location: login.php");   
                 }
-                
-
             }else{
                 echo "No the password does not match";
             }
         }
-    }
-    ?>
+    }?>
     <div class="container">
-
-    
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -90,9 +82,6 @@
                                     </form>
 
                                 </div><!-- Body-->
-
-                                
-
                         </div>
                     </div>
                 </div>
@@ -100,8 +89,6 @@
         </div>
     </div>
     <hr>
-
     <?php include("include/footer.php") ?>
-
 </div> <!-- /.container -->
     
