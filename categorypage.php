@@ -1,3 +1,4 @@
+    <?php ob_start(); ?>
     <!-- Database Connection -->
     <?php include("admin/includes/db.php") ?>
     <!-- Database Connection -->
@@ -28,7 +29,9 @@
                 </div>
                 <div class="row mar-topper">
                     <?php  
-                        if(isset($_GET['category'])){
+                        if(!isset($_GET['category'])){
+                            header("Location: index.php");
+                        }else{
                             $category_title_id = $_GET['category'];
                         }
                         $sql = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id INNER JOIN categories as c on c.cat_id = gc.category_id WHERE cat_id = :postcategoryid";
