@@ -10,6 +10,18 @@
     <!-- Navigation -->
  
     <!-- Page Content -->
+
+    <?php
+
+        if(isset($_POST['buy'])) {
+            if(isset($_SESSION['user_id'])) {
+                header("Location:payment.php");
+            }else{
+                echo "Redirecting to ";
+            }
+        }
+
+    ?>
     
     <link rel="stylesheet" href="css/front-enddevelop.css">
     <link rel="stylesheet" href="fontawesome-pack/css/all.min.css">
@@ -63,7 +75,9 @@
 
                     <div class="col-md-6">
                         <img src="img/<?php echo $row->post_img ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
-                        <pre class="price"> <?php echo $row->price; ?>  <button class="btn" id="buynow">Buy Now</button> </pre> 
+                        <form method="post">
+                        <pre class="price"> <?php echo $row->price; ?>  <button class="btn" name="buy" id="buynow">Buy Now</button> </pre> 
+                        </form>
                     </div>
                 </div>
             </div>
@@ -224,18 +238,9 @@
                   </div>
                 </div>
            
-            
-            <!-- Widget -->
-          
-            <!-- Widget -->
-
-            
-
-        
         <!-- /.row -->
 
         <hr>
-
         <!-- Footer -->
         <?php include("include/footer.php") ?>
         <!-- Footer -->
