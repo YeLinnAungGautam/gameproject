@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-6 col-sm-6 col-xs-12 text-left site-icon">
             <h1>
-            <a href="index.php">
+            <a href="index.php"> 
             <span class="firstletter">Gamehub</span> <span class="secondletter">Myanmar</span></h1>
             </a>
         </div>
@@ -19,8 +19,7 @@
                             if(isset($_GET['p_id'])){
                                 echo "<li><a href='./admin/posts.php'>Edit</a></li>";
                             } 
-                        }
-                ?>
+                        }?>
             </ul>
         </div>
     </div>

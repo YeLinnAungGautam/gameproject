@@ -20,7 +20,7 @@
                     </div> 
                     </form> 
                 </div>
-<!-- End Login -->
+<!-- End Login --> 
 <!-- Blog Categories Well -->
 <div class="well">
     <h4>Blog Categories</h4>
