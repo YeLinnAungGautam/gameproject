@@ -23,6 +23,7 @@ if(isset($_POST['login'])){
    } 
    $password = crypt($password,$db_password); 
    if($username === $db_username && $password === $db_password){
+    $_SESSION['user_id'] = $db_userid;
     $_SESSION['username'] = $db_username;
     $_SESSION['firstname'] = $db_firstname;
     $_SESSION['lastname'] = $db_lastname;
