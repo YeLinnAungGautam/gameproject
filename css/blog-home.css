@@ -128,7 +128,9 @@ ul.nav.navbar-nav li.isactive a:hover {
   position: relative;
 } */
 img.slider-image {
-  width: 1400px;
+  /* width: 1400px;
+  height: 500px; */
+  width: 100%;
   height: 500px;
   object-fit: cover;
   object-position: center;
@@ -215,6 +217,11 @@ img.slider-image {
 .prodouctbox .image-container a img {
   border: 1px solid var(--white);
   border-radius: 5px;
+  min-height: 330px;
+  max-height: 330px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 .prodouctbox h4.card-title {
   text-align: center;
@@ -541,7 +548,7 @@ a.readmore:hover {
     height: 350px;
   }
   .prodouctbox {
-    width: 100%;
+    /* width: 100%; */
   }
   .social-ft {
     width: 100%;
@@ -555,7 +562,17 @@ a.readmore:hover {
 }
 
 /* ဖုန်း portrait width တွေအတွက် */
-@media (max-width: 575.98px) {
+@media (max-width: 426px) {
+  .prodouctbox .image-container a img {
+    min-height: 150px;
+    max-height: 150px;
+  }
+  .prodouctbox:nth-child(even) {
+    padding-left: 5px;
+  }
+  .prodouctbox:nth-child(odd) {
+    padding-right: 5px;
+  }
 }
 
 /* ဖုန်းသေးတွေအတွက် */
@@ -593,4 +610,87 @@ a.readmore:hover {
     top: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+/* Mobile Menu  */
+.desktop-menu {
+  display: block;
+}
+.mobile-menu {
+  display: none;
+}
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+  .mobile-menu {
+    display: block;
+    background-color: #222;
+    border-color: #080808;
+  }
+  .navbar-mobile {
+    padding: 15px 0px;
+    position: relative;
+  }
+  .navbar-mobile ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .navbar-mobile ul li {
+    color: var(--white);
+    padding: 0px 10px;
+  }
+  .togglesearch {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    /* display: flex !important; */
+    display: none;
+    z-index: 999;
+    left: 0;
+    right: 0;
+  }
+  .search-container {
+    display: flex !important;
+    justify-content: center;
+  }
+  .searchTerm {
+    width: 80%;
+  }
+  .searchButton {
+    width: 10%;
+    background: #222222;
+  }
+  .navbar-mobile a {
+    color: var(--white);
+    text-decoration: none;
+  }
+  .userbar {
+    position: relative;
+  }
+  .toggleuser {
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 999;
+    top: 185%;
+  }
+  .toggleuser ul {
+    display: block;
+    text-align: right;
+    -webkit-box-shadow: -12px 8px 25px -16px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: -12px 8px 25px -16px rgba(0, 0, 0, 0.51);
+    box-shadow: -12px 8px 25px -16px rgba(0, 0, 0, 0.51);
+  }
+  .toggleuser ul li {
+    padding: 10px 50px;
+    background: #222;
+    border-bottom: 1px solid var(--white);
+  }
+}
+
+@media only screen and (min-width: 240px) and (max-width: 768px) {
 }

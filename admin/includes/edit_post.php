@@ -91,6 +91,11 @@ updatePosts();
                 <input type="file" name="image"> 
             </div>
 
+            <div class="form-group">
+                <img src="../img/<?php echo $post_slider;?>" alt="" style="width: 125px;margin-bottom: 1%;">
+                <input type="file" name="post_slider"> 
+            </div>
+
             <div class="form-group mx-sm-3 mb-2">
                 <label for="category">Category</label>
                 

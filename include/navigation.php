@@ -28,7 +28,7 @@
 
 
 <!-- Navigation -->
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse desktop-menu" role="navigation">
 
         <div class="container">
             <div class="col-md-9 nav-links">
@@ -66,3 +66,51 @@
         </div>
         <!-- /.container -->
     </nav>
+
+
+    <!-- Mobile Navigation -->
+<nav class="mobile-menu" role="navigation">
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="navbar-mobile">
+            <ul>
+                <li class="searchbar" >
+                    <i class="fa fa-search" aria-hidden="true"  id="popupsearch"></i>
+                    <div class="togglesearch">
+                        <div class="search-container">
+                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        </div>
+                    </div>
+                </li>
+                <?php displayInNav(); ?>
+                <li class="userbar" >
+                    <i class="fas fa-user" id="popupuser"></i>
+                    <div class="toggleuser">
+                        <ul>
+                            <li class="seperator <?= ($activePage == 'login') ? 'active':''; ?>">
+                                <a href="login.php">Login</a>
+                            </li>
+                            <li class="<?= ($activePage == 'registration') ? 'active':''; ?>">
+                                <a href="registration.php">Register</a>
+                            </li>
+                            <?php  
+                                    if(isset($_SESSION['userrole'])){
+                                        if(isset($_GET['p_id'])){
+                                            echo "<li><a href='./admin/posts.php'>Edit</a></li>";
+                                        } 
+                                    }
+                            ?>
+                        </ul>
+                        
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+</nav>
