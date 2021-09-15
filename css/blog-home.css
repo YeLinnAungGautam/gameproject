@@ -456,7 +456,9 @@ a.readmore:hover {
 .soical-links a i {
   line-height: 2;
 }
-
+.search .dropdown-menu {
+  width: 100%;
+}
 /* Responsive */
 /* Desktop အကြီးတွေ၊ Monitor အကြီးတွေအတွက် */
 @media (min-width: 1440px) {

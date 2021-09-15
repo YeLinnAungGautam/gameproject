@@ -77,12 +77,14 @@
             
             <div class="col-md-3 search-bar">
                 <div class="wrap">
+                <form action="search.php" method="POST">
                     <div class="search">
-                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                        <button type="submit" class="searchButton">
+                        <input type="text" class="searchTerm" placeholder="What are you looking for?" name="ptsearch" id="ptsearch" >
+                        <button type="submit" class="searchButton" name="search_submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
+                </form>
                 </div>
             </div>
         </div>

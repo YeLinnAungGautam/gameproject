@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer>
-
+ 
 <div class="red-footer-container container-fluid mar-topper">
         <div class="container contact-us-container">
                 <div class="row">
@@ -87,6 +87,8 @@
 
     <!-- Splide Js  -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
     <script>
 	    new Splide( '.splide', {
@@ -141,6 +143,25 @@ function slider_two() {
 }
 
     </script>
+    <script>
+      $(document).ready(function(){
+        $('#ptsearch').typeahead({
+          source: function(query, result){
+            $.ajax({
+              url: "fetch.php",
+              method: "POST",
+              data: {query:query},
+              dataType:"json",
+              success:function(data){
+                result($.map(data, function(item){
+                  return item;
+                }));
+              }
+            })
+          } 
+        });
+      });
+</script>
 
 
 </body>
