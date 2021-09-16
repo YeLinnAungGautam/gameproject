@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-6 col-sm-6 col-xs-12 text-left site-icon">
             <h1>
-            <a href="index.php">
+            <a href="index.php"> 
             <span class="firstletter">Gamehub</span> <span class="secondletter">Myanmar</span></h1>
             </a>
         </div>
@@ -19,12 +19,11 @@
                     <a href="registration.php">Register</a>
                 </li>
                 <?php  
-                        // if(isset($_SESSION['userrole'])){
-                        //     if(isset($_GET['p_id'])){
-                        //         echo "<li><a href='./admin/posts.php'>Edit</a></li>";
-                        //     } 
-                        // }
-                ?>
+                        if(isset($_SESSION['userrole'])){
+                            if(isset($_GET['p_id'])){
+                                echo "<li><a href='./admin/posts.php'>Edit</a></li>";
+                            } 
+                        }?>
             </ul>
 
             <?php 
@@ -86,12 +85,14 @@
             
             <div class="col-md-3 search-bar">
                 <div class="wrap">
+                <form action="search.php" method="POST">
                     <div class="search">
-                        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                        <button type="submit" class="searchButton">
+                        <input type="text" class="searchTerm" placeholder="What are you looking for?" name="ptsearch" id="ptsearch" >
+                        <button type="submit" class="searchButton" name="search_submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
+                </form>
                 </div>
             </div>
         </div>

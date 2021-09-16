@@ -11,8 +11,8 @@ function ifItIsMethod($method=null){
         return true;
     }
     return false;
-}
-
+} 
+ 
 function isLoggedIn(){
     if(isset($_SESSION['userrole'])){
         return true;
@@ -98,7 +98,7 @@ function displayInNav(){
     $result = $query->fetchAll(PDO::FETCH_OBJ);
     if($query->rowCount()>0){
         foreach($result as $row){
-            echo "<li><a href='#'>$row->cat_title</a></li>";
+            echo "<li><a href='categorypage.php?category=$row->cat_id'>$row->cat_title</a></li>";
         }
     }
 }
