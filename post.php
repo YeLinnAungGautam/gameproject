@@ -10,23 +10,86 @@
     <!-- Navigation -->
  
     <!-- Page Content -->
-
-    <?php
-
-        if(isset($_POST['buy'])) {
-            if(isset($_SESSION['user_id'])) {
-                header("Location:payment.php");
-            }else{
-                echo "Redirecting to ";
-            }
-        }
-
-    ?>
-    
     <link rel="stylesheet" href="css/front-enddevelop.css">
     <link rel="stylesheet" href="fontawesome-pack/css/all.min.css">
-    <div class="container">
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="modalLabel">Modal Title</h4>
+                </div>
+                <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Payment Details
+                                    </h3>
+                                    <div class="checkbox pull-right">
+                                        <label>
+                                            <input type="checkbox" />
+                                            Remember
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="cardNumber">
+                                                CARD NUMBER</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="cardNumber" value="09-939393939393" placeholder="Valid Card Number"
+                                                    required autofocus />
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-7 col-md-7">
+                                                <div class="form-group">
+                                                    <label for="expityMonth">
+                                                        EXPIRY DATE</label>
+                                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                                        <input type="text" class="form-control" id="expityMonth" value="7" placeholder="MM" required />
+                                                    </div>
+                                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                                        <input type="text" class="form-control" id="expityYear" value="2025" placeholder="YY" required /></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-5 col-md-5 pull-right">
+                                                <div class="form-group">
+                                                    <label for="cvCode">
+                                                        CV CODE</label>
+                                                    <input type="password" class="form-control" id="cvCode" value="888" placeholder="CV" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a>
+                                </li>
+                            </ul>
+                            <br/>
+                            <a href="http://www.jquery2dotnet.com" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+        </div>
+    </div>
 
+
+    <div class="container">
         <div class="row">
             <!-- php code --> 
                     <?php 
@@ -74,10 +137,11 @@
                     </div>
 
                     <div class="col-md-6">
-                        <img src="img/<?php echo $row->post_img ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
-                        <form method="post">
-                        <pre class="price"> <?php echo $row->price; ?>  <button class="btn" name="buy" id="buynow">Buy Now</button> </pre> 
-                        </form>
+                            <img src="img/<?php echo $row->post_img ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
+                                                                 
+                                <input type='hidden' id='session_value' value="<?php echo $_SESSION['user_id'];?>">
+
+                                <pre class="price"> <?php echo $row->price; ?>  <button class="btn" id="buynow" name="buy">Buy Now</button> </pre> 
                     </div>
                 </div>
             </div>
@@ -238,9 +302,18 @@
                   </div>
                 </div>
            
+            
+            <!-- Widget -->
+          
+            <!-- Widget -->
+
+            
+
+        
         <!-- /.row -->
 
         <hr>
+
         <!-- Footer -->
         <?php include("include/footer.php") ?>
         <!-- Footer -->
