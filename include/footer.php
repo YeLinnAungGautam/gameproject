@@ -1,4 +1,5 @@
 <!-- Footer -->
+<?php if($activePage != "download") { ?>
 <footer>
 
 <div class="red-footer-container container-fluid mar-topper">
@@ -76,11 +77,10 @@
       </div>   
     </div>
     <!-- /.container -->
-        </footer>
-
+</footer>
+<?php } ?>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -89,60 +89,59 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 
     <script>
+
+
+       $("#buynow").on('click',function() {
+          var sesvalue = $("#session_value").val();
+          if(sesvalue == '') {
+            location.href = "login.php";
+          }else{
+            console.log("hello")
+            $("#paymentModal").modal({
+              backdrop: 'static',
+              keyboard: false
+            })
+          }
+       })
+
 	    new Splide( '.splide', {
 	        type  : 'fade',
 	        rewind: true,   
 	        autoplay: true,
         } ).mount();
+   
+
+        document.addEventListener("DOMContentLoaded", function () {
+          slider_one();
+          slider_two();
+        //   global_carousel__ctrl();
+        });
+
+        function slider_one() {
+          var one = new Splide("#one", {
+                    type  : 'fade',
+                  rewind: true,   
+                  autoplay: true,
+          }).mount();
+        }
+
+        function slider_two() {
+          var two = new Splide("#two", {
+            type     : 'loop',
+            perPage : 4,
+            breakpoints: {
+            '991.98': {
+              perPage: 3,
+            },
+            '577': {
+              perPage: 1,
+            }
+          },
+          // autoplay: true,
+          focus    : 'center',
+          }).mount();
+        }
     </script>
-
-    <!-- <script>
-
-        var splide = new Splide( '#splide' ).mount();
-
-        splide.on( 'move', function() {
-	    type  = 'loop',
-	    perPage= 3,
-	    focus  = 'center'
-        } );
-    </script> -->
-
-    <script>
-
-document.addEventListener("DOMContentLoaded", function () {
-  slider_one();
-  slider_two();
-//   global_carousel__ctrl();
-});
-
-function slider_one() {
-  var one = new Splide("#one", {
-            type  : 'fade',
-	        rewind: true,   
-	        autoplay: true,
-  }).mount();
-}
-
-function slider_two() {
-  var two = new Splide("#two", {
-    type     : 'loop',
-    perPage : 4,
-    breakpoints: {
-		'991.98': {
-			perPage: 3,
-		},
-    '577': {
-			perPage: 1,
-		}
-  },
-	// autoplay: true,
-	focus    : 'center',
-  }).mount();
-}
-
-    </script>
-
-
 </body>
 
 </html>
