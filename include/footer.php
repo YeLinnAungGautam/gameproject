@@ -94,6 +94,7 @@
 	        rewind: true,   
 	        autoplay: true,
         } ).mount();
+
     </script>
 
     <!-- <script>

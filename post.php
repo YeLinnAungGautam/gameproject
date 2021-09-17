@@ -95,6 +95,8 @@
                         }
                         ?>
                         </div>
+
+                        
                                 
                                 </div>  
                         <div>
@@ -204,6 +206,9 @@
                                     if($others_query->rowCount()>0){
                                         foreach($result as $row){
                                             ?>   
+                                            
+
+
                                 <div class="col-md-4" id="firstcard">       
                                     <div class="card">
                                     <a href="post.php?p_id=<?php echo $row->post_id ?>">
