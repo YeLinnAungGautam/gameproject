@@ -29,19 +29,22 @@
                 </div>
                 <div class="row mar-topper">
                     <?php 
-                        if(isset($_POST['search_submit'])){
-                            $search = $_POST['search_submit'];
-                            $query = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id WHERE post_title LIKE '%$search%' ";
-                            $search_query = mysqli_query($connection,$query);
-                            $count = mysqli_num_rows($search_query);
-                            if($count == 0){
+                        if(isset($_POST['search_btns'])){
+                            $search = $_POST['ptsearch'];
+                            $search_page_query = "SELECT * FROM posts WHERE post_title LIKE :searchpagekeyword";
+                            $search_page_result = $connection->prepare($search_page_query);
+                            $search_page_result->bindValue(':searchpagekeyword','%' . $search . '%',PDO::PARAM_STR);
+                            $search_page_result->execute();
+                            $result = $search_page_result->fetchAll(PDO::FETCH_OBJ);
+                            $answer = $search_page_result->rowCount();
+                            if( $answer < 0){
                                 echo "<h1>NO RESULT</h1>";
                             }else{
-                                while($row = mysqli_fetch_assoc($search_query)){
-                                    $post_id = $row['post_id'];
-                                    $post_title = $row['post_title'];
-                                    $post_image = $row['post_img'];
-                                    $post_description = $row['post_description'];
+                                foreach($result as $row){
+                                    $post_id = $row->post_id;
+                                    $post_title = $row->post_title;
+                                    $post_image = $row->post_img;
+                                    $post_description = $row->post_description;
                     ?>
                         <div class="col-md-4 col-sm-4 col-xs-4 prodouctbox"> 
                             <div class="card" id="<?php echo $post_id?>">
