@@ -386,7 +386,7 @@ function registerUser(){
     if(isset($_POST['submit'])){
         $username = $_POST['username'];
         $email    = $_POST['email'];
-        $password = $_POST['password'];
+        $password = $_POST['password']; 
         $userrole = 'editor';
         if(!empty($username) && !empty($email) && !empty($password)){
             $sql = "SELECT randSalt FROM users";
