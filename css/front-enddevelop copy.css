@@ -93,7 +93,6 @@ html {
   background-color: #aa0000;
   margin-top: 50px;
   margin-bottom: 65px;
-  padding: 40px 0px 54px 0px;
 }
 #para {
   margin-top: 50px;
@@ -189,26 +188,29 @@ html {
 /* ----------You May Also Like--------- */
 .youmayalso {
   color: white;
+
   margin-bottom: 20px;
 }
 #background {
   border: 2px solid #aa0000;
   margin-right: 20px;
-  padding: 2%;
 }
 /* for responsive center rows*/
-
+.card {
+  width: 16rem;
+  padding-top: 15px;
+}
 #card > div {
-  /* margin-top: 11px;
+  margin-top: 11px;
   background-color: rgba(128, 128, 128, 0.192);
-  width: fit-content; */
+  width: fit-content;
   border-radius: 5px;
   transition: transform 0.2s;
 }
 #card h5 {
   color: white;
 
-  /* padding-bottom: 15px; */
+  padding-bottom: 15px;
   padding-top: 5px;
 }
 #card img {
@@ -231,24 +233,6 @@ html {
   background-color: #e60704;
 }
 
-.youmayalsolike {
-  padding: 5px;
-  border-radius: 5px;
-  transition: transform 0.2s;
-}
-.card {
-  background-color: rgba(128, 128, 128, 0.192);
-}
-.youmayalsolike .card {
-  padding: 10px;
-}
-img.card-img-top.img-responsive {
-  max-height: 150px;
-  min-height: 150px;
-  object-fit: cover;
-  width: 100%;
-  object-position: top;
-}
 /*---- Registration form------ */
 
 #signup {
@@ -349,74 +333,4 @@ img.card-img-top.img-responsive {
 
 #passrecover {
   margin-top: 15%;
-}
-
-/* BOB  */
-.abouthisgame img {
-  max-height: 200px;
-  min-height: 200px;
-  object-fit: fill;
-}
-.abouthisgame {
-  padding: 3px 3px;
-}
-.gallerycontainer {
-  padding: 20px;
-}
-div#para p {
-  color: #cfcece;
-  font-size: 20px;
-  text-align: justify;
-  padding-right: 20px;
-  padding-left: 20px;
-  line-height: 28px;
-  font-family: "Times New Roman", Times, serif;
-}
-
-#firstcard img {
-  max-height: 150px;
-  min-height: 150px;
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Responsive */
-
-@media (max-width: 992px) {
-  .singledescriptioncontainer {
-    display: flex;
-    flex-direction: column;
-  }
-  .singledescription {
-    order: 1;
-  }
-  .singleimage {
-    order: 0;
-  }
-  #para {
-    margin-top: 0px;
-    margin-bottom: 25px;
-  }
-  #background {
-    padding: 2% 2% 5% 2%;
-    margin-bottom: 30px;
-  }
-}
-
-@media (max-width: 426.98px) {
-  .singleimage img {
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  .abouthisgame img {
-    max-height: 130px;
-    min-height: 130px;
-  }
-  #datetitle {
-    font-size: 15px;
-  }
-  .youmayalsolike {
-    width: 50%;
-  }
 }
