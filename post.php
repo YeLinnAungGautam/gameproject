@@ -23,7 +23,7 @@
             foreach($result as $row) {
 
                 if ($row->user_id == $_SESSION['user_id']) {
-                    @$pay_user_id = "<input type='text' value='donePay' name='p_user_id' id='p_user_id' />";
+                    @$pay_user_id = "<input type='hidden' value='donePay' name='p_user_id' id='p_user_id' />";
                     
                 }
             }
@@ -75,9 +75,10 @@
                                             <div class="form-group">
                                                 <label for="cardNumber">CARD NUMBER</label>
                                                 <div class="input-group">
-                                                    <input type="text" name="user_id" id="m_user_id" />
-                                                    <input type="text" name="game_id" id="m_game_id"/>
-                                                    <input type="text" name="price" id="m_price"/>
+
+                                                    <input type="hidden" name="user_id" id="m_user_id" />
+                                                    <input type="hidden" name="game_id" id="m_game_id"/>
+                                                    <input type="hidden" name="price" id="m_price"/>
 
                                                     <input type="text" class="form-control" id="cardNumber" value="09-939393939393" placeholder="Valid Card Number"
                                                         required autofocus />
@@ -169,9 +170,9 @@
                     <div class="col-md-6">
                         <img src="img/<?php echo $row->post_img ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
                                                                 
-                        <input type='text' id='user_id' value="<?php echo (isset($_SESSION['user_id'])) ? $_SESSION['user_id'] : "";?>">
-                        <input type='text' id='game_id' value="<?php echo $row->post_id;?>">
-                        <input type='text' id='price' value="<?php echo $row->price;?>">
+                        <input type='hidden' id='user_id' value="<?php echo (isset($_SESSION['user_id'])) ? $_SESSION['user_id'] : "";?>">
+                        <input type='hidden' id='game_id' value="<?php echo $row->post_id;?>">
+                        <input type='hidden' id='price' value="<?php echo $row->price;?>">
                         
                         <?php 
                         if (isset($_SESSION['user_id'])) {

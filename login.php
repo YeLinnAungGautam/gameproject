@@ -27,7 +27,7 @@
             <h5 class="text-center" id="gamehubsubtitle">Play more, Pay less</h5>
         <div class="col-xs-6 col-xs-offset-3" id="logincontainer">
                 <form action="include/login.php" method="POST">
-                <input type="text" value="" id="gameId" name="gameId"/>
+                <input type="hidden" value="" id="gameId" name="gameId"/>
 
                     <?php
                     
