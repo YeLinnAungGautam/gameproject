@@ -9,7 +9,6 @@
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
 
-
     <!-- Slider -->
     <div class="container-fluid slider-container">
         <div class="splide" id="one">

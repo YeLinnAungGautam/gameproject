@@ -91,6 +91,18 @@
     <script>
 
 
+      $(document).ready(function() {
+
+         var p_user_id = $("#p_user_id").val();
+
+         if (p_user_id == 'donePay') {
+
+          $("#pricebtn").replaceWith("<pre class='price'><button name='download' id='buynow' class='btn btn-info btn-lg'>Download</button></pre>");
+
+         }
+      })
+
+
        $("#buynow").on('click',function() {
           var userId = $("#user_id").val();
           var gameId = $("#game_id").val();
@@ -98,9 +110,7 @@
 
           
           if(userId == '' || gameId == '' || price == '') {
-            window.sessionStorage.setItem("gameId",gameId);
-            window.sessionStorage.setItem("cfs","true");
-            
+            window.sessionStorage.setItem("gameId",gameId);            
             location.href = "login.php?action=cfs";
           }else{
             $("#paymentModal").modal({
