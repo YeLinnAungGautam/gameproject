@@ -34,7 +34,7 @@
 
 <div class="container mar-topper">
 
-<div class="no-mar-bottom row"> 
+  <div class="no-mar-bottom row"> 
 
     <!-- Blog Entries Column -->
     <div class="no-mar-bottom col-md-12">
@@ -49,14 +49,14 @@
         <div class="subscribe_form mar-topper">
           <form action="">
             <div class="form-group">
-            <input type="email" class="form-control" id="news_subscribe" name="news_subscribe" placeholder="Enter your email">
+              <input type="email" class="form-control" id="news_subscribe" name="news_subscribe" placeholder="Enter your email">
             </div>
             <button type="submit" class="btn btn-default">Subscribe</button>
           </form>
         </div>
         
     </div>
-</div>
+  </div>
 </div>
 
     <div class="copyright container-fluid mar-topper">
@@ -92,17 +92,55 @@
 
 
        $("#buynow").on('click',function() {
-          var sesvalue = $("#session_value").val();
-          if(sesvalue == '') {
-            location.href = "login.php";
+          var userId = $("#user_id").val();
+          var gameId = $("#game_id").val();
+          var price  = $("#price").val();
+
+          
+          if(userId == '' || gameId == '' || price == '') {
+            window.sessionStorage.setItem("gameId",gameId);
+            window.sessionStorage.setItem("cfs","true");
+            
+            location.href = "login.php?action=cfs";
           }else{
-            console.log("hello")
             $("#paymentModal").modal({
               backdrop: 'static',
               keyboard: false
             })
+
+            $(".panel-body #m_user_id").val(userId);
+            $(".panel-body #m_game_id").val(gameId);
+            $(".panel-body #m_price").val(price);
+
+
           }
        })
+
+
+       $('#payform').submit(function(e) {
+
+          e.preventDefault();
+          $.ajax({
+            type: "POST",
+            url: "payment.php",
+            data: $(this).serialize(),
+            beforeSend: function() {
+              $("#overlay").css({ 'display' : 'block'})
+              console.log(document.getElementById("overlay"));
+            },
+            success: function(response)
+            {
+              $("#pricebtn").replaceWith("<pre class='price'>"+response+"</pre>");
+            }
+          }).done(function() {
+            setTimeout(function(){
+              $("#overlay").css({ 'display' : 'none'})
+              $("#paymentModal").modal('hide');
+            },500);
+
+       });
+
+       });
 
 	    new Splide( '.splide', {
 	        type  : 'fade',
