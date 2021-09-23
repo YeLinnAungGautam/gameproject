@@ -27,6 +27,24 @@
             <h5 class="text-center" id="gamehubsubtitle">Play more, Pay less</h5>
         <div class="col-xs-6 col-xs-offset-3" id="logincontainer">
                 <form action="include/login.php" method="POST">
+                <input type="hidden" value="" id="gameId" name="gameId"/>
+
+                    <?php
+                    
+                    if($_GET) {
+                    
+                    if($_GET['action'] == 'fail') {
+                        
+                    ?>
+
+                    <h4 class="text-center text-warning">Invalid Credentials ! Please Try again.</h4>
+                    
+                    <?php }elseif($_GET['action'] == 'cfs') {;?>
+                    
+                    <h4 class="text-center text-warning">Please login so you can buy your favourite game.</h4>
+                    
+                    <?php }}; ?>
+
                     <div class="form-group">
                         <input name="username" type="text" class="form-control" placeholder="Enter Username">   
                     </div>
@@ -43,10 +61,25 @@
                 </form>
                     <h5 class="text-center" id="passrecover">
                         <a href="forgotpassword.php?forgot=<?php echo uniqid(true); ?>">Forgot your password?</a>
-                        <a href="./registration.php">Sign Up</a></h5>
+                        <a href="./registration.php">Sign Up</a>
+                    </h5>
        </div>          
     </div>
 </div>
+
+
+<script type="text/javascript" >
+
+    $(document).ready(function() {
+        var gId = window.sessionStorage.getItem("gameId");
+
+        if(gId != ''){
+            $("#gameId").val(gId);
+            window.sessionStorage.setItem("gameId","");
+        }
+    })
+
+</script>
 
 
 

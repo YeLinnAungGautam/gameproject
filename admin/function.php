@@ -22,7 +22,10 @@ function isLoggedIn(){
 
 function checkIfUserIsLoggedInAndRedirect($redirectLocation = null){
     if(isLoggedIn()){
-        redirect($redirectLocation);
+        echo "<script type='text/javascript'>
+                 window.location.href = 'admin';
+              </script>";
+
     }
 }
 function email_exists($email){

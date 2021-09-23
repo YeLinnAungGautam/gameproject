@@ -1,10 +1,15 @@
 <?php include("../admin/includes/db.php") ?>
 <?php session_start(); ?>
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if(isset($_POST['login'])){
    
    $username = $_POST['username'];
    $password = $_POST['password']; 
+   $gameId = $_POST['gameId'];
     
    $sql = "SELECT * FROM users WHERE username = :username";
    $query = $connection->prepare($sql);
@@ -21,16 +26,24 @@ if(isset($_POST['login'])){
            $db_userrole   = $row->user_role;
        }
    } 
+
    $password = crypt($password,$db_password); 
    if($username === $db_username && $password === $db_password){
+    $_SESSION['user_id'] = $db_userid;
     $_SESSION['username'] = $db_username;
     $_SESSION['firstname'] = $db_firstname;
     $_SESSION['lastname'] = $db_lastname;
     $_SESSION['userrole'] = $db_userrole;
-    header("Location: ../admin");   
-} 
-else{
-    header("Location: ../login.php");
+
+    if ($gameId != '') {
+        header("Location: ../post.php?p_id=".$gameId);
+
+    } else {
+        header("Location: ../index.php");
+    }
+    
+}else{
+    header("Location: ../login.php?action=fail");
 }  
 }
 ?>
