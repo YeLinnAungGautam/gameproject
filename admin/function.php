@@ -207,9 +207,12 @@ function updatePosts(){
         $post_status = $_POST['post_status'];
         $post_image = $_FILES['image']['name'];
         $post_image_temp = $_FILES['image']['tmp_name'];
-        $post_images = $_FILES['images']['name']; //for additional_images
+        $post_slider_image = $_FILES['post_slider']['name'];
+        $post_slider_image_temp = $_FILES['post_slider']['tmp_name'];
+        $post_images = remove_empty($_FILES['images']['name']); //for additional_images
 
         move_uploaded_file($post_image_temp,"../img/$post_image");
+        move_uploaded_file($post_slider_image_temp,'./additionalimages/'.$post_slider_image);
         // $post_date = now();
     
         if(empty($post_image)){
@@ -225,7 +228,24 @@ function updatePosts(){
             }
         }
 
+        if(empty($post_slider_image)){
+            echo "Slider empty";
+            $sql = "SELECT * FROM posts WHERE post_id =:postid";
+            $query = $connection->prepare($sql);
+            $query->bindParam(':postid',$post_id,PDO::PARAM_INT);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_OBJ);
+            if($query->rowCount()>0){
+                foreach($result as $row){
+                    $post_slider_image = $row->post_slider_img;
+                }
+            }
+        }
+
+
         if(!empty($post_images)){
+
+            print_r($post_images);
 
             $sql = "DELETE FROM game_images WHERE game_id = :gameid";
             $query = $connection->prepare($sql);
@@ -259,6 +279,8 @@ function updatePosts(){
 
         }
 
+        print_r($post_slider_image);
+
 
         $update_sql = "UPDATE posts SET post_title = :posttitle, 
                                         slug = :slug,
@@ -267,6 +289,7 @@ function updatePosts(){
                                         requirement_description_one = :requirement_description_one,
                                         requirement_description_two = :requirement_description_two,
                                         post_img = :postimg, 
+                                        post_slider_img = :postsliderimg,
                                         price = :price,
                                         releasegame_date = :releasedate,
                                         gamerage_rating = :rating,
@@ -281,12 +304,14 @@ function updatePosts(){
         $update_query->bindParam(':requirement_description_one',$minimum_requirement,PDO::PARAM_STR);
         $update_query->bindParam(':requirement_description_two',$recommended_requirement,PDO::PARAM_STR);
         $update_query->bindParam(':postimg',$post_image,PDO::PARAM_STR);
+        $update_query->bindParam(':postsliderimg',$post_slider_image,PDO::PARAM_STR);
         $update_query->bindParam(':price',$price,PDO::PARAM_STR);
         $update_query->bindParam(':releasedate',$release_date,PDO::PARAM_STR);
         $update_query->bindParam(':rating',$age_rating,PDO::PARAM_STR);
         $update_query->bindParam(':mode',$game_mode,PDO::PARAM_STR);
         $update_query->bindParam(':postid',$post_id,PDO::PARAM_STR);
         $update_query->execute();
+        print_r($update_query->errorInfo());
 
             $sql = "DELETE FROM game_category WHERE game_id = :gameid";
             $query = $connection->prepare($sql);
@@ -304,7 +329,6 @@ function updatePosts(){
                     $query->bindParam(':gameid',$post_id,PDO::PARAM_STR);
                     $query->bindParam(':categoryid',$category,PDO::PARAM_STR);
                     $query->execute();
-                    print_r($query->errorInfo());
                 }
         
                 header("Refresh:0");
@@ -319,6 +343,14 @@ function slug($string){
     $slug= strtolower($slug);  // make it lowercase
     return $slug;
 }
+
+function remove_empty($array) {
+    return array_filter($array, '_remove_empty_internal');
+  }
+  
+  function _remove_empty_internal($value) {
+    return !empty($value) || $value === 0;
+  }
 
 
 function buldOptions(){

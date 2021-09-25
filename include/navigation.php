@@ -36,7 +36,7 @@
 
 
 <!-- Navigation -->
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse desktop-menu" role="navigation">
 
         <div class="container">
             <div class="col-md-9 nav-links">
@@ -97,3 +97,6 @@
         </div>
         <!-- /.container -->
     </nav>
+
+
+    <!-- Mobile Navigation -->
