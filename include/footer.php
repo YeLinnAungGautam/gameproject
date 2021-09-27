@@ -145,6 +145,7 @@ function slider_two() {
     </script>
     <script>
       $(document).ready(function(){
+        
         $('#ptsearch').typeahead({
           source: function(query, result){
             $.ajax({
