@@ -8,7 +8,7 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
 <html lang="en">
 
 <head>
-
+ 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +34,8 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
     <!-- Custom Fonts -->
     <link href="fontawesome-pack/css/all.min.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
-
+    <!-- <script src="./js/typeahead/typeahead.bundle.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     <!-- Splide CSS  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 

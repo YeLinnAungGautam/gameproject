@@ -12,7 +12,7 @@ function ifItIsMethod($method=null){
     }
     return false;
 } 
-
+ 
 function isLoggedIn(){
     if(isset($_SESSION['userrole'])){
         return true;
