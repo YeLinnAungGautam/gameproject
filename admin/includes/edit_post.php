@@ -96,8 +96,6 @@ updatePosts();
                 <input type="file" name="image"> 
             </div>
 
-<<<<<<< HEAD
-           
             <div class="form-group">
                 <label>Additional images</label>
                 <br/>
@@ -126,51 +124,6 @@ updatePosts();
                 <input type="file" name="post_slider"> 
             </div>
 
-=======
-            <div class="section">
-                <h5><b>Additional Images</b></h5>
-                <div class="row">
-                    <div class="col-md-12">
-                    
-
-                        <div class="form-group">
-                        <?php
-                        $sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id  where p.post_id = :postid";
-                            $query=$connection->prepare($sql);
-                            $query->bindParam(':postid',$post_id,PDO::PARAM_INT);
-                            $query->execute();
-                            $result = $query->fetchAll(PDO::FETCH_OBJ);
-                            if($query->rowCount()>0){
-                                
-                                foreach($result as $row){ 
-
-
-                                echo "<img src='../admin/additionalimages/$row->images' alt='Primary Image' style='width: 125px;margin-bottom: 1%;'  class='img-fluid'/>&nbsp;";
-                                }
-
-                            } 
-                         ?>
-                            <input type="file" class="form-control" name="images[]" multiple />
-                        </div>
-                    </div>
-                    <!-- <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="images[]">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="images[]">
-                        </div>
-                    </div>
-                    <div class="col-md-6">  
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="images[]">
-                        </div>
-                    </div> -->
-                </div> 
-            </div>
->>>>>>> GHM-7
 
         <div class="form-group">
             <label for="summernote">Post Description</label>

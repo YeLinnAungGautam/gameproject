@@ -8,11 +8,7 @@
 
     <!-- Navigation -->
     <?php include("include/navigation.php") ?>
-    <!-- Navigation -->
-
-
-    <!-- Slider -->
-    
+    <!-- Navigation -->    
     
 
     <!-- Page Content -->

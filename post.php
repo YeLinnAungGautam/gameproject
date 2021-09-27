@@ -130,7 +130,7 @@
     </div> -->
 
 
-    <div class="container">
+    <div class="container mar-topper">
         <div class="row">
             <!-- php code --> 
                     <?php 
@@ -156,20 +156,8 @@
     <div class="container">
             <h1 id="title"><?php echo $row->post_title; ?></h1>
 	        <h5 id="subtitle">(action - adventure)</h5>
-        <div class="row singledescriptioncontainer">
+            <div class="row singledescriptioncontainer">
 
-                    <!-- <div class="col-md-12" style="margin-bottom:2%"> 
-                        <div class="card" id="">
-
-                            <img src="img/"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
-                            
-                            <div class="card-body">
-                                <h4 class="card-title"><b></b></h4>
-                                <p class="card-text" style="text-align:justify" data-target="postDescription"></p>
-                                
-                            </div>
-                        </div> 
-                    </div> -->
                 <div class="col-md-6 singledescription">
                   <div class="highlight"><h3 class="recomreq">Recommended Requirements</h3></div> 
                     <div class="para">
@@ -201,11 +189,11 @@
                 </div>
             </div>
             <div class="container-fluid" id="about">
-        <h2 class="titletext">About This Game</h2>
-        <div class="container" id="gallerybackground">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="row gallerycontainer">
+                <h2 class="titletext">About This Game</h2>
+                <div class="container" id="gallerybackground">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row gallerycontainer">
                                 <?php
                                     $sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id WHERE post_id = :posteachid";
                                     $query = $connection->prepare($sql);
@@ -225,13 +213,13 @@
                                     }
                                 }
                                 ?> 
+                            </div>
+                        </div>
+                        <div class="col-md-5" id="para">
+                                <?php echo $row->post_description; ?>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-5" id="para">
-                        <?php echo $row->post_description; ?>
-                </div>
-            </div>
-        </div>
             <div class="container">
                 <h3 class="addinfo">Additional Information</h3>
                 <div class="row">
@@ -244,7 +232,7 @@
                         <h6 class="agesub"><?php echo $row->gamerage_rating;?></h6>
                     </div>
                     <div class="col-md-4 col-xs-4 text-center">
-                    <h4 id="datetitle"> <i class='fas fa-gamepad' id="mode"></i> Mode</h4> 
+                        <h4 id="datetitle"> <i class='fas fa-gamepad' id="mode"></i> Mode</h4> 
                         <h6 class="modesub"> <?php echo $row->game_mode;?> </h6>
                     </div>
                 </div>

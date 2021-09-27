@@ -10,11 +10,6 @@
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
 
-
-    <!-- Slider -->
-    
-    
-
     <!-- Page Content -->
     <div class="container mar-topper">
 
