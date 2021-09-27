@@ -24,12 +24,8 @@
     ?>
     
     <link rel="stylesheet" href="css/front-enddevelop.css">
-    <link rel="stylesheet" href="fontawesome-pack/css/all.min.css">
-    <div class="container">
-
-        <div class="row">
-            <!-- php code --> 
-                    <?php 
+               <!-- php code --> 
+               <?php 
                         if(isset($_GET['p_id'])){
                             $post_each_id = $_GET['p_id'];
 
@@ -48,6 +44,12 @@
                             if($query->rowCount()>0){
                             foreach($result as $row){
                     ?>
+   
+    <div class="container">
+            <h1 id="title"><?php echo $row->post_title; ?></h1>
+	        <h5 id="subtitle">(action - adventure)</h5>
+        <div class="row singledescriptioncontainer">
+
                     <!-- <div class="col-md-12" style="margin-bottom:2%"> 
                         <div class="card" id="">
 
@@ -60,20 +62,18 @@
                             </div>
                         </div> 
                     </div> -->
-                    <h1 id="title"><?php echo $row->post_title; ?></h1>
-	                <h5 id="subtitle">(action - adventure)</h5>
-                    <div class="col-md-6">
+                <div class="col-md-6 singledescription">
                   <div class="highlight"><h3 class="recomreq">Recommended Requirements</h3></div> 
-                    <p class="para">
+                    <div class="para">
                         <?php echo $row->requirement_description_one; ?>
-                    </p>
+                    </div>
                     <div class="highlightmini"><h3 id="minireq">Minimum Requirements</h3></div> 
-                            <p class="para">
+                            <div class="para">
                             <?php echo $row->requirement_description_two; ?>		
-                            </p>   
+                            </div>   
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6 singleimage">
                         <img src="img/<?php echo $row->post_img ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
                         <form method="post">
                         <pre class="price"> <?php echo $row->price; ?>  <button class="btn" name="buy" id="buynow">Buy Now</button> </pre> 
@@ -86,70 +86,45 @@
         <div class="container" id="gallerybackground">
             <div class="row">
                 <div class="col-md-7">
-                    <div class="row">
-                    <div class="">
-                                <div class="col-md-12">
-                        <?php
-                            $sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id WHERE post_id = :posteachid";
-                            $query = $connection->prepare($sql);
-                            $query->bindParam(':posteachid',$post_each_id,PDO::PARAM_STR);
-                            $query->execute();
-                            $result = $query->fetchAll(PDO::FETCH_OBJ);
-                            if($query->rowCount()>0){
-                            foreach($result as $row){
-                                // echo $row->images;
-                        ?>
-                            
-                                    <div class="col-md-6">
-                                        <img src="admin/additionalimages/<?php echo $row->images ?>" alt="gallery1" width="100%">
-                                    </div>
-                                
-                        <?php
-                            }
-                        }
-                        ?>
-                        </div>
-                                
-                                </div>  
-                        <div>
-                            <!-- <div>
-                                <div>
-                                    <img src="img/residentEvilgallery2.jpg" alt="gallery2" width="100%"> 
+                    <div class="row gallerycontainer">
+                                <?php
+                                    $sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id WHERE post_id = :posteachid";
+                                    $query = $connection->prepare($sql);
+                                    $query->bindParam(':posteachid',$post_each_id,PDO::PARAM_STR);
+                                    $query->execute();
+                                    $result = $query->fetchAll(PDO::FETCH_OBJ);
+                                    if($query->rowCount()>0){
+                                    foreach($result as $row){
+                                        // echo $row->images;
+                                ?>
+                                    
+                                <div class="col-md-6 col-sm-6 col-xs-6 abouthisgame">
+                                    <img src="admin/additionalimages/<?php echo $row->images ?>" alt="gallery1" width="100%">
                                 </div>
-                                <div>
-                                    <img src="img/residentEvilgallery2.jpg" alt="gallery2" width="100%"> 
-                                </div>
-                            </div> -->
-                            <!-- <div>
-                                <div>
-                                    <img src="img/residentEvilgallery3.jpeg" alt="gallery3" width="100%">
-                                </div>
-                                <div>
-                                    <img src="img/residentEvilgallery4.png" alt="gallery4"  width="100%">
-                                </div>
-                            </div> -->
-                        </div>
+                                        
+                                <?php
+                                    }
+                                }
+                                ?> 
                     </div>
                 </div>
                 <div class="col-md-5" id="para">
-                    <p class="residentpara">
                         <?php echo $row->post_description; ?>
-                    </p>
                 </div>
             </div>
         </div>
             <div class="container">
                 <h3 class="addinfo">Additional Information</h3>
                 <div class="row">
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-4 col-xs-4 text-center">
                         <h4 id="datetitle"> <i class="far fa-calendar-alt" id="calendar"></i> Release Date</h4> 
                         <h6 class="calensub"><?php echo $row->releasegame_date;?></h6>
                     </div>
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-4 col-xs-4 text-center">
                         <h4 id="datetitle"> <i class='fas fa-user-slash' id="age"></i> Age Rating</h4> 
                         <h6 class="agesub"><?php echo $row->gamerage_rating;?></h6>
                     </div>
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-4 col-xs-4 text-center">
                     <h4 id="datetitle"> <i class='fas fa-gamepad' id="mode"></i> Mode</h4> 
                         <h6 class="modesub"> <?php echo $row->game_mode;?> </h6>
                     </div>
@@ -173,18 +148,16 @@
                         <h3 class="youmayalso">You May Also Like:</h3>
                         <div class="row" id="card">
                            
-                                <div class="col-md-4" id="firstcard">
-                                       
+                            <div class="col-md-4 col-xs-4  youmayalsolike">
                                 <div class="card">
-                                <img class="card-img-top img-responsive" src="img/assissan_cread.png" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="text-center">Assissan Cread</h5>
+                                    <img class="card-img-top img-responsive" src="img/assissan_cread.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="text-center">Assissan Cread</h5>
+                                    </div>
                                 </div>
-                                </div>
-                                    
-                                 </div>
+                             </div>
 
-                            <div class="col-md-4" id="secondcard">
+                            <div class="col-md-4 col-xs-4 youmayalsolike">
 
                                 <div class="card">
                                 <img class="card-img-top img-responsive" src="img/cyberprunk.jpg" alt="Card image cap">
@@ -195,7 +168,7 @@
  
                             </div>
 
-                            <div class="col-md-4" id="thirdcard">
+                            <div class="col-md-4 col-xs-4 youmayalsolike">
 
                                 <div class="card">
                                 <img class="card-img-top img-responsive" src="img/watchdogs.png" alt="Card image cap">
@@ -218,16 +191,19 @@
                                     if($others_query->rowCount()>0){
                                         foreach($result as $row){
                                             ?>   
-                                <div class="col-md-4" id="firstcard">       
-                                    <div class="card">
-                                    <a href="post.php?p_id=<?php echo $row->post_id ?>">
-                                        <img class="card-img-top img-responsive" src="img/<?php echo $row->post_img ?>" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="text-center"><?php echo $row->post_title ?></h5>
-                                        </div>
-                                    </a>
-                                    </div>    
-                                </div>       
+                                
+                                <div class="col-md-4 col-xs-4  youmayalsolike">
+                                <div class="card">
+                                <a href="post.php?p_id=<?php echo $row->post_id ?>">
+                                    <img class="card-img-top img-responsive" src="img/<?php echo $row->post_img ?>" alt="Card image cap">
+                                </a>
+                                    <div class="card-body">
+                                        <h5 class="text-center"><?php echo $row->post_title ?></h5>
+                                    </div>
+                                </div>
+                             </div>
+
+
                                        <?php }
                                     }
                            ?>
@@ -237,6 +213,8 @@
                       <?php include("include/sidebar.php") ?>
                   </div>
                 </div>
+                                
+            </div>
            
         <!-- /.row -->
 

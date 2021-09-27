@@ -39,6 +39,23 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
     <!-- Splide CSS  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 
+
+    <script defer>
+        $(document).ready(function() {
+          $("#popupsearch").click(function(e) {
+              e.preventDefault();
+              $(".togglesearch").toggle();
+              $(".searchTerm").focus();
+            });
+
+            $("#popupuser").click(function(e) {
+              e.preventDefault();
+              $(".toggleuser").toggle();
+            });
+
+        });
+    </script>
+
 </head>
 
 <body>
