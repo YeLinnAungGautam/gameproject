@@ -15,7 +15,7 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Gamehub Myanmar - Best Video Games Reseller in Myanmar</title>
+    <title>Gamehub Myanmar -- <?php echo $activePage; ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

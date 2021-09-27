@@ -130,28 +130,27 @@
     </div> -->
 
 
-    <div class="container mar-topper">
-        <div class="row">
-            <!-- php code --> 
-                    <?php 
-                        if(isset($_GET['p_id'])){
-                            $post_each_id = $_GET['p_id'];
+        <?php 
+            if(isset($_GET['p_id'])){
+                $post_each_id = $_GET['p_id'];
 
-                            $count = '1';
-                            $view_count = 'post_views_count';
-                            $view_sql = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = :postid";
-                            $view_query = $connection->prepare($view_sql);
-                            $view_query->bindParam(':postid',$post_each_id,PDO::PARAM_INT);
+                $count = '1';
+                $view_count = 'post_views_count';
+                $view_sql = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = :postid";
+                $view_query = $connection->prepare($view_sql);
+                $view_query->bindParam(':postid',$post_each_id,PDO::PARAM_INT);
+                $view_query->execute(); 
                             $view_query->execute(); 
+                $view_query->execute(); 
 
-                            $sql = "SELECT * FROM posts WHERE post_id = :posteachid";
-                            $query = $connection->prepare($sql);
-                            $query->bindParam(':posteachid',$post_each_id,PDO::PARAM_STR);
-                            $query->execute();
-                            $result = $query->fetchAll(PDO::FETCH_OBJ);
-                            if($query->rowCount()>0){
-                            foreach($result as $row){
-                    ?>
+                $sql = "SELECT * FROM posts WHERE post_id = :posteachid";
+                $query = $connection->prepare($sql);
+                $query->bindParam(':posteachid',$post_each_id,PDO::PARAM_STR);
+                $query->execute();
+                $result = $query->fetchAll(PDO::FETCH_OBJ);
+                if($query->rowCount()>0){
+                foreach($result as $row){
+        ?>
    
     <div class="container">
             <h1 id="title"><?php echo $row->post_title; ?></h1>
@@ -220,6 +219,7 @@
                         </div>
                     </div>
                 </div>
+                                
             <div class="container">
                 <h3 class="addinfo">Additional Information</h3>
                 <div class="row">
