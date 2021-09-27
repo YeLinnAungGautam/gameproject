@@ -29,10 +29,8 @@
             }
 
 
-        } else {
-
-            echo "Jelloooooooooo";
-        }
+        } 
+        
     } else {
 
 
@@ -42,7 +40,7 @@
     <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                 <div id="overlay">
+                <div id="overlay">
                     <div class="cv-spinner">
                         <span class="spinner"></span>
                     </div>
@@ -125,11 +123,11 @@
         </div>
     </div>
 
-    <div id="overlay">
+    <!-- <div id="overlay">
         <div class="cv-spinner">
             <span class="spinner"></span>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="container">
