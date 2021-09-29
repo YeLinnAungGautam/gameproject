@@ -1,19 +1,20 @@
-<?php
-
-$db_connect = mysqli_connect("localhost", "root", "", "gameproject");
-$request = mysqli_real_escape_string($db_connect, $_POST["query"]);
-$query = "SELECT * FROM posts WHERE post_title LIKE '%".$request."%'";
-
-$result = mysqli_query($db_connect, $query);
-
-$all_member_data = array();
-
-if(mysqli_num_rows($result) > 0)
-{
- while($row = mysqli_fetch_assoc($result))
- {
-  $all_member_data[] = $row["post_title"];
- }
- echo json_encode($all_member_data); 
-} 
+<?php include("admin/includes/db.php") ?>
+<?php  
+    global $keywords;
+    if(isset($_POST['query'])){
+        $keywords = $_POST['query']; 
+    }
+    $searchsql ="SELECT * FROM posts WHERE post_title LIKE :keywords";
+    $searchquery = $connection->prepare($searchsql);
+    $searchquery->bindValue(':keywords','%' . $keywords . '%',PDO::PARAM_STR);
+    $searchquery->execute();
+    $all_member_data = array();
+    if($searchquery->rowCount() > 0)
+    {
+        while($result = $searchquery->fetch(PDO::FETCH_ASSOC))
+        {
+            $all_member_data[] = $result['post_title'];
+        }
+        echo json_encode($all_member_data);
+    }
 ?>

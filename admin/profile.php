@@ -17,8 +17,10 @@
                     $user_lastname   = $row->user_lastname;
                     $user_email     = $row->user_email;
                     $user_role   = $row->user_role;
+                    
                 }
             }
+            $password = crypt($password,$user_password);
         }    
         if(isset($_POST['update_user'])){
             // $userid = $_POST['id'];
@@ -105,7 +107,7 @@
     </div>
     <div class="form-group">
        <label for="post_content">Password</label>
-       <input type="text" name="user_password" class="form-control" value="<?php echo $user_password?>">
+       <input type="text" name="user_password" class="form-control" value="<?php echo $password?>">
     </div>
 
     <div class="form-group">

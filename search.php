@@ -25,14 +25,15 @@
                 <div class="row mar-topper">
                     <?php 
                         if(isset($_POST['search_submit'])){
-                            $search = $_POST['search_submit'];
+                            $search = $_POST['ptsearch'];
                             $query = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id WHERE post_title LIKE '%$search%' ";
-                            $search_query = mysqli_query($connection,$query);
-                            $count = mysqli_num_rows($search_query);
-                            if($count == 0){
+                            $searchquery = $connection->prepare($query);
+                            $searchquery->bindValue(':keywords','%' . $search . '%',PDO::PARAM_STR);
+                            $searchquery->execute();
+                            if($searchquery->rowCount() == 0){
                                 echo "<h1>NO RESULT</h1>";
                             }else{
-                                while($row = mysqli_fetch_assoc($search_query)){
+                                while($row = $searchquery->fetch(PDO::FETCH_ASSOC)){
                                     $post_id = $row['post_id'];
                                     $post_title = $row['post_title'];
                                     $post_image = $row['post_img'];
