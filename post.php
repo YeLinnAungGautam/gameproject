@@ -1,3 +1,4 @@
+    <?php ob_start(); ?>
     <!-- Database Connection -->
     <?php include("admin/includes/db.php") ?>
     <!-- Database Connection -->
@@ -16,11 +17,18 @@
     <div class="container">
 
         <div class="row">
-            <!-- php code --> 
+            <!-- php code -->  
                     <?php 
-                        if(isset($_GET['p_id'])){
-                            $post_each_id = $_GET['p_id'];
-
+                        if(isset($_GET['p_slug'])){
+                            $post_each_id = $_GET['p_slug'];
+                            $slug_sql = "SELECT slug FROM posts WHERE post_id = :postids";
+                            $slug_query = $connection->prepare($slug_sql);
+                            $slug_query->bindParam(':postids',$post_each_id,PDO::PARAM_INT);
+                            $slug_query->execute();
+                            $result_slug = $slug_query->fetch(PDO::FETCH_ASSOC);
+                            $slug_for_single_post = $result_slug['slug'];
+                            echo $slug_for_single_post;
+                            
                             $count = '1';
                             $view_count = 'post_views_count';
                             $view_sql = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = :postid";
@@ -28,7 +36,7 @@
                             $view_query->bindParam(':postid',$post_each_id,PDO::PARAM_INT);
                             $view_query->execute(); 
 
-                            $sql = "SELECT * FROM posts WHERE post_id = :posteachid";
+                            $sql = "SELECT * FROM posts WHERE slug = :posteachid";
                             $query = $connection->prepare($sql);
                             $query->bindParam(':posteachid',$post_each_id,PDO::PARAM_STR);
                             $query->execute();
@@ -62,7 +70,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <img src="img/<?php echo $row->post_img ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
+                        <img src="/gameproject/img/<?php echo $row->post_img ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
                         <pre class="price"> <?php echo $row->price; ?>  <button class="btn" id="buynow">Buy Now</button> </pre> 
                     </div>
                 </div>
@@ -76,7 +84,7 @@
                     <div class="">
                                 <div class="col-md-12">
                         <?php
-                            $sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id WHERE post_id = :posteachid";
+                            $sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id WHERE slug = :posteachid";
                             $query = $connection->prepare($sql);
                             $query->bindParam(':posteachid',$post_each_id,PDO::PARAM_STR);
                             $query->execute();
@@ -87,7 +95,7 @@
                         ?>
                             
                                     <div class="col-md-6">
-                                        <img src="admin/additionalimages/<?php echo $row->images ?>" alt="gallery1" width="100%">
+                                        <img src="/gameproject/admin/additionalimages/<?php echo $row->images ?>" alt="gallery1" width="100%">
                                     </div>
                                 
                         <?php
@@ -162,7 +170,7 @@
                                 <div class="col-md-4" id="firstcard">
                                        
                                 <div class="card">
-                                <img class="card-img-top img-responsive" src="img/assissan_cread.png" alt="Card image cap">
+                                <img class="card-img-top img-responsive" src="/gameproject/img/assissan_cread.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="text-center">Assissan Cread</h5>
                                 </div>
@@ -173,7 +181,7 @@
                             <div class="col-md-4" id="secondcard">
 
                                 <div class="card">
-                                <img class="card-img-top img-responsive" src="img/cyberprunk.jpg" alt="Card image cap">
+                                <img class="card-img-top img-responsive" src="/gameproject/img/cyberprunk.jpg" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="text-center">CyberPrunk 2007</h5>
                                 </div>
@@ -184,7 +192,7 @@
                             <div class="col-md-4" id="thirdcard">
 
                                 <div class="card">
-                                <img class="card-img-top img-responsive" src="img/watchdogs.png" alt="Card image cap">
+                                <img class="card-img-top img-responsive" src="/gameproject/img/watchdogs.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="text-center">Watch Dogs 2</h5>
                                 </div>
@@ -206,8 +214,8 @@
                                             ?>   
                                 <div class="col-md-4" id="firstcard">       
                                     <div class="card">
-                                    <a href="post.php?p_id=<?php echo $row->post_id ?>">
-                                        <img class="card-img-top img-responsive" src="img/<?php echo $row->post_img ?>" alt="Card image cap">
+                                    <a href="<?php echo $row->slug ?>">
+                                        <img class="card-img-top img-responsive" src="/gameproject/img/<?php echo $row->post_img ?>" alt="Card image cap">
                                         <div class="card-body">
                                             <h5 class="text-center"><?php echo $row->post_title ?></h5>
                                         </div>

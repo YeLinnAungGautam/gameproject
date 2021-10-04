@@ -27,10 +27,10 @@ if(isset($_POST['login'])){
     $_SESSION['firstname'] = $db_firstname;
     $_SESSION['lastname'] = $db_lastname;
     $_SESSION['userrole'] = $db_userrole;
-    header("Location: ../admin");   
+    header("Location: http://localhost:8080/gameproject/admin/");   
 } 
 else{
-    header("Location: ../login.php");
+    header("Location: http://localhost:8080/gameproject/login");
 }  
 }
 ?>

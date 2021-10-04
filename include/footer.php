@@ -54,7 +54,7 @@
                       </form>
         </div>
         
-    </div>
+    </div> 
 </div>
 </div>
 
@@ -69,7 +69,7 @@
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-9 col-xs-9 text-right copy-ft">
-                    <span style="line-height: 2;">Copyright &copy; <?php echo date("Y")?>. All Rights Reserved by <a href="index.php">Gamehub Myanmar</a>. </span>
+                    <span style="line-height: 2;">Copyright &copy; <?php echo date("Y")?>. All Rights Reserved by <a href="index">Gamehub Myanmar</a>. </span>
                 </div>
             </div>
             <!-- /.row -->
@@ -80,10 +80,10 @@
 
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/gameproject/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/gameproject/js/bootstrap.min.js"></script>
 
     <!-- Splide Js  -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>

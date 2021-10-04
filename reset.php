@@ -19,8 +19,8 @@ ob_start();
     <link rel="stylesheet" href="css/front-enddevelop.css">
 
 <?php 
-        if(!isset($_GET['email']) && !isset($_GET['token'])){
-            header("Location: index.php");
+        if(empty($_GET['email']) && empty($_GET['token'])){
+            header("Location: http://localhost:8080/gameproject/index");
         }
         // $email = 'davidgautam.1234@gmail.com';
         // $token = '6a5fb1ea10528d4c8e6ae0189eb55dd63baecc347f1357b9597c070c671b48daa4ae534ebce693dc893d9ff1a3b6d3faf0a7';
@@ -48,7 +48,8 @@ ob_start();
                     $query_fornewpassword->bindParam(':updatedpassword',$hashedPassword,PDO::PARAM_STR);
                     $query_fornewpassword->bindParam(':registeremail',$_GET['email'],PDO::PARAM_STR);
                     $query_fornewpassword->execute();
-                    header("Location: login.php");   
+                    header("Location: http://localhost:8080/gameproject/login");  
+                    exit; 
                 }
             }else{
                 echo "No the password does not match";

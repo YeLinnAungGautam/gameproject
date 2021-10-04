@@ -7,7 +7,7 @@
     $searchsql ="SELECT * FROM posts WHERE post_title LIKE :keywords";
     $searchquery = $connection->prepare($searchsql);
     $searchquery->bindValue(':keywords','%' . $keywords . '%',PDO::PARAM_STR);
-    $searchquery->execute();
+    $searchquery->execute(); 
     $all_member_data = array();
     if($searchquery->rowCount() > 0)
     {

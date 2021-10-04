@@ -24,7 +24,7 @@
             <div class="no-mar-bottom col-md-12">
                 <div class="home-category-header">
                     <h3>
-                        Most Popular Among Users
+                        Search Result
                     </h3>
                 </div>
                 <div class="row mar-topper">
@@ -45,6 +45,7 @@
                                     $post_title = $row->post_title;
                                     $post_image = $row->post_img;
                                     $post_description = $row->post_description;
+                                    $post_slug = $row->slug;
                     ?>
                         <div class="col-md-4 col-sm-4 col-xs-4 prodouctbox"> 
                             <div class="card" id="<?php echo $post_id?>">
@@ -52,19 +53,19 @@
                                     <i class="fas fa-download"></i>
                                 </div>
                                 <div class="image-container">
-                                    <a href="post.php?p_id=<?php echo $post_id ?>">
-                                        <img src="img/<?php echo $post_image ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
+                                    <a href="post/<?php echo $post_slug ?>">
+                                        <img src="/gameproject/img/<?php echo $post_image ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title"><b><?php echo $post_title; ?></b></h4>
                                     <div class="card-text" data-target="postDescription"><?php echo $post_description; ?></div>
-                                    <a class="btn btn-primary readmore" href="post.php?p_id=<?php echo $post_id ?>">Read More <i class="fas fa-angle-double-right"></i> </a>
+                                    <a class="btn btn-primary readmore" href="/gameproject/post/<?php echo $row->slug ?>">Read More <i class="fas fa-angle-double-right"></i> </a>
                                 </div>
                             </div> 
                         </div>
                         <?php  }
-                            }
+                            } 
                         }?>
                         
                 </div>

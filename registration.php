@@ -37,7 +37,7 @@
                 <!-- end -->
              
                 </div>
-                   <h5 id="accountcheck">Already Have an Account?<a href="login.php">Sign In</a></h5>
+                   <h5 id="accountcheck">Already Have an Account?<a href="login">Sign In</a></h5>
                 </div> 
          
         

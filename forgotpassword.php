@@ -27,8 +27,9 @@
     require 'vendor/phpmailer/phpmailer/src/SMTP.php';
      
 
-    if(!isset($_GET['forgot'])){
-        header("Location: index.php");
+    if(empty($_GET['forgot'])){
+        header("Location: http://localhost:8080/gameproject/index");
+        exit;
     }
     if(ifItIsMethod('post')){
         if(isset($_POST['email'])){
