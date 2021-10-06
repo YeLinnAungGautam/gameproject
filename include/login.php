@@ -35,6 +35,7 @@ if(isset($_POST['login'])){
     $_SESSION['lastname'] = $db_lastname;
     $_SESSION['userrole'] = $db_userrole;
 
+
     if ($gameId != '') {
         header("Location: ../post.php?p_id=".$gameId);
 

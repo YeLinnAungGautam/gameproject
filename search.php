@@ -19,25 +19,29 @@
             <div class="no-mar-bottom col-md-12">
                 <div class="home-category-header">
                     <h3>
-                        Most Popular Among Users
+                        Search Result
                     </h3>
                 </div>
                 <div class="row mar-topper">
                     <?php 
-                        if(isset($_POST['search_submit'])){
+                        if(isset($_POST['search_btns'])){
                             $search = $_POST['ptsearch'];
-                            $query = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id WHERE post_title LIKE '%$search%' ";
-                            $searchquery = $connection->prepare($query);
-                            $searchquery->bindValue(':keywords','%' . $search . '%',PDO::PARAM_STR);
-                            $searchquery->execute();
-                            if($searchquery->rowCount() == 0){
+                            $search_page_query = "SELECT * FROM posts WHERE post_title LIKE :searchpagekeyword";
+                            $search_page_result = $connection->prepare($search_page_query);
+                            $search_page_result->bindValue(':searchpagekeyword','%' . $search . '%',PDO::PARAM_STR);
+                            $search_page_result->execute();
+                            $result = $search_page_result->fetchAll(PDO::FETCH_OBJ);
+                            $answer = $search_page_result->rowCount();
+                            if( $answer < 0){
                                 echo "<h1>NO RESULT</h1>";
                             }else{
-                                while($row = $searchquery->fetch(PDO::FETCH_ASSOC)){
-                                    $post_id = $row['post_id'];
-                                    $post_title = $row['post_title'];
-                                    $post_image = $row['post_img'];
-                                    $post_description = $row['post_description'];
+                                foreach($result as $row){
+                                    $post_id = $row->post_id;
+                                    $post_title = $row->post_title;
+                                    $post_image = $row->post_img;
+                                    $post_description = $row->post_description;
+                                    $post_slug = $row->slug;
+
                     ?>
                         <div class="col-md-4 col-sm-4 col-xs-4 prodouctbox"> 
                             <div class="card" id="<?php echo $post_id?>">
@@ -45,19 +49,19 @@
                                     <i class="fas fa-download"></i>
                                 </div>
                                 <div class="image-container">
-                                    <a href="post.php?p_id=<?php echo $post_id ?>">
-                                        <img src="img/<?php echo $post_image ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
+                                    <a href="post/<?php echo $post_slug ?>">
+                                        <img src="/gameproject/img/<?php echo $post_image ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title"><b><?php echo $post_title; ?></b></h4>
                                     <div class="card-text" data-target="postDescription"><?php echo $post_description; ?></div>
-                                    <a class="btn btn-primary readmore" href="post.php?p_id=<?php echo $post_id ?>">Read More <i class="fas fa-angle-double-right"></i> </a>
+                                    <a class="btn btn-primary readmore" href="/gameproject/post/<?php echo $row->slug ?>">Read More <i class="fas fa-angle-double-right"></i> </a>
                                 </div>
                             </div> 
                         </div>
                         <?php  }
-                            }
+                            } 
                         }?>
                         
                 </div>

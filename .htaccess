@@ -1,0 +1,9 @@
+RewriteEngine on
+
+RewriteRule ^(index|registration|login|post|search)$ $1.php [NC,L]
+
+RewriteRule ^post/(.*)$ post.php?p_slug=$1 [NC,L] 
+
+RewriteRule ^categorypage/(.*)$ categorypage.php?category=$1 [NC,L]
+
+RewriteRule ^forgotpassword/(.*)$ forgotpassword.php?forgot=$1 [NC,L]

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-6 col-sm-6 col-xs-12 text-left site-icon">
             <h1>
-            <a href="index.php"> 
+            <a href="/gameproject/index"> 
             <span class="firstletter">Gamehub</span> <span class="secondletter">Myanmar</span></h1>
             </a>
         </div>
@@ -13,11 +13,12 @@
 
             <ul>
                 <li class="seperator <?= ($activePage == 'login') ? 'active':''; ?>">
-                    <a href="login.php">Login</a>
+                    <a href="login">Login</a>
                 </li>
                 <li class="<?= ($activePage == 'registration') ? 'active':''; ?>">
-                    <a href="registration.php">Register</a>
+                    <a href="registration">Register</a>
                 </li>
+
                 <?php  
                         // if(isset($_SESSION['userrole'])){
                         //     if(isset($_GET['p_id'])){
@@ -56,19 +57,21 @@
 
                     <?php if(isLoggedIn()): ?>
                         <li>
-                            <a href="admin">Admin</a>
+                            <a href="/gameproject/admin">Admin</a>
                         </li>
                         <li>
-                            <a href="include/logout.php">Logout</a>
+                            <a href="/gameproject/include/logout.php">Logout</a>
                         </li>
                     <?php else: ?>
                         <li>
-                            <a href="./login.php">Login</a>
+                            <a href="/gameproject/login">Login</a>
                         </li>
                     <?php endif; ?>
+
                     <!-- <li>
                         <a href="registration.php">Register</a>
                     </li> -->
+                  
                     <!-- <li>
                         <a href="registration.php">Testing</a>
                     </li> -->
@@ -86,13 +89,13 @@
             
             <div class="col-md-3 search-bar">
                 <div class="wrap">
-                <form action="search.php" method="POST">
+                <form action="/gameproject/search" method="post">
                     <div class="search">
                         <input type="text" class="searchTerm" placeholder="What are you looking for?" name="ptsearch" id="ptsearch" >
-                        <button type="submit" class="searchButton" name="search_submit">
+                        <button type="submit" class="searchButton" name="search_btns">
                             <i class="fa fa-search"></i>
                         </button>
-                    </div>
+                    </div> 
                 </form>
                 </div>
             </div>

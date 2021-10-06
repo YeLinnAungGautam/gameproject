@@ -55,22 +55,24 @@
           </form>
         </div>
         
-    </div>
-  </div>
+    </div> 
 </div>
+
 
     <div class="copyright container-fluid mar-topper">
       <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-sm-3 col-xs-3 social-ft">
-              <div class="soical-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-9 col-xs-9 text-right copy-ft">
-                <span style="line-height: 2;">Copyright &copy; <?php echo date("Y")?>. All Rights Reserved by <a href="index.php">Gamehub Myanmar</a>. </span>
+            <div class="row">
+                <div class="col-md-6 col-sm-3 col-xs-3 social-ft">
+                  <div class="soical-links">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-9 col-xs-9 text-right copy-ft">
+                    <span style="line-height: 2;">Copyright &copy; <?php echo date("Y")?>. All Rights Reserved by <a href="index">Gamehub Myanmar</a>. </span>
+                </div>
+
             </div>
           </div>
             <!-- /.row -->
@@ -80,10 +82,8 @@
 </footer>
 <?php } ?>
 
-    <!-- jQuery -->
-
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/gameproject/js/bootstrap.min.js"></script>
 
     <!-- Splide Js  -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>

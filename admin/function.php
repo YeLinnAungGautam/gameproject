@@ -92,7 +92,7 @@ function deleteCategories(){
         $query->execute();
         header("Location: categories.php");
     }
-}
+} 
 function displayInNav(){
     global $connection;
     $sql = "SELECT * FROM categories";
@@ -101,7 +101,7 @@ function displayInNav(){
     $result = $query->fetchAll(PDO::FETCH_OBJ);
     if($query->rowCount()>0){
         foreach($result as $row){
-            echo "<li><a href='categorypage.php?category=$row->cat_id'>$row->cat_title</a></li>";
+            echo "<li><a href='/gameproject/categorypage/$row->cat_title'>$row->cat_title</a></li>";
         }
     }
 }
