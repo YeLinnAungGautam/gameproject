@@ -15,7 +15,7 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Gamehub Myanmar - Best Video Games Reseller in Myanmar</title>
+    <title>Gamehub Myanmar -- <?php echo $activePage; ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/gameproject/css/bootstrap.min.css" rel="stylesheet">
@@ -38,6 +38,23 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     <!-- Splide CSS  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+
+
+    <script defer>
+        $(document).ready(function() {
+          $("#popupsearch").click(function(e) {
+              e.preventDefault();
+              $(".togglesearch").toggle();
+              $(".searchTerm").focus();
+            });
+
+            $("#popupuser").click(function(e) {
+              e.preventDefault();
+              $(".toggleuser").toggle();
+            });
+
+        });
+    </script>
 
 </head>
 

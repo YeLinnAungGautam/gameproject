@@ -10,11 +10,6 @@
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
 
-
-    <!-- Slider -->
-    
-    
-
     <!-- Page Content -->
     <div class="container mar-topper">
 
@@ -46,6 +41,7 @@
                                     $post_image = $row->post_img;
                                     $post_description = $row->post_description;
                                     $post_slug = $row->slug;
+
                     ?>
                         <div class="col-md-4 col-sm-4 col-xs-4 prodouctbox"> 
                             <div class="card" id="<?php echo $post_id?>">

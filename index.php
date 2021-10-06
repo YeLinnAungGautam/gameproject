@@ -9,21 +9,33 @@
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
 
-
     <!-- Slider -->
     <div class="container-fluid slider-container">
         <div class="splide" id="one">
                 <div class="splide__track">
                     <ul class="splide__list">
+
+                    <?php 
+                        $slider_sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id ORDER BY p.post_id DESC LIMIT 3";
+                        $slider_query = $connection->prepare($slider_sql);
+                        $slider_query->execute();
+                        $result = $slider_query->fetchAll(PDO::FETCH_OBJ);
+                            if($slider_query->rowCount()>0){
+                                foreach($result as $row){
+                    ?>
+
                         <li class="splide__slide">
-                            <img src="https://squareportal.files.wordpress.com/2012/07/hitman_absolution-1080p.jpeg" class="slider-image">
+                            <img src="admin/additionalimages/<?php echo $row->images ?>" class="slider-image">
                             <div class="slide-description">
-                                <h3 class="slider-header">Hit Man : 3</h3>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perspiciatis vel, ipsam est et, at dolore nam maxime provident placeat laborum exercitationem! Cupiditate officia animi enim odio suscipit, laboriosam eveniet.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perspiciatis vel, ipsam est et, at dolore nam maxime provident placeat laborum exercitationem! Cupiditate officia animi enim odio suscipit, laboriosam eveniet.</p>
+                                <h3 class="slider-header"><?php echo $row->post_title?></h3>
+                                <div class="slider-text" data-target="postDescription"><?php echo $row->post_description; ?></div>
                                 <a class="btn btn-primary readmore" href="#">Read More <i class="fas fa-angle-double-right"></i> </a>
                             </div>
                         </li>
-                        <li class="splide__slide">
+
+                    <?php }} ?>
+
+                        <!-- <li class="splide__slide">
                             <img src="https://splidejs.com/wp-content/themes/splide/assets/images/slim/02.jpg" class="slider-image">
                             <div class="slide-description">
                                 <h3 class="slider-header">Hit Man : 3</h3>
@@ -38,7 +50,7 @@
                                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perspiciatis vel, ipsam est et, at dolore nam maxime provident placeat laborum exercitationem! Cupiditate officia animi enim odio suscipit, laboriosam eveniet.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perspiciatis vel, ipsam est et, at dolore nam maxime provident placeat laborum exercitationem! Cupiditate officia animi enim odio suscipit, laboriosam eveniet.</p>
                                 <a class="btn btn-primary readmore" href="#">Read More <i class="fas fa-angle-double-right"></i> </a>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
         </div>
@@ -67,7 +79,7 @@
                             foreach($result as $row){
                                 if($row->post_status == 'published'){
                         ?>
-                        <div class="col-md-4 col-sm-4 col-xs-4 prodouctbox"> 
+                        <div class="col-md-4 col-sm-6 col-xs-6 prodouctbox"> 
                             <div class="card" id="<?php echo $row->post_id; ?>">
                                 <div class="download-icon">
                                     <i class="fas fa-download"></i>
@@ -162,9 +174,6 @@
                                     </div>
                                 </div>
                             </li>
-                                
-                            
-                            
                         </ul>
                     </div>
                 </div>

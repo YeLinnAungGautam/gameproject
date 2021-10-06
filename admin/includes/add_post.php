@@ -17,6 +17,12 @@ if(isset($_POST['create_post'])){
     $post_image = $_FILES['image']['name'];
     $post_image_temp = $_FILES['image']['tmp_name'];
     move_uploaded_file($post_image_temp,"../img/$post_image");
+
+    //Slider Image        
+    $post_slider = $_FILES['post_slider']['name'];
+    $post_slider_temp = $_FILES['post_slider']['tmp_name'];
+    move_uploaded_file($post_slider_temp,"./additionalimages/$post_slider");
+    
     
     $relase_date = $_POST['releasedate'];
     $age_rating = $_POST['agerating'];
@@ -25,6 +31,7 @@ if(isset($_POST['create_post'])){
     $sql = "INSERT INTO posts(post_title,
                             slug,
                             post_img,
+                            post_slider_img,
                             post_description,
                             requirement_description_one,
                             requirement_description_two,
@@ -36,6 +43,7 @@ if(isset($_POST['create_post'])){
                         VALUE(:ptitle,
                             :slug,
                             :pimage,
+                            :psliderimage,
                             :pdescription,
                             :requirement1,
                             :requirement2,
@@ -49,6 +57,7 @@ if(isset($_POST['create_post'])){
     $query->bindParam(':ptitle',$post_title,PDO::PARAM_STR);
     $query->bindParam(':slug', $slug, PDO::PARAM_STR);
     $query->bindParam(':pimage',$post_image,PDO::PARAM_STR);
+    $query->bindParam(':psliderimage',$post_slider,PDO::PARAM_STR);
     $query->bindParam(':pdescription',$post_description,PDO::PARAM_STR);
     $query->bindParam(':requirement1',$minimum_requirement,PDO::PARAM_STR);
     $query->bindParam(':requirement2',$recommended_requirement,PDO::PARAM_STR);
@@ -59,6 +68,16 @@ if(isset($_POST['create_post'])){
     $query->bindParam(':game_mode',$game_mode,PDO::PARAM_STR);
     $query->execute();
     $lastInsertid = $connection->lastInsertId();
+
+    // $sliderquery = "INSERT INTO game_images(game_id,sliderimage)
+    // VALUE(:gameid,
+    // :sliderimage)";
+    // $sliderquery = $connection->prepare($sliderquery);
+    // $sliderquery->bindParam(':gameid',$lastInsertid, PDO::PARAM_STR);
+    // $sliderquery->bindParam(':sliderimage',$post_slider, PDO::PARAM_STR);
+    // $sliderquery->execute();
+
+
 
     // Additional Images
     
@@ -171,6 +190,11 @@ if(isset($_POST['create_post'])){
                         </div>
                     </div> -->
                 </div> 
+            </div>
+
+            <div class="form-group">
+                <label for="post_slider">Slider</label>
+                <input type="file" class="form-control" name="post_slider" >
             </div>
 
             <!-- <div class="form-group">

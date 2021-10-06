@@ -39,7 +39,6 @@
                 </div>
                    <h5 id="accountcheck">Already Have an Account?<a href="login">Sign In</a></h5>
                 </div> 
-         
         
 </section>
        

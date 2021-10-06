@@ -7,6 +7,10 @@
             </a>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 text-right site-profile">
+            <?php                         
+                if(!isset($_SESSION['userrole'])){
+            ?>
+
             <ul>
                 <li class="seperator <?= ($activePage == 'login') ? 'active':''; ?>">
                     <a href="login">Login</a>
@@ -14,13 +18,19 @@
                 <li class="<?= ($activePage == 'registration') ? 'active':''; ?>">
                     <a href="registration">Register</a>
                 </li>
-                <?php   
-                        if(isset($_SESSION['userrole'])){
-                            if(isset($_GET['p_id'])){
-                                echo "<li><a href='./admin/posts.php'>Edit</a></li>";
-                            } 
-                        }?>
+
+                <?php  
+                        // if(isset($_SESSION['userrole'])){
+                        //     if(isset($_GET['p_id'])){
+                        //         echo "<li><a href='./admin/posts.php'>Edit</a></li>";
+                        //     } 
+                        // }
+                ?>
             </ul>
+
+            <?php 
+                }
+            ?>
         </div>
     </div>
 </header>
@@ -57,9 +67,11 @@
                             <a href="/gameproject/login">Login</a>
                         </li>
                     <?php endif; ?>
-                    <li>
-                        <a href="/gameproject/registration">Register</a>
-                    </li>
+
+                    <!-- <li>
+                        <a href="registration.php">Register</a>
+                    </li> -->
+                  
                     <!-- <li>
                         <a href="registration.php">Testing</a>
                     </li> -->
