@@ -18,7 +18,7 @@
 
 
                     <?php 
-                                $slider_sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id ORDER BY p.post_id DESC LIMIT 3";
+                                $slider_sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id ORDER BY p.post_id DESC LIMIT 1";
                                 $slider_query = $connection->prepare($slider_sql);
                                 $slider_query->execute();
                                 $result = $slider_query->fetchAll(PDO::FETCH_OBJ);

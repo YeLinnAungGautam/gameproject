@@ -139,7 +139,7 @@ img.slider-image {
 .slide-description {
   position: absolute;
   color: var(--white);
-  left: 40%;
+  left: 20%;
   top: 55%;
   transform: translate(-50%, -50%);
 }
@@ -461,6 +461,9 @@ a.readmore:hover {
 /* Responsive */
 /* Desktop အကြီးတွေ၊ Monitor အကြီးတွေအတွက် */
 @media (min-width: 1440px) {
+  .slide-description {
+    left: 15%;
+  }
 }
 
 @media (max-width: 1199.98px) {
