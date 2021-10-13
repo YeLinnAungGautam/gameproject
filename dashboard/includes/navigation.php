@@ -15,7 +15,7 @@
                 <li><a href="">Users Online: <span class="usersonline"></span></a></li>
                 <!-- <li>
                     <a href="../index.php">Home Site</a>
-                </li> -->
+                </li> --> 
                 <li>
                     <a href="#"><i class="fa fa-user"></i>
                     <?php 
@@ -45,12 +45,17 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
+                        <a href="#"><i class="fa fa-fw fa-dashboard"></i>Downloaded Data</a>
+                    </li>
+                    <?php if(is_admin($_SESSION['username'])): ?>
+                    <li>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                     
                     <li> 
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
+                        
                         <ul id="demo" class="collapse">
+                        
                             <li> 
                                 <a href="./posts.php">View Posts</a>
                             </li>
@@ -59,9 +64,11 @@
                             </li>
                         </ul> 
                     </li>
+                    
                     <li>
                         <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
                     </li>
+                    
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#users">
                         <i class="fa fa-fw fa-user"></i>Users<i class="fa fa-fw fa-caret-down"></i>
@@ -73,7 +80,8 @@
                     </li>
                     <li>
                         <a href="profile.php"><i class="fa fa-fw fa-file"></i> Profile</a>
-                    </li> 
+                    </li>
+                    <?php endif ?> 
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

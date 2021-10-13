@@ -1,4 +1,4 @@
-<?php include("admin/includes/db.php") ?>
+<?php include("dashboard/includes/db.php") ?>
 <?php  
     global $keywords;
     if(isset($_POST['query'])){

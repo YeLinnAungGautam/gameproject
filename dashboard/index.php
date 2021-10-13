@@ -23,7 +23,7 @@
                 <!-- /.row -->
                        
                 <!-- /.row -->
-                
+<?php if(is_admin($_SESSION['username'])): ?>          
 <div class="row">
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-primary">
@@ -132,6 +132,7 @@
         </div>
     </div>
 </div>
+
                 <!-- /.row -->
                 <?php 
                     $user_role = 'editor';
@@ -168,7 +169,11 @@
                             }
                     </script>
                     <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>
-                </div>    
+                </div>  
+                <?php endif ?>
+                <?php if(!is_admin($_SESSION['username'])): ?>
+                <h1>Hello World</h1>  
+                <?php endif ?>
             </div>
             <!-- /.container-fluid -->
 

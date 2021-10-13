@@ -1,6 +1,6 @@
 <?php
 
-include("admin/includes/db.php");
+include("dashboard/includes/db.php");
 
 $token = generateRandomString();
 

@@ -28,6 +28,27 @@ function checkIfUserIsLoggedInAndRedirect($redirectLocation = null){
 
     }
 }
+//===== AUTHENTICATION HELPER =====//
+function is_admin($username){
+    global $connection;
+    
+    if(isLoggedIn()){
+        $sql_guest = "SELECT user_role FROM users WHERE username = :username";
+        $query_guest = $connection->prepare($sql_guest);
+        $query_guest->bindParam(':username',$username,PDO::PARAM_STR);
+        $query_guest->execute();
+        $result = $query_guest->fetch(PDO::FETCH_ASSOC);
+        $ans = $result['user_role'];
+
+        if($ans == 'admin'){
+        return true;
+        }
+        else{
+        return false;
+        }
+    }
+}
+//===== END AUTHENTICATION HELPER =====//
 function email_exists($email){
     global $connection;
 

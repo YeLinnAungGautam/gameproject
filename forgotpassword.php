@@ -6,7 +6,7 @@
     ?>
     
     <!-- Database Connection -->
-    <?php include("admin/includes/db.php") ?>
+    <?php include("dashboard/includes/db.php") ?>
     <!-- Database Connection -->
     <!-- Header -->
     <?php include("include/header.php") ?>

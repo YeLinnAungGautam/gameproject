@@ -1,6 +1,6 @@
     <?php ob_start(); ?>
     <!-- Database Connection -->
-    <?php include("admin/includes/db.php") ?>
+    <?php include("dashboard/includes/db.php") ?>
     <!-- Database Connection -->
     <!-- Header -->
     <?php include("include/header.php") ?>
@@ -101,69 +101,7 @@
                             if($query->rowCount()>0){
                             foreach($result as $row){
                     ?>
-                    <!-- <div class="col-md-12" style="margin-bottom:2%"> 
-                        <div class="card" id="">
-
-                            <img src="img/"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
-                            
-                            <div class="card-body">
-                                <h4 class="card-title"><b></b></h4>
-                                <p class="card-text" style="text-align:justify" data-target="postDescription"></p>
-                                
-                                                    <input type="hidden" name="user_id" id="m_user_id" />
-                                                    <input type="hidden" name="game_id" id="m_game_id"/>
-                                                    <input type="hidden" name="price" id="m_price"/>
-
-                                                    <input type="text" class="form-control" id="cardNumber" value="09-939393939393" placeholder="Valid Card Number"
-                                                        required autofocus />
-                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-7 col-md-7">
-                                                    <div class="form-group">
-                                                        <label for="expityMonth">
-                                                            EXPIRY DATE</label>
-                                                        <div class="col-xs-6 col-lg-6 pl-ziro">
-                                                            <input type="text" class="form-control" id="expityMonth" value="7" placeholder="MM" required />
-                                                        </div>
-                                                        <div class="col-xs-6 col-lg-6 pl-ziro">
-                                                            <input type="text" class="form-control" id="expityYear" value="2025" placeholder="YY" required /></div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-5 col-md-5 pull-right">
-                                                    <div class="form-group">
-                                                        <label for="cvCode">
-                                                            CV CODE</label>
-                                                        <input type="password" class="form-control" id="cvCode" value="888" placeholder="CV" required />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-                                </div>
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a>
-                                    </li>
-                                </ul>
-                                <br/>
-                                <input type="submit" value="Pay" class="btn btn-success btn-lg btn-block" role="button" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-        </div>
-    </div>
-
-    <!-- <div id="overlay">
-        <div class="cv-spinner">
-            <span class="spinner"></span>
-        </div>
-    </div> -->
+                    
 
 
         <?php 

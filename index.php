@@ -1,5 +1,5 @@
     <!-- Database Connection -->
-    <?php include("admin/includes/db.php") ?>
+    <?php include("dashboard/includes/db.php") ?>
     <!-- Database Connection -->
     <!-- Header -->
     <?php include("include/header.php") ?>
@@ -25,7 +25,7 @@
                     ?>
 
                         <li class="splide__slide">
-                            <img src="admin/additionalimages/<?php echo $row->images ?>" class="slider-image">
+                            <img src="dashboard/additionalimages/<?php echo $row->images ?>" class="slider-image">
                             <div class="slide-description">
                                 <h3 class="slider-header"><?php echo $row->post_title?></h3>
                                 <div class="slider-text" data-target="postDescription"><?php echo $row->post_description; ?></div>

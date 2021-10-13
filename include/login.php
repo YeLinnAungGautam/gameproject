@@ -1,4 +1,4 @@
-<?php include("../admin/includes/db.php") ?>
+<?php include("../dashboard/includes/db.php") ?>
 <?php session_start(); ?>
 <?php 
 ini_set('display_errors', 1);
@@ -34,13 +34,13 @@ if(isset($_POST['login'])){
     $_SESSION['firstname'] = $db_firstname;
     $_SESSION['lastname'] = $db_lastname;
     $_SESSION['userrole'] = $db_userrole;
-
+    header("Location: ../dashboard");
 
     if ($gameId != '') {
         header("Location: ../post.php?p_id=".$gameId);
 
     } else {
-        header("Location: ../index.php");
+        // header("Location: ../index.php");  crendantials မှန်ရင် admin ကိုမသွားပဲ index.php ပဲရောက်နေလို့။
     }
     
 }else{
