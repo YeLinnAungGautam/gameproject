@@ -101,7 +101,7 @@ function displayInNav(){
     $result = $query->fetchAll(PDO::FETCH_OBJ);
     if($query->rowCount()>0){
         foreach($result as $row){
-            echo "<li><a href='/gameproject/categorypage/$row->cat_title'>$row->cat_title</a></li>";
+            echo "<li><a href='/gameproject/category/$row->cat_title'>$row->cat_title</a></li>";
         }
     }
 }
