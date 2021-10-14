@@ -35,33 +35,15 @@
 
                     <?php }} ?>
 
-                        <!-- <li class="splide__slide">
-                            <img src="https://splidejs.com/wp-content/themes/splide/assets/images/slim/02.jpg" class="slider-image">
-                            <div class="slide-description">
-                                <h3 class="slider-header">Hit Man : 3</h3>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perspiciatis vel, ipsam est et, at dolore nam maxime provident placeat laborum exercitationem! Cupiditate officia animi enim odio suscipit, laboriosam eveniet.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perspiciatis vel, ipsam est et, at dolore nam maxime provident placeat laborum exercitationem! Cupiditate officia animi enim odio suscipit, laboriosam eveniet.</p>
-                                <a class="btn btn-primary readmore" href="#">Read More <i class="fas fa-angle-double-right"></i> </a>
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <img src="https://splidejs.com/wp-content/themes/splide/assets/images/slim/03.jpg" class="slider-image">
-                            <div class="slide-description">
-                                <h3 class="slider-header">Hit Man : 3</h3>
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perspiciatis vel, ipsam est et, at dolore nam maxime provident placeat laborum exercitationem! Cupiditate officia animi enim odio suscipit, laboriosam eveniet.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam perspiciatis vel, ipsam est et, at dolore nam maxime provident placeat laborum exercitationem! Cupiditate officia animi enim odio suscipit, laboriosam eveniet.</p>
-                                <a class="btn btn-primary readmore" href="#">Read More <i class="fas fa-angle-double-right"></i> </a>
-                            </div>
-                        </li> -->
                     </ul>
                 </div>
         </div>
     </div>
     
-
     <!-- Page Content -->
     <div class="container mar-topper">
-
         <div class="no-mar-bottom row"> 
- 
+
             <!-- Blog Entries Column -->
             <div class="no-mar-bottom col-md-12">
                 <div class="home-category-header">
@@ -92,7 +74,8 @@
                                 <div class="card-body">
                                     <h4 class="card-title"><b><?php echo $row->post_title; ?></b></h4>
                                     <div class="card-text" data-target="postDescription"><?php echo $row->post_description; ?></div>
-                                    <a class="btn btn-primary readmore" href="/gameproject/post/<?php echo $row->slug ?>">Read More <i class="fas fa-angle-double-right"></i> </a>
+                                    <a class="btn btn-primary readmore" id="readmore" href="/gameproject/post/<?php echo $row->slug ?>" data-json="{ 'id' : '<?php echo $row->post_id;?>'}">
+                                    Read More <i class="fas fa-angle-double-right"></i> </a>
                                 </div>
                             </div> 
                         </div>
