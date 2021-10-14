@@ -37,7 +37,7 @@ if(isset($_POST['login'])){
 
 
     if ($gameId != '') {
-        header("Location: ../post.php?p_id=".$gameId);
+        header("Location: ../post/".$gameId);
 
     } else {
         header("Location: ../index.php");
