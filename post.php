@@ -23,7 +23,6 @@
                         $view_query->execute(); 
                         
                         $slug = $_GET['p_slug'];
-                        echo $slug."<br/>";
                         $slug_sql = "SELECT * FROM posts WHERE slug LIKE :slug";
                         $slug_query = $connection->prepare($slug_sql);
                         $slug_query->bindValue(':slug','%'.$slug.'%',PDO::PARAM_STR);
