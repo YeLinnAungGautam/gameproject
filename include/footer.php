@@ -2,61 +2,62 @@
 <?php if($activePage != "download") { ?>
 <footer>
  
-<div class="red-footer-container container-fluid mar-topper">
-  <div class="container contact-us-container">
-    <div class="row">
-      <div class="col-md-4 col-sm-5 col-xs-12 contact-us-box request-box">
-        <div class="request-description">
-          <i class="fas fa-info-circle"></i>
-          <p>Have your find your game? If not, request us</p>
-        </div>
-        <div class="request_form">
-          <form action="">
-            <div class="form-group">
-            <input type="text" class="form-control" id="game_request" name="game_request" placeholder="Enter game title">
+      <div class="red-footer-container container-fluid mar-topper">
+        <div class="container contact-us-container">
+          <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-12 contact-us-box request-box">
+              <div class="request-description">
+                <i class="fas fa-info-circle"></i>
+                <p>Have your find your game? If not, request us</p>
+              </div>
+              <div class="request_form">
+                <form action="">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="game_request" name="game_request" placeholder="Enter game title">
+                  </div>
+                  <button type="submit" class="btn btn-default">Request</button>
+                </form>
+              </div>
             </div>
-            <button type="submit" class="btn btn-default">Request</button>
-          </form>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-3 col-xs-12 contact-us-box phone-mail-box">
-          <i class="fas fa-phone-alt"></i>
-          <a href="tel:+959123456789">+959123456789</a>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12 contact-us-box phone-mail-box">
-          <i class="far fa-envelope"></i>
-          <a href="mailto:info@gamehubmyanmar.com">info@gamehubmyanmar.com</a>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-<div class="container mar-topper">
-
-  <div class="no-mar-bottom row"> 
-
-    <!-- Blog Entries Column -->
-    <div class="no-mar-bottom col-md-12">
-        <div class="footer-header">
-          <h3>
-            Keep in Touch with Gamehub Myanmar
-          </h3>
-        </div>
-        <div class="footer-des">
-          <p>Get new games, promotions and other stuffs</p>
-        </div>
-        <div class="subscribe_form mar-topper">
-          <form action="">
-            <div class="form-group">
-              <input type="email" class="form-control" id="news_subscribe" name="news_subscribe" placeholder="Enter your email">
+            <div class="col-md-4 col-sm-3 col-xs-12 contact-us-box phone-mail-box">
+              <i class="fas fa-phone-alt"></i>
+              <a href="tel:+959123456789">+959123456789</a>
             </div>
-            <button type="submit" class="btn btn-default">Subscribe</button>
-          </form>
+            <div class="col-md-4 col-sm-4 col-xs-12 contact-us-box phone-mail-box">
+              <i class="far fa-envelope"></i>
+              <a href="mailto:info@gamehubmyanmar.com">info@gamehubmyanmar.com</a>
+            </div>
+            
+          </div>
         </div>
-        
-    </div> 
-</div>
+      </div>
+
+            <div class="container mar-topper">
+
+              <div class="no-mar-bottom row"> 
+
+                <!-- Blog Entries Column -->
+                <div class="no-mar-bottom col-md-12">
+                    <div class="footer-header">
+                      <h3>
+                        Keep in Touch with Gamehub Myanmar
+                      </h3>
+                    </div>
+                    <div class="footer-des">
+                      <p>Get new games, promotions and other stuffs</p>
+                    </div>
+                    <div class="subscribe_form mar-topper">
+                      <form action="">
+                        <div class="form-group">
+                          <input type="email" class="form-control" id="news_subscribe" name="news_subscribe" placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn btn-default">Subscribe</button>
+                      </form>
+                    </div>
+                    
+                </div> 
+              </div>
+            </div>
 
 
     <div class="copyright container-fluid mar-topper">
@@ -111,8 +112,9 @@
 
           
           if(userId == '' || gameId == '' || price == '') {
-            window.sessionStorage.setItem("gameId",gameId);            
-            location.href = "login.php?action=cfs";
+            window.sessionStorage.setItem("gameId",gameId); 
+            // location.href = "login.php?action=cfs";
+            location.href = "/gameproject/login"
           }else{
             $("#paymentModal").modal({
               backdrop: 'static',
