@@ -41,6 +41,9 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <!-- <script src="./js/typeahead/typeahead.bundle.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    
+    <script src="https://apis.google.com/js/api.js"></script>
+
     <!-- Splide CSS  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 
