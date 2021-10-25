@@ -1,5 +1,4 @@
 <!-- Footer -->
-<?php if($activePage != "download") { ?>
 <footer>
  
       <div class="red-footer-container container-fluid mar-topper">
@@ -81,7 +80,6 @@
     </div>
     <!-- /.container -->
 </footer>
-<?php } ?>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -93,39 +91,100 @@
 
     <script>
 
+      var CLIENT_ID = '454988175560-0k6rof7thb937jjt8lg78jg99utrfp3r.apps.googleusercontent.com';
+      var API_KEY = 'AIzaSyD6cYuYJ3laD-Cih6Ng74YCbBgnD0DxgPE';
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
+      var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
+
+
       $(document).ready(function() {
 
          var p_user_id = $("#p_user_id").val();
+  
+  //modal
+            const modal = $(".modal");
+            console.log(modal);
+            const modalToggle = $(".modal-toggle");
+            const modalWrapper = $(".modal-wrapper");
+            const modalHeight = modalWrapper.height();
 
-         if (p_user_id == 'donePay') {
+            //countdown
+            function coundDown() {
+              console.log("countdown");
+              var countdownNumberEl = document.getElementById("countdown-number");
+              var countdown = 5;
+              countdownNumberEl.textContent = countdown;
+              var downloadTimer = setInterval(function() {
+                countdown--; // 5 to 0
+                countdownNumberEl.textContent = countdown;
 
-          $("#pricebtn").replaceWith("<pre class='price'><button name='download' id='buynow' class='btn btn-info btn-lg'>Download</button></pre>");
+                if (countdown > 0) {
+                  modalToggle.unbind("click", showMConfirmModal);
+                } else {
+                  modalToggle.bind("click", showMConfirmModal);
+                  clearInterval(downloadTimer);
+                  modal.removeClass("is-visible");
+                }
+              }, 1000);
+            }
 
-         }
+
+            //show modal
+            function showMConfirmModal(e) {
+              console.log('icon click');
+              const modalPosY = $(document).outerHeight() / 2 - modalHeight/2;
+              modalWrapper.css("margin-top", modalPosY)
+              //fire countedown modal
+              if ($("#count-loading").length) {
+                e.preventDefault();
+                modal.addClass('is-visible');
+                coundDown();
+              }else{
+                //fire confirm modal
+                e.preventDefault();
+                modal.toggleClass('is-visible');
+              }
+            }
+
+            modalToggle.click(showMConfirmModal);
+
+              $(".btn-cancel").click(function(e) {
+                modal.removeClass("is-visible");
+              });
       });
 
 
        $("#buynow").on('click',function() {
           var userId = $("#user_id").val();
           var gameId = $("#game_id").val();
+          var id = $("#game-id").val();
           var price  = $("#price").val();
-
-          
-          if(userId == '' || gameId == '' || price == '') {
+          var count = $('#d_count').val();
+          if(userId == '' || gameId == '') {
             window.sessionStorage.setItem("gameId",gameId); 
             // location.href = "login.php?action=cfs";
             location.href = "/gameproject/login"
           }else{
-            $("#paymentModal").modal({
-              backdrop: 'static',
-              keyboard: false
+            if(count < 20) {
+            $.ajax({
+            type: "POST",
+            url: "/gameproject/payment.php",
+            data: {user_id: userId, game_id: id},
+            beforeSend: function() {
+              $("#overlay").css({ 'display' : 'block'})
+              console.log(document.getElementById("overlay"));
+            },
+            success: function(response)
+            {
+              console.log("Well done");
+              gapi.load('client', start);
+            },
+            }).done(function() {
+              console.log('done');
             })
-
-            $(".panel-body #m_user_id").val(userId);
-            $(".panel-body #m_game_id").val(gameId);
-            $(".panel-body #m_price").val(price);
-
-
+            }else{
+              alert("Downloads time exceed");
+            }
           }
        })
 
@@ -173,12 +232,12 @@
 
        });
 
-	    new Splide( '.splide', {
-	        type  : 'fade',
-	        rewind: true,   
-	        autoplay: true,
-        } ).mount();
-   
+        new Splide( '.splide', {
+            type  : 'fade',
+            rewind: true,   
+            autoplay: true,
+          } ).mount();
+    
 
         document.addEventListener("DOMContentLoaded", function () {
           slider_one();
@@ -210,6 +269,38 @@
           focus    : 'center',
           }).mount();
         }
+
+       function getIdFromUrl(url) { return url.match(/[-\w]{25,}/); }
+
+       function start() {
+
+        var download_url = $("#download-url").val();
+        console.log(download_url);
+        var fileId = getIdFromUrl(download_url)[0]
+        gapi.client.init({
+            apiKey: API_KEY,
+            clientId: CLIENT_ID,
+            discoveryDocs: DISCOVERY_DOCS,
+            scope: SCOPES
+                  
+        }).then(function() {
+            gapi.client.drive.files.get({
+            supportsAllDrives: true,
+            fileId: fileId,
+            fields:  'webContentLink'   
+            }).then(function (resp) {
+                if(resp.result.webContentLink) {
+                    window.location.assign(resp.result.webContentLink);
+                } else {
+                    var formatted = JSON.stringify(resp.data.result, null, 2);
+                    console.log(formatted);
+                }
+            })
+        })
+        };
+        // 1. Load the JavaScript client library.
+
+        
     </script>
 </body>
 
