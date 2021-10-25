@@ -12,6 +12,7 @@ if(isset($_POST['create_post'])){
     $minimum_requirement = $_POST['requirement_description_one'];
     $recommended_requirement = $_POST['requirement_description_two'];
     $price = trim($_POST['price']);
+    $link = $_POST['drive_link'];
     $post_status = $_POST['post_status'];
 
     $post_image = $_FILES['image']['name'];
@@ -37,6 +38,7 @@ if(isset($_POST['create_post'])){
                             requirement_description_two,
                             post_status,
                             price,
+                            google_drive_link,
                             releasegame_date,
                             gamerage_rating,
                             game_mode)
@@ -49,6 +51,7 @@ if(isset($_POST['create_post'])){
                             :requirement2,
                             :poststatus,
                             :price,
+                            :google_drive_link,
                             :releasegamedate,
                             :gamerage_rating,
                             :game_mode
@@ -62,6 +65,7 @@ if(isset($_POST['create_post'])){
     $query->bindParam(':requirement1',$minimum_requirement,PDO::PARAM_STR);
     $query->bindParam(':requirement2',$recommended_requirement,PDO::PARAM_STR);
     $query->bindParam(':price',$price,PDO::PARAM_STR);
+    $query->bindParam(':google_drive_link',$link,PDO::PARAM_STR);
     $query->bindParam(':poststatus',$post_status,PDO::PARAM_STR);
     $query->bindParam(':releasegamedate',$relase_date,PDO::PARAM_STR);
     $query->bindParam(':gamerage_rating',$age_rating,PDO::PARAM_STR);
@@ -69,19 +73,6 @@ if(isset($_POST['create_post'])){
     $query->execute();
     $lastInsertid = $connection->lastInsertId();
 
-    // $sliderquery = "INSERT INTO game_images(game_id,sliderimage)
-    // VALUE(:gameid,
-    // :sliderimage)";
-    // $sliderquery = $connection->prepare($sliderquery);
-    // $sliderquery->bindParam(':gameid',$lastInsertid, PDO::PARAM_STR);
-    // $sliderquery->bindParam(':sliderimage',$post_slider, PDO::PARAM_STR);
-    // $sliderquery->execute();
-
-
-
-    // Additional Images
-    
-    
     if($lastInsertid){
 
         $extension = array('jpeg','jpg','png','gif');
@@ -174,21 +165,6 @@ if(isset($_POST['create_post'])){
                             <input type="file" class="form-control" name="images[]"  required multiple />
                         </div>
                     </div>
-                    <!-- <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="images[]">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="images[]">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="images[]">
-                        </div>
-                    </div> -->
                 </div> 
             </div>
 
@@ -220,9 +196,14 @@ if(isset($_POST['create_post'])){
 
     <div class="col-md-6">
             
+            
             <div class="form-group">
                 <label for="price"> Price </label>
                 <input type="text" name="price" class="form-control" pattern='[0-9]+(\\.[0-9][0-9]?)?' >
+            </div>
+            <div class="form-group">
+                <label for="link"> Link </label>
+                <input type="text" name="drive_link" class="form-control" required>
             </div>
             <div class="col-md-4">
                 <div class="form-group">

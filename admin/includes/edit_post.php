@@ -23,6 +23,7 @@ if($query->rowCount()>0){
         $minimum_requirement = $row->requirement_description_one;
         $recommended_requirement = $row->requirement_description_two;
         $price = $row->price;
+        $link  = $row->google_drive_link;
         $release_date = $row->releasegame_date;
         $gameage = $row->gamerage_rating;
         $gamemode = $row->game_mode;
@@ -125,22 +126,21 @@ updatePosts();
             </div>
 
 
-        <div class="form-group">
-            <label for="summernote">Post Description</label>
-            <textarea name="post_description" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $post_description ?></textarea>
-        </div> 
+            <div class="form-group">
+                <label for="summernote">Post Description</label>
+                <textarea name="post_description" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $post_description ?></textarea>
+            </div> 
 
-        <div class="form-group">
-            <label for="requirement-description-one">Minimum Requirements</label>
-            <textarea name="requirement_description_one" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
-        </div> 
+            <div class="form-group">
+                <label for="requirement-description-one">Minimum Requirements</label>
+                <textarea name="requirement_description_one" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $minimum_requirement; ?></textarea>
+            </div> 
 
-        <div class="form-group">
-            <label for="requirement-description-two">Recommended Requirements</label>
-            <textarea name="requirement_description_two" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $recommended_requirement; ?></textarea>
-        </div> 
+            <div class="form-group">
+                <label for="requirement-description-two">Recommended Requirements</label>
+                <textarea name="requirement_description_two" id="summernote"  cols="30" rows="10" class="form-control"><?php echo $recommended_requirement; ?></textarea>
+            </div> 
 
-        
         </div>
 
         <div class="col-md-6">
@@ -149,7 +149,10 @@ updatePosts();
                 <label for="price"> Price </label>
                 <input type="text" name="price" value="<?php echo $price;?>" class="form-control" pattern='[0-9]+(\\.[0-9][0-9]?)?' >
             </div>
-
+            <div class="form-group">
+                <label for="link"> Link </label>
+                <input type="text" name="drive_link" value="<?php echo $link;?>" class="form-control">
+            </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="gamerelasedate">Game Release Date</label>
