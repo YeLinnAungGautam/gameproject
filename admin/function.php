@@ -204,6 +204,7 @@ function updatePosts(){
         $age_rating = $_POST['agerating'];
         $game_mode = $_POST['gamemode'];
         $price = $_POST['price'];
+        $link  = $_POST['drive_link'];
         $post_status = $_POST['post_status'];
         $post_image = $_FILES['image']['name'];
         $post_image_temp = $_FILES['image']['tmp_name'];
@@ -245,8 +246,6 @@ function updatePosts(){
 
         if(!empty($post_images)){
 
-            print_r($post_images);
-
             $sql = "DELETE FROM game_images WHERE game_id = :gameid";
             $query = $connection->prepare($sql);
             $query->bindParam(':gameid',$post_id,PDO::PARAM_INT);
@@ -279,9 +278,6 @@ function updatePosts(){
 
         }
 
-        print_r($post_slider_image);
-
-
         $update_sql = "UPDATE posts SET post_title = :posttitle, 
                                         slug = :slug,
                                         post_status = :poststatus, 
@@ -291,6 +287,7 @@ function updatePosts(){
                                         post_img = :postimg, 
                                         post_slider_img = :postsliderimg,
                                         price = :price,
+                                        google_drive_link = :google_drive_link,
                                         releasegame_date = :releasedate,
                                         gamerage_rating = :rating,
                                         game_mode = :mode
@@ -306,12 +303,12 @@ function updatePosts(){
         $update_query->bindParam(':postimg',$post_image,PDO::PARAM_STR);
         $update_query->bindParam(':postsliderimg',$post_slider_image,PDO::PARAM_STR);
         $update_query->bindParam(':price',$price,PDO::PARAM_STR);
+        $update_query->bindParam(':google_drive_link',$link,PDO::PARAM_STR);
         $update_query->bindParam(':releasedate',$release_date,PDO::PARAM_STR);
         $update_query->bindParam(':rating',$age_rating,PDO::PARAM_STR);
         $update_query->bindParam(':mode',$game_mode,PDO::PARAM_STR);
         $update_query->bindParam(':postid',$post_id,PDO::PARAM_STR);
         $update_query->execute();
-        print_r($update_query->errorInfo());
 
             $sql = "DELETE FROM game_category WHERE game_id = :gameid";
             $query = $connection->prepare($sql);
