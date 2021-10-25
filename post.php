@@ -12,33 +12,50 @@
  
     <!-- Page Content -->
     <?php
-                    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                    
-                    if(is_numeric(basename($url)) != 1) {
-                        $count = '1';
-                        $view_count = 'post_views_count';
-                        $view_sql = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = :postid";
-                        $view_query = $connection->prepare($view_sql);
-                        $view_query->bindParam(':postid',$game_id,PDO::PARAM_INT);
-                        $view_query->execute(); 
-                        
-                        $slug = $_GET['p_slug'];
-                        $slug_sql = "SELECT * FROM posts WHERE slug LIKE :slug";
-                        $slug_query = $connection->prepare($slug_sql);
-                        $slug_query->bindValue(':slug','%'.$slug.'%',PDO::PARAM_STR);
-                        $slug_query->execute();
-                        $result_slug = $slug_query->fetch(PDO::FETCH_OBJ);
-                        $game_id = $result_slug->post_id;
-                        
-                        $sql = "SELECT * FROM posts WHERE post_id = :posteachid";
-                        $query = $connection->prepare($sql);
-                        $query->bindParam(':posteachid',$game_id,PDO::PARAM_STR);
-                        $query->execute();
-                        $result = $query->fetchAll(PDO::FETCH_OBJ);
-                        if($query->rowCount()>0){
-                        foreach($result as $row){
+            $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            
+            if(is_numeric(basename($url)) != 1) {
+                
+                $slug = $_GET['p_slug'];
+                $slug_sql = "SELECT * FROM posts WHERE slug LIKE :slug";
+                $slug_query = $connection->prepare($slug_sql);
+                $slug_query->bindValue(':slug','%'.$slug.'%',PDO::PARAM_STR);
+                $slug_query->execute();
+                $result_slug = $slug_query->fetch(PDO::FETCH_OBJ);
+                $game_id = $result_slug->post_id;
+
+                $count = '1';
+                $view_count = 'post_views_count';
+                $view_sql = "UPDATE posts SET post_views_count = post_views_count + 1 WHERE post_id = :postid";
+                $view_query = $connection->prepare($view_sql);
+                $view_query->bindParam(':postid',$game_id,PDO::PARAM_INT);
+                $view_query->execute(); 
+                
+                $sql = "SELECT * FROM posts WHERE post_id = :posteachid";
+                $query = $connection->prepare($sql);
+                $query->bindParam(':posteachid',$game_id,PDO::PARAM_STR);
+                $query->execute();
+                $result = $query->fetchAll(PDO::FETCH_OBJ);
+                if($query->rowCount()>0){
+                foreach($result as $row){
     ?>
-                    
+        <div id="overlay">
+            <div class="cv-spinner">
+                <span class="spinner"></span>
+            </div>
+         </div>  
+        <!-- <div id="modal" class="modal modal-confirm is-visible">
+            <div class="modal-overlay modal-toggle"></div>
+            <div class="modal-wrapper">
+                <div class="modal-content fs18 fc-blc lh1-4">
+                    그동안 주유할인 서비스를<br> 이용해주셔서 감사합니다.
+                </div>
+                <ul class="btn-list">
+                    <li class="btn-only btn-bl">T map 메인화면으로 가기<div id="count-loading" class="count-wrap"><span class="n" id="countdown-number"></span><div id="loader"></div></div></li>
+                </ul>
+            </div>
+        </div>   -->
+        
         <div class="container">
             <h1 id="title"><?php echo $row->post_title; ?></h1>
             <div class="row singledescriptioncontainer">
@@ -63,6 +80,8 @@
                                                                     
                             <input type='hidden' id='user_id' value="<?php echo (isset($_SESSION['user_id'])) ? $_SESSION['user_id'] : "";?>">
                             <input type='hidden' id='game_id' value="<?php echo $row->slug;?>">
+                            <input type='hidden' id='game-id' value="<?php echo $row->post_id;?>">
+                            <input type='hidden' id='download-url' value="<?php echo $row->google_drive_link;?>">
                             <input type='hidden' id='price' value="<?php echo $row->price;?>">
                             
                             <?php 
@@ -77,16 +96,19 @@
         
                                     foreach($result as $row) {
         
-                                        if ($row->user_id == $_SESSION['user_id']) {
-                                            echo "<input type='hidden' value='loggedin' name='p_user_id' id='p_user_id' />";
+                                            echo "<input type='hidden' value='loggedin' name='p_user_id' id='p_user_id' />
+                                                  <input type='hidden' value='$row->count' name='count' id='d_count' />";
                                             
-                                        }
+                                        
                                     }
+                                }else {
+                                    echo "<input type='text' value='0' name='count' id='d_count' />";
                                 }
                             }
                             ?>
 
-                        <pre class='price'><button name='download' id='buynow' class='btn btn-info btn-lg'>Download</button></pre> 
+                            <pre class='price'><button name='download' id='buynow' class='btn btn-info btn-lg'>Download</button></pre> 
+                            <!-- <button class="modal-toggle" id="modal-toggle">show modal popup</button> -->
                         </div>
                     </div>
                 </div>
