@@ -15,17 +15,11 @@
                 <li class="seperator <?= ($activePage == 'login') ? 'active':''; ?>">
                     <a href="login">Login</a>
                 </li>
+
                 <li class="<?= ($activePage == 'registration') ? 'active':''; ?>">
                     <a href="registration">Register</a>
                 </li>
 
-                <?php  
-                        // if(isset($_SESSION['userrole'])){
-                        //     if(isset($_GET['p_id'])){
-                        //         echo "<li><a href='./admin/posts.php'>Edit</a></li>";
-                        //     } 
-                        // }
-                ?>
             </ul>
 
             <?php 
@@ -87,7 +81,7 @@
             <!-- /.navbar-collapse -->
             </div>
             
-            <div class="col-md-3 search-bar">
+            <div class="col-md-3 search-bar">   
                 <div class="wrap">
                 <form action="/gameproject/search" method="post">
                     <div class="search">
