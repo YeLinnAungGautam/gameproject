@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-6 col-sm-6 col-xs-12 text-left site-icon">
             <h1>
-            <a href="/gameproject/index"> 
+            <a href="/gameproject"> 
             <span class="firstletter">Gamehub</span> <span class="secondletter">Myanmar</span></h1>
             </a>
         </div>
@@ -50,12 +50,12 @@
                     <?php displayInNav(); ?>
 
                     <?php if(isLoggedIn()): ?>
-                        <li>
+                        <!-- <li>
                             <a href="/gameproject/admin">Admin</a>
                         </li>
                         <li>
                             <a href="/gameproject/include/logout.php">Logout</a>
-                        </li>
+                        </li> -->
                     <?php else: ?>
                         <li>
                             <a href="/gameproject/login">Login</a>

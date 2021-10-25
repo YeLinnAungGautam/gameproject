@@ -102,7 +102,7 @@
                                         
                                     }
                                 }else {
-                                    echo "<input type='text' value='0' name='count' id='d_count' />";
+                                    echo "<input type='hidden' value='0' name='count' id='d_count' />";
                                 }
                             }
                             ?>

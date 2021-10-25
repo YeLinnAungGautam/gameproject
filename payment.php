@@ -8,6 +8,7 @@ include("admin/includes/db.php");
 
 $token = generateRandomString();
 
+
 if($_POST['user_id'] !='' && $_POST['game_id'] !='' ) {
 
     $sql = "SELECT * FROM downloads_data WHERE game_id = :game_id";
@@ -27,7 +28,8 @@ if($_POST['user_id'] !='' && $_POST['game_id'] !='' ) {
       $gameId = $_POST['game_id'];
       $count = 1;
       $token = generateRandomString();
-      $userIP = json_encode(IPtoLocation('74.119.146.35'));
+      $userIP = json_encode(IPtoLocation(get_client_ip()));
+      echo get_client_ip();
 
       $status = "1";
 
@@ -95,6 +97,25 @@ function IPtoLocation($ip){
    
   // Return geolocation data 
   return !empty($ipData)?$ipData:false; 
+}
+
+function get_client_ip() {
+  $ipaddress = '';
+  if (isset($_SERVER['HTTP_CLIENT_IP']))
+      $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+  else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+      $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  else if(isset($_SERVER['HTTP_X_FORWARDED']))
+      $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+  else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+      $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+  else if(isset($_SERVER['HTTP_FORWARDED']))
+      $ipaddress = $_SERVER['HTTP_FORWARDED'];
+  else if(isset($_SERVER['REMOTE_ADDR']))
+      $ipaddress = $_SERVER['REMOTE_ADDR'];
+  else
+      $ipaddress = 'UNKNOWN';
+  return $ipaddress;
 }
 
 
