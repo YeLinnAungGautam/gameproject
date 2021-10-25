@@ -14,7 +14,6 @@
         <div class="splide" id="one">
                 <div class="splide__track">
                     <ul class="splide__list">
-
                     <?php 
                         $slider_sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id ORDER BY p.post_id DESC LIMIT 3";
                         $slider_query = $connection->prepare($slider_sql);
@@ -23,18 +22,29 @@
                             if($slider_query->rowCount()>0){
                                 foreach($result as $row){
                     ?>
-
                         <li class="splide__slide">
                             <img src="admin/additionalimages/<?php echo $row->images ?>" class="slider-image">
                             <div class="slide-description">
                                 <h3 class="slider-header"><?php echo $row->post_title?></h3>
-                                <div class="slider-text" data-target="postDescription"><?php echo $row->post_description; ?></div>
+                                <p>
+                                    <?php
+                                    $string = strip_tags($row->post_description);
+                                    if (strlen($string) > 500) {
+
+                                        // truncate string
+                                        $stringCut = substr($string, 0, 500);
+                                        $endPoint = strrpos($stringCut, ' ');
+
+                                        //if the string doesn't contain any space then it will cut without word basis.
+                                        $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                        $string .= '... </a>';
+                                    }
+                                    echo $string;?>
+                                </p>
                                 <a class="btn btn-primary readmore" href="#">Read More <i class="fas fa-angle-double-right"></i> </a>
                             </div>
                         </li>
-
                     <?php }} ?>
-
                     </ul>
                 </div>
         </div>
@@ -73,7 +83,22 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title"><b><?php echo $row->post_title; ?></b></h4>
-                                    <div class="card-text" data-target="postDescription"><?php echo $row->post_description; ?></div>
+                                    <div class="card-text" data-target="postDescription">
+                                    <?php
+                                        $string = strip_tags($row->post_description);
+                                        if (strlen($string) > 100) {
+
+                                            // truncate string
+                                            $stringCut = substr($string, 0, 100);
+                                            $endPoint = strrpos($stringCut, ' ');
+
+                                            //if the string doesn't contain any space then it will cut without word basis.
+                                            $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                            $string .= '... </a>';
+                                        }
+                                        echo $string;
+                                    ?>
+                                    </div>
                                     <a class="btn btn-primary readmore" id="readmore" href="/gameproject/post/<?php echo $row->slug ?>" data-json="{ 'id' : '<?php echo $row->post_id;?>'}">
                                     Read More <i class="fas fa-angle-double-right"></i> </a>
                                 </div>
