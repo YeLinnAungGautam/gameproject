@@ -50,13 +50,13 @@
                                 </div>
                                 <div class="image-container">
                                     <a href="post/<?php echo $post_slug ?>">
-                                        <img src="/gameproject/img/<?php echo $post_image ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
+                                        <img src="<?php echo $baseurl;?>/img/<?php echo $post_image ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title"><b><?php echo $post_title; ?></b></h4>
                                     <div class="card-text" data-target="postDescription"><?php echo $post_description; ?></div>
-                                    <a class="btn btn-primary readmore" href="/gameproject/post/<?php echo $row->slug ?>">Read More <i class="fas fa-angle-double-right"></i> </a>
+                                    <a class="btn btn-primary readmore" href="<?php echo $baseurl;?>/post/<?php echo $row->slug ?>">Read More <i class="fas fa-angle-double-right"></i> </a>
                                 </div>
                             </div> 
                         </div>

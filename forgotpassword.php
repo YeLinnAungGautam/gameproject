@@ -9,7 +9,16 @@
     <?php include("admin/includes/db.php") ?>
     <!-- Database Connection -->
     <!-- Header -->
-    <?php include("include/header.php") ?>
+    <?php 
+    include("include/header.php");
+
+    if(empty($_SESSION['user_id'])) {
+
+        header("Location: $baseurl");
+
+    }
+
+    ?>
     <!-- Header -->
 
     <!-- Navigation -->

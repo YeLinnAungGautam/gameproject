@@ -175,7 +175,7 @@
                         } 
                         }else{
                             echo "<script type='text/javascript'>
-                                    window.location.href = '/gameproject'
+                                    window.location.href = ".$baseurl."
                                     </script>";
                         }
                     ?>
@@ -203,7 +203,7 @@
                                 <div class="col-md-4 col-xs-4 youmayalsolike">
 
                                     <div class="card">
-                                        <img class="card-img-top img-responsive" src="/gameproject/img/cyberprunk.jpg" alt="Card image cap">
+                                        <img class="card-img-top img-responsive" src="<?php echo $baseurl;?>/img/cyberprunk.jpg" alt="Card image cap">
                                         <div class="card-body">
                                             <h5 class="text-center">CyberPrunk 2007</h5>
                                         </div>
@@ -214,7 +214,7 @@
                                 <div class="col-md-4 col-xs-4 youmayalsolike">
 
                                     <div class="card">
-                                        <img class="card-img-top img-responsive" src="/gameproject/img/watchdogs.png" alt="Card image cap">
+                                        <img class="card-img-top img-responsive" src="<?php echo $baseurl;?>/img/watchdogs.png" alt="Card image cap">
                                         <div class="card-body">
                                             <h5 class="text-center">Watch Dogs 2</h5>
                                         </div>

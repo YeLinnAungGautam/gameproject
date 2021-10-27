@@ -29,7 +29,6 @@ if($_POST['user_id'] !='' && $_POST['game_id'] !='' ) {
       $count = 1;
       $token = generateRandomString();
       $userIP = json_encode(IPtoLocation(get_client_ip()));
-      echo get_client_ip();
 
       $status = "1";
 

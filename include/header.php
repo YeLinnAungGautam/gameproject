@@ -6,6 +6,8 @@ include("admin/function.php");
 
 $activePage = basename($_SERVER['PHP_SELF'], ".php");
 
+$baseurl = "https://staging.gamehubmyanmar.com";
+
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +25,11 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
     <title>Gamehub Myanmar -- <?php echo $activePage; ?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/gameproject/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/gameproject/css/front-enddevelop.css">
+    <link href="<?php echo $baseurl;?>/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $baseurl;?>/css/front-enddevelop.css">
 
     <!-- Custom CSS -->
-    <link href="/gameproject/css/blog-home.css" rel="stylesheet">
+    <link href="<?php echo $baseurl;?>/css/blog-home.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,7 +39,7 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
     <![endif]-->    
     
     <!-- Custom Fonts -->
-    <link href="/gameproject/fontawesome-pack/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $baseurl;?>/fontawesome-pack/css/all.min.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <!-- <script src="./js/typeahead/typeahead.bundle.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>

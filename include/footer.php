@@ -10,12 +10,16 @@
                 <p>Have your find your game? If not, request us</p>
               </div>
               <div class="request_form">
+                <?php if(isset($_SESSION['user_id'])) { ?>
+
                 <form action="">
-                  <div class="form-group">
+                  <div class="form-group">  
                     <input type="text" class="form-control" id="game_request" name="game_request" placeholder="Enter game title">
                   </div>
                   <button type="submit" class="btn btn-default">Request</button>
                 </form>
+                
+                <?php } ?>
               </div>
             </div>
             <div class="col-md-4 col-sm-3 col-xs-12 contact-us-box phone-mail-box">
@@ -43,10 +47,10 @@
                       </h3>
                     </div>
                     <div class="footer-des">
-                      <p>Get new games, promotions and other stuffs</p>
+                      <p>Get new games notifications</p>
                     </div>
                     <div class="subscribe_form mar-topper">
-                      <form action="">
+                      <form action="subscribe.php">
                         <div class="form-group">
                           <input type="email" class="form-control" id="news_subscribe" name="news_subscribe" placeholder="Enter your email">
                         </div>
@@ -95,6 +99,7 @@
       var API_KEY = 'AIzaSyD6cYuYJ3laD-Cih6Ng74YCbBgnD0DxgPE';
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
       var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
+      var base_url = 'https://staging.gamehubmyanmar.com/';
 
 
       $(document).ready(function() {
@@ -103,7 +108,6 @@
   
   //modal
             const modal = $(".modal");
-            console.log(modal);
             const modalToggle = $(".modal-toggle");
             const modalWrapper = $(".modal-wrapper");
             const modalHeight = modalWrapper.height();
@@ -163,21 +167,20 @@
           if(userId == '' || gameId == '') {
             window.sessionStorage.setItem("gameId",gameId); 
             // location.href = "login.php?action=cfs";
-            location.href = "/gameproject/login"
+            location.href = base_url+"/login"
           }else{
             if(count < 20) {
             $.ajax({
             type: "POST",
-            url: "/gameproject/payment.php",
+            url: base_url+"/payment.php",
             data: {user_id: userId, game_id: id},
             beforeSend: function() {
               $("#overlay").css({ 'display' : 'block'})
-              console.log(document.getElementById("overlay"));
             },
             success: function(response)
             {
-              console.log("Well done");
               gapi.load('client', start);
+              $("#overlay").css({ 'display' : 'none'})
             },
             }).done(function() {
               console.log('done');
@@ -205,32 +208,6 @@
             } 
           });
         });
-
-
-       $('#payform').submit(function(e) {
-
-          e.preventDefault();
-          $.ajax({
-            type: "POST",
-            url: "payment.php",
-            data: $(this).serialize(),
-            beforeSend: function() {
-              $("#overlay").css({ 'display' : 'block'})
-              console.log(document.getElementById("overlay"));
-            },
-            success: function(response)
-            {
-              $("#pricebtn").replaceWith("<pre class='price'>"+response+"</pre>");
-            }
-          }).done(function() {
-            setTimeout(function(){
-              $("#overlay").css({ 'display' : 'none'})
-              $("#paymentModal").modal('hide');
-            },500);
-
-       });
-
-       });
 
         new Splide( '.splide', {
             type  : 'fade',
@@ -275,8 +252,9 @@
        function start() {
 
         var download_url = $("#download-url").val();
-        console.log(download_url);
         var fileId = getIdFromUrl(download_url)[0]
+          var download_url = "https://www.googleapis.com/drive/v3/files/"+fileId+"?alt=media&key="+API_KEY
+          // window.open(download_url,"_self");
         gapi.client.init({
             apiKey: API_KEY,
             clientId: CLIENT_ID,

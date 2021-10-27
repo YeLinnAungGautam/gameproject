@@ -1,5 +1,18 @@
+
+
 <?php include("admin/includes/db.php") ?>
-<?php include("include/header.php") ?>
+
+<?php 
+
+    include("include/header.php");
+
+    if(empty($_SESSION['user_id'])) {
+
+        header("Location: $baseurl");
+
+    }
+
+ ?>
 
     <!-- Navigation -->
     <?php include("include/navigation.php") ?>

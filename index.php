@@ -77,7 +77,7 @@
                                     <i class="fas fa-download"></i>
                                 </div>
                                 <div class="image-container"> 
-                                    <a href="/gameproject/post/<?php echo $row->slug ?>">
+                                    <a href="<?php echo $baseurl;?>/post/<?php echo $row->slug ?>">
                                         <img src="img/<?php echo $row->post_img ?>"  alt="image" data-target="postImage" id="get-image" class="img-responsive">
                                     </a>
                                 </div>
@@ -99,7 +99,7 @@
                                         echo $string;
                                     ?>
                                     </div>
-                                    <a class="btn btn-primary readmore" id="readmore" href="/gameproject/post/<?php echo $row->slug ?>" data-json="{ 'id' : '<?php echo $row->post_id;?>'}">
+                                    <a class="btn btn-primary readmore" id="readmore" href="<?php echo $baseurl;?>/post/<?php echo $row->slug ?>" data-json="{ 'id' : '<?php echo $row->post_id;?>'}">
                                     Read More <i class="fas fa-angle-double-right"></i> </a>
                                 </div>
                             </div> 
@@ -110,7 +110,8 @@
         </div>
         <!-- /.row -->
     </div>
- 
+    
+    
     <div class="red-product-container container-fluid mar-topper">
         <div class="container">
                 <div class="home-category-header">
@@ -126,62 +127,45 @@
                         Get it and Play it Now!
                     </p>
                 </div>
+
+                
                 <div class="splide best-seller-splide" id="two">
                     <div class="splide__track">
                         <ul class="splide__list">
-                            <li class="splide__slide">
-                                <div class="bs-posts-container">
-                                    <div class="bs-posts-image">
-                                        <a href="#">
-                                            <img src="https://cdn.europosters.eu/image/750/posters/mass-effect-3-multiplayer-i12272.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="bs-posts-desc">
-                                        <span class="bs-posts-tags">Adventure</span>
-                                        <span class="bs-posts-tags">Strategy</span>
-                                        <span class="bs-posts-tags">Multiplayer</span>
-                                    </div>
-                                </div>
-                            </li>
+                            <?php 
+                                $best_seller_sql = "SELECT * FROM posts ORDER BY post_views_count DESC LIMIT 5";
+                                $best_seller_query = $connection->prepare($best_seller_sql);
+                                $best_seller_query->execute();
+                                $result = $best_seller_query->fetchAll(PDO::FETCH_OBJ);
+                                    if($best_seller_query->rowCount()>0){
+                                        foreach($result as $row){
 
+                            ?>
                             <li class="splide__slide">
                                 <div class="bs-posts-container">
                                     <div class="bs-posts-image">
-                                        <a href="#">
-                                            <img src="https://image.api.playstation.com/vulcan/ap/rnd/202012/0815/7CRynuLSAb0vysSC4TmZy5e4.png">
+                                        <a href="<?php echo $baseurl;?>/post/<?php echo $row->slug;?>">
+                                            <img src="img/<?php echo $row->post_img; ?>">
                                         </a>
                                     </div>
                                     <div class="bs-posts-desc">
-                                    <span class="bs-posts-tags">Adventure</span><span class="bs-posts-tags">Strategy</span><span class="bs-posts-tags">Multiplayer</span>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="splide__slide">
-                                <div class="bs-posts-container">
-                                    <div class="bs-posts-image">
-                                        <a href="#">
-                                            <img src="https://s2.gaming-cdn.com/images/products/2692/orig/game-epic-games-control-cover.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="bs-posts-desc">
-                                    <span class="bs-posts-tags">Adventure</span><span class="bs-posts-tags">Strategy</span><span class="bs-posts-tags">Multiplayer</span>
-                                    </div>
-                                </div>
-                            </li>
+                                        <?php
 
-                            <li class="splide__slide">
-                                <div class="bs-posts-container">
-                                    <div class="bs-posts-image">
-                                        <a href="#">
-                                            <img src="https://cdn.shopify.com/s/files/1/0747/3829/products/mL4130_1024x1024.jpg?v=1577740565">
-                                        </a>
-                                    </div>
-                                    <div class="bs-posts-desc">
-                                        <span class="bs-posts-tags">Adventure</span><span class="bs-posts-tags">Strategy</span><span class="bs-posts-tags">Multiplayer</span>
+                                        $sql = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id INNER JOIN categories as c on c.cat_id = gc.category_id WHERE post_id = :postid";
+                                        $query = $connection->prepare($sql);
+                                        $query->bindParam(':postid',$row->post_id,PDO::PARAM_STR);
+                                        $query->execute();
+                                        $result = $query->fetchAll(PDO::FETCH_OBJ);
+                                        if($query->rowCount()>0){
+                                        foreach($result as $row){ 
+                                        ?>
+                                        <span class="bs-posts-tags"><?php echo $row->cat_title; ?></span>
+                                        <?php }} ?>
                                     </div>
                                 </div>
                             </li>
+                            <?php  } } ?>
+
                         </ul>
                     </div>
                 </div>

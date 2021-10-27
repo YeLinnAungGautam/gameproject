@@ -2,11 +2,11 @@
     <div class="container">
         <div class="col-md-6 col-sm-6 col-xs-12 text-left site-icon">
             <h1>
-            <a href="/gameproject"> 
+            <a href="<?php echo $baseurl;?>"> 
             <span class="firstletter">Gamehub</span> <span class="secondletter">Myanmar</span></h1>
             </a>
         </div>
-        <div class="col-md-6 col-sm-6 col-xs-12 text-right site-profile">
+        <!-- <div class="col-md-6 col-sm-6 col-xs-12 text-right site-profile">
             <?php                         
                 if(!isset($_SESSION['userrole'])){
             ?>
@@ -25,7 +25,7 @@
             <?php 
                 }
             ?>
-        </div>
+        </div> -->
     </div>
 </header>
 
@@ -49,33 +49,6 @@
                 <ul class="nav navbar-nav">
                     <?php displayInNav(); ?>
 
-                    <?php if(isLoggedIn()): ?>
-                        <!-- <li>
-                            <a href="/gameproject/admin">Admin</a>
-                        </li>
-                        <li>
-                            <a href="/gameproject/include/logout.php">Logout</a>
-                        </li> -->
-                    <?php else: ?>
-                        <li>
-                            <a href="/gameproject/login">Login</a>
-                        </li>
-                    <?php endif; ?>
-
-                    <!-- <li>
-                        <a href="registration.php">Register</a>
-                    </li> -->
-                  
-                    <!-- <li>
-                        <a href="registration.php">Testing</a>
-                    </li> -->
-                    <?php  
-                        if(isset($_SESSION['userrole'])){
-                            if(isset($_GET['p_id'])){
-                                echo "<li><a href='./admin/posts.php'>Edit</a></li>";
-                            } 
-                        }
-                    ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -83,7 +56,7 @@
             
             <div class="col-md-3 search-bar">   
                 <div class="wrap">
-                <form action="/gameproject/search" method="post">
+                <form action="<?php echo $baseurl;?>/search" method="post">
                     <div class="search">
                         <input type="text" class="searchTerm" placeholder="What are you looking for?" name="ptsearch" id="ptsearch" >
                         <button type="submit" class="searchButton" name="search_btns">

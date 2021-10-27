@@ -60,7 +60,7 @@
                     </div>
                 </form>
                     <h5 class="text-center" id="passrecover">
-                        <a href="/gameproject/forgotpassword/forgot=<?php echo uniqid(true); ?>">Forgot your password?</a> 
+                        <a href="<?php echo $baseurl;?>/forgotpassword/forgot=<?php echo uniqid(true); ?>">Forgot your password?</a> 
                         <a href="./registration">Sign Up</a></h5>
 
        </div>          
