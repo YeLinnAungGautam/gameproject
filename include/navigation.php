@@ -57,7 +57,7 @@
             <div class="col-md-3 search-bar">   
                 <div class="wrap">
                 <form action="<?php echo $baseurl;?>/search" method="post">
-                <input type="text" id="base-url" value="<?php echo $baseurl;?>">
+                <input type="hidden" id="base-url" value="<?php echo $baseurl;?>">
 
                     <div class="search">
                         <input type="text" class="searchTerm" placeholder="What are you looking for?" name="ptsearch" id="ptsearch" >
