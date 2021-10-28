@@ -40,11 +40,11 @@ if(isset($_POST['login'])){
         header("Location: ../post/".$gameId);
 
     } else {
-        header("Location: ../index.php");
+        header("Location: ../");
     }
     
 }else{
-    header("Location: ../login.php?action=fail");
+    header("Location: ../login?action=fail");
 }  
 }
 ?>

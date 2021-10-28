@@ -90,8 +90,6 @@
 
     <!-- Splide Js  -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
     <script>
 
@@ -99,7 +97,7 @@
       var API_KEY = 'AIzaSyD6cYuYJ3laD-Cih6Ng74YCbBgnD0DxgPE';
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
       var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
-      var base_url = 'https://staging.gamehubmyanmar.com/';
+      var base_url = $('#base-url').val();
 
 
       $(document).ready(function() {
@@ -169,6 +167,10 @@
             // location.href = "login.php?action=cfs";
             location.href = base_url+"/login"
           }else{
+            // $("#paymentModal").modal({
+            //   backdrop: 'static',
+            //   keyboard: false
+            // })
             if(count < 20) {
             $.ajax({
             type: "POST",

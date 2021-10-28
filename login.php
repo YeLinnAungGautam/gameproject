@@ -59,9 +59,9 @@
                        <button class="btn" name="login" type="submit">Log In</button>
                     </div>
                 </form>
-                    <h5 class="text-center" id="passrecover">
+                    <!-- <h5 class="text-center" id="passrecover">
                         <a href="<?php echo $baseurl;?>/forgotpassword/forgot=<?php echo uniqid(true); ?>">Forgot your password?</a> 
-                        <a href="./registration">Sign Up</a></h5>
+                        <a href="./registration">Sign Up</a></h5> -->
 
        </div>          
     </div>

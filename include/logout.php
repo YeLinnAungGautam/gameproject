@@ -7,5 +7,5 @@
     $_SESSION['lastname'] = null;
     $_SESSION['userrole'] = null;
 
-    header("Location: ../index.php");
+    header("Location: ../");
 ?>
