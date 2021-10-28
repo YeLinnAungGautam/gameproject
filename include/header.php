@@ -6,8 +6,8 @@ include("admin/function.php");
 
 $activePage = basename($_SERVER['PHP_SELF'], ".php");
 
-// $baseurl = "https://staging.gamehubmyanmar.com";
-$baseurl = "http://localhost/gameproject";
+$baseurl = "https://staging.gamehubmyanmar.com";
+// $baseurl = "http://localhost/gameproject";
 
 ?>
 
@@ -43,6 +43,7 @@ $baseurl = "http://localhost/gameproject";
     <link href="<?php echo $baseurl;?>/fontawesome-pack/css/all.min.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <!-- <script src="./js/typeahead/typeahead.bundle.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
     
     <script src="https://apis.google.com/js/api.js"></script>
 
