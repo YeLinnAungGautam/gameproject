@@ -6,7 +6,7 @@
     <?php include("include/header.php") ?>
     <!-- Header -->
 
-    <!-- Navigation -->
+    <!-- Navigation --> 
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
 

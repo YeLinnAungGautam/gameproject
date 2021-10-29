@@ -86,8 +86,8 @@
 </footer>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
+    <script src="<?php echo $baseurl ?>/js/bootstrap.min.js"></script>
+ 
     <!-- Splide Js  -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 
@@ -98,12 +98,38 @@
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
       var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
       var base_url = $('#base-url').val();
+      
+    //   <script>
+    //     $(document).ready(function() {
+    //       $("#popupsearch").click(function(e) {
+    //           e.preventDefault();
+    //           $(".togglesearch").toggle();
+    //           $(".searchTerm").focus();
+    //         });
 
+    //         $("#popupuser").click(function(e) {
+    //           e.preventDefault();
+    //           $(".toggleuser").toggle();
+    //         });
+
+    //     });
+    //
 
       $(document).ready(function() {
 
+
+
          var p_user_id = $("#p_user_id").val();
-  
+         $("#popupsearch").click(function(e) {
+              e.preventDefault();
+              $(".togglesearch").toggle();
+              $(".searchTerm").focus();
+            });
+
+            $("#popupuser").click(function(e) {
+              e.preventDefault();
+              $(".toggleuser").toggle();
+            });  
   //modal
             const modal = $(".modal");
             const modalToggle = $(".modal-toggle");
@@ -197,7 +223,7 @@
           $('#ptsearch').typeahead({
             source: function(query, result){
               $.ajax({
-                url: "fetch.php",
+                url: base_url+"/fetch.php",
                 method: "POST",
                 data: {query:query},
                 dataType:"json",
@@ -279,9 +305,45 @@
         })
         };
         // 1. Load the JavaScript client library.
-
         
     </script>
+    <script>
+    var timeleft = 5;
+    var downloadTimer = setInterval(function(){
+      if(timeleft <= 0){
+        clearInterval(downloadTimer);
+      }
+      document.getElementById("progressBar").value = 5 - timeleft;
+      timeleft -= 1;
+    }, 1000); 
+</script>
+<script>
+$(document).ready(function(){
+  window.onload=function(){
+    $('#preloader').fadeOut(3000, function(){
+            $(this).remove();
+        });
+  }
+        
+        });
+</script>
+<script>
+$(document).ready(function(){
+    $(".show-modal").click(function(){
+        $("#myModal").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+    });
+ setTimeout(function() {$('#myModal').modal('hide');}, 6000);
+});
+</script>
+<script>
+  $(document).ready(function() {
+  setTimeout(function() {
+    $("#ad_close_custom").show();
+  }, 6000);
+});
+</script>
 </body>
-
 </html>

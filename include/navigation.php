@@ -71,3 +71,7 @@
         </div>
         <!-- /.container -->
     </nav>
+<!-- Preloader -->
+<div id="preloader">
+        <div id="loader"></div>
+            </div>

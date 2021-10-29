@@ -9,7 +9,9 @@
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
 
+
     <!-- Slider -->
+    
     <div class="container-fluid slider-container">
         <div class="splide" id="one">
                 <div class="splide__track">
