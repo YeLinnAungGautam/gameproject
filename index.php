@@ -188,10 +188,10 @@
                 <div class="row mar-topper">
                     <div class="col-md-3 col-sm-3 col-xs-6 offer-container">
                             <div class="offer-icon">
-                            <i class="fas fa-undo"></i>
+                            <i class="fas fa-headset"></i>
                             </div>
                             <div class="offer-desc">
-                                <h5>Free Return</h5>
+                                <h5>Consultant</h5>
                                 <p>We serve free if there is an error.</p>
                             </div>
                     </div>
@@ -200,8 +200,8 @@
                             <i class="far fa-money-bill-alt"></i>
                             </div>
                             <div class="offer-desc">
-                                <h5>Good Price</h5>
-                                <p>We bring less price to play more.</p>
+                                <h5>Free Games</h5>
+                                <p>We bring more games to play for free.</p>
                             </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6 offer-container">
@@ -210,7 +210,7 @@
                             </div>
                             <div class="offer-desc">
                                 <h5>No Delay</h5>
-                                <p>No gap between payment and loading</p>
+                                <p>Our reply is as fast as rocket.</p>
                             </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6 offer-container">
@@ -219,7 +219,7 @@
                             </div>
                             <div class="offer-desc">
                                 <h5>Unlimited</h5>
-                                <p>Get Membership and play all.</p>
+                                <p>Get our account and play all.</p>
                             </div>
                     </div>
                 </div>
