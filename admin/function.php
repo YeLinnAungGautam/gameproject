@@ -230,7 +230,6 @@ function updatePosts(){
         }
 
         if(empty($post_slider_image)){
-            echo "Slider empty";
             $sql = "SELECT * FROM posts WHERE post_id =:postid";
             $query = $connection->prepare($sql);
             $query->bindParam(':postid',$post_id,PDO::PARAM_INT);
