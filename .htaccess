@@ -1,6 +1,10 @@
+ErrorDocument 404 http://localhost/gameproject/404
+
+Options All -Indexes
+
 RewriteEngine on
 
-RewriteRule ^(index|registration|login|post|search)$ $1.php [NC,L]
+RewriteRule ^(index|registration|login|post|search|404|subscription)$ $1.php [NC,L]
 
 RewriteRule ^post/(.*)$ post.php?p_slug=$1 [NC,L] 
 
