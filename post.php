@@ -139,13 +139,13 @@
 
                 <div class="col-md-6 singledescription">
 
-                    <div class="highlight"><h3 class="recomreq">Recommended Requirements</h3></div> 
+                    <div class="highlight"><h3 class="recomreq">Minimum Requirements</h3></div> 
 
                         <div class="para">
                             <?php echo $row->requirement_description_one; ?>
                         </div>
 
-                        <div class="highlightmini"><h3 id="minireq">Minimum Requirements</h3></div> 
+                        <div class="highlightmini"><h3 id="minireq">Recommended Requirements</h3></div> 
                             <div class="para">
                                 <?php echo $row->requirement_description_two; ?>		
                             </div>   
@@ -266,19 +266,48 @@
                         <div class="col-md-7" id="background">
                             <h3 class="youmayalso">You May Also Like:</h3>
                             <div class="row" id="card">
-                            
+                                    <?php
+                                        
+                                        $sql = "SELECT category_id FROM game_category where game_id = :gameid";
+                                        $query = $connection->prepare($sql);
+                                        $query->bindParam(':gameid',$game_id,PDO::PARAM_STR);
+                                        $query->execute();
+                                        $result = $query->fetchAll(PDO::FETCH_OBJ);
+                                        if($query->rowCount()>0){
+                                            foreach($result as $row) 
+                                            {
+
+                                                $category_ids[] = $row->category_id;
+                                                
+                                            }
+                                            $arr = implode(",",$category_ids);
+                                            print_r($arr);
+
+                                            $sql = "SELECT DISTINCT p.*
+                                            FROM game_category AS gc
+                                            INNER JOIN posts AS p ON gc.game_id = p.post_id
+                                            WHERE gc.category_id IN (:categoryids) LIMIT 6
+                                            ";
+                                            $query = $connection->prepare($sql);
+                                            $query->bindParam(':categoryids',$arr,PDO::PARAM_STR);
+                                            $query->execute();
+                                            $result = $query->fetchAll(PDO::FETCH_OBJ);
+                                            if($query->rowCount()>0){
+                                            foreach($result as $row){ 
+
+                                            if ($row->post_id != $game_id) {
+                                    ?>
                                 <div class="col-md-4 col-xs-4  youmayalsolike">
                                     <div class="card">
-
-                                        <img class="card-img-top img-responsive" src="img/assissan_cread.png" alt="Card image cap">
+                                        <a href="<?php echo $row->slug;?>">
+                                            <img class="card-img-top img-responsive" src="<?php echo $baseurl;?>/img/<?php echo $row->post_img; ?>" alt="Card image cap">
+                                        </a>
                                         <div class="card-body">
-                                            <h5 class="text-center">Assissan Cread</h5>
+                                            <h5 class="text-center"><?php echo $row->post_title;?></h5>
                                         </div>
                                     </div>
                                 </div>
-
-                                
-                                
+                                <?php  }}}}?>
                             </div>
                             <!-- second row -->
                             <h3 class="youmayalso">OTHERS :</h3>
@@ -295,7 +324,7 @@
                                         
                                         <div class="col-md-4 col-xs-4  youmayalsolike">
                                             <div class="card">
-                                                <a href="post.php?p_id=<?php echo $row->post_id ?>">
+                                                <a href="<?php echo $row->slug; ?>">
                                                     <img class="card-img-top img-responsive" src="../img/<?php echo $row->post_img ?>" alt="Card image cap">
                                                 </a>
                                                 <div class="card-body">
