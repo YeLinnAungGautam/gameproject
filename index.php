@@ -15,15 +15,18 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                     <?php 
-                        $slider_sql = "SELECT * FROM posts as p INNER JOIN game_images as gi on p.post_id = gi.game_id ORDER BY p.post_id DESC LIMIT 3";
+                        $slider_sql = "SELECT * FROM posts ORDER BY post_id DESC LIMIT 3";
                         $slider_query = $connection->prepare($slider_sql);
                         $slider_query->execute();
                         $result = $slider_query->fetchAll(PDO::FETCH_OBJ);
                             if($slider_query->rowCount()>0){
                                 foreach($result as $row){
+                                
+
                     ?>
+
                         <li class="splide__slide">
-                            <img src="admin/additionalimages/<?php echo $row->images ?>" class="slider-image">
+                            <img src="admin/additionalimages/<?php echo $row->post_slider_img ?>" class="slider-image">
                             <div class="slide-description">
                                 <h3 class="slider-header"><?php echo $row->post_title?></h3>
                                 <p>
@@ -41,9 +44,10 @@
                                     }
                                     echo $string;?>
                                 </p>
-                                <a class="btn btn-primary readmore" href="#">Read More <i class="fas fa-angle-double-right"></i> </a>
+                                <a class="btn btn-primary readmore" href="<?php echo $baseurl;?>/post/<?php echo $row->slug; ?>">Read More <i class="fas fa-angle-double-right"></i> </a>
                             </div>
                         </li>
+                        
                     <?php }} ?>
                     </ul>
                 </div>
