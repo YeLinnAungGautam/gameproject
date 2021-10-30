@@ -423,8 +423,9 @@ a.readmore:hover {
   border-radius: inherit;
 }
 
-.subscribe_form button {
-  height: 38px;
+#sub-btn{
+  height: 35px;
+  width: 90px;
   background: var(--red);
   color: var(--white);
   border: 1px solid var(--red);
