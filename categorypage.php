@@ -26,7 +26,7 @@
                 <div class="row mar-topper">
                     <?php  
                         if(!isset($_GET['category'])){
-                            header("Location: index.php");
+                            header("Location: index");
                         }else{
                             $category_title_id = $_GET['category'];
                         }
