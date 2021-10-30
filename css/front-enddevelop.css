@@ -674,9 +674,6 @@ div#para p {
     text-align: center;
     width: 100%;
   }
-  .subscribe_form input {
-    width: 200 px;
-  }
 }
 .modal-content {
   background-color: var(--white);
