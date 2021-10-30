@@ -85,6 +85,8 @@
     <!-- /.container -->
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo $baseurl ?>/js/bootstrap.min.js"></script>
  
@@ -308,12 +310,12 @@
         
     </script>
     <script>
-    var timeleft = 5;
+    var timeleft = 10;
     var downloadTimer = setInterval(function(){
       if(timeleft <= 0){
         clearInterval(downloadTimer);
       }
-      document.getElementById("progressBar").value = 5 - timeleft;
+      document.getElementById("progressBar").value = 10 - timeleft;
       timeleft -= 1;
     }, 1000); 
 </script>
@@ -335,14 +337,14 @@ $(document).ready(function(){
             keyboard: false
         });
     });
- setTimeout(function() {$('#myModal').modal('hide');}, 6000);
+ setTimeout(function() {$('#myModal').modal('hide');}, 11000);
 });
 </script>
 <script>
   $(document).ready(function() {
   setTimeout(function() {
     $("#ad_close_custom").show();
-  }, 6000);
+  }, 8000);
 });
 </script>
 </body>

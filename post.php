@@ -241,7 +241,7 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                        <progress value="0" max="5" id="progressBar"></progress>
+                        <progress value="0" max="10" id="progressBar"></progress>
                     </div>
                     </div>
 

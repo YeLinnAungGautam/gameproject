@@ -38,7 +38,7 @@
                         if($query->rowCount()>0){
                         foreach($result as $row){ 
                     ?>
-                        <div class="col-md-4 col-sm-4 col-xs-4 prodouctbox"> 
+                       <div class="col-md-4 col-sm-6 col-xs-6 prodouctbox">
                             <div class="card" id="<?php echo $row->post_id; ?>">
                                 <div class="download-icon">
                                     <i class="fas fa-download"></i>

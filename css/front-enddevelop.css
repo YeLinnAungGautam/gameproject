@@ -365,7 +365,7 @@ img.card-img-top.img-responsive {
   color: #aa0000;
 }
 #logincontainer {
-  margin-top: 4%;
+  margin-top: 30px;
 }
 #loginbutton > button {
   background-color: #e608049d;
@@ -674,7 +674,24 @@ div#para p {
     text-align: center;
     width: 100%;
   }
+  .subscribe_form input {
+    width: 200 px;
+  }
 }
 .modal-content {
   background-color: var(--white);
+}
+
+/* Hover */
+.abouthisgame {
+  z-index: 0;
+}
+.abouthisgame:hover {
+  z-index: 999;
+  cursor: pointer;
+}
+.abouthisgame img:hover {
+  transform: scale(1.2);
+  z-index: 99999;
+  display: block;
 }
