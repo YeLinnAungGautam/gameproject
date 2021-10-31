@@ -1,4 +1,4 @@
-ErrorDocument 404 http://localhost/gameproject/404
+ErrorDocument 404 https://gamehubmyanmar.com/404
 
 Options All -Indexes
 
