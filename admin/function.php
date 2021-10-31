@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 //  $baseurl="http://localhost/gameproject";
-$baseurl = "https://staging.gamehubmyanmar.com";
+$baseurl = "https://gamehubmyanmar.com";
 
 
 // Forget Password
