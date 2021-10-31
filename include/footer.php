@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-4 col-sm-3 col-xs-12 contact-us-box phone-mail-box">
               <i class="fas fa-phone-alt"></i>
-              <a href="tel:+959123456789">+95943039300</a>
+              <a href="tel:09967669132">09967669132</a>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 contact-us-box phone-mail-box">
               <i class="far fa-envelope"></i>
@@ -66,14 +66,12 @@
     <div class="copyright container-fluid mar-topper">
       <div class="container">
           <div class="row">
-              <div class="col-md-6 col-sm-3 col-xs-3 social-ft">
+              <div class="col-md-6 col-sm-5 col-xs-12 social-ft">
                 <div class="soical-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/Gamehub-Myanmar-107734438341861"><i class="fab fa-facebook-f"></i> Follow Us on Facebook</a>
                 </div>
               </div>
-              <div class="col-md-6 col-sm-9 col-xs-9 text-right copy-ft">
+              <div class="col-md-6 col-sm-7 col-xs-12 text-right copy-ft">
                   <span style="line-height: 2;">Copyright &copy; <?php echo date("Y")?>. All Rights Reserved by <a href="index">Gamehub Myanmar</a>. </span>
               </div>
 
