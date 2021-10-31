@@ -459,7 +459,7 @@ a.readmore:hover {
   text-align: center;
   transition: 0.3s ease-in-out all;
 }
-.soical-links a:hover {
+.soical-links a:hover i {
   background: var(--red);
   transition: 0.3s ease-in-out all;
 }
