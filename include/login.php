@@ -37,6 +37,7 @@ if(isset($_POST['login'])){
 
 
     if ($gameId != '') {
+        
         header("Location: ../post/".$gameId);
 
     } else {

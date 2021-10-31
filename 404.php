@@ -12,7 +12,7 @@
     <div class="container notfoundpage text-center">
         <h1>404 Page</h1>
         <p>Sorry, your requested page or keyword is not available at the moment</p>
-        <a href="#">Back to Home Page</a>
+        <a href="<?php echo $baseurl;?>">Back to Home Page</a>
     </div>
 
     <!-- Footer -->

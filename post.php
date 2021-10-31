@@ -21,8 +21,12 @@
                 $slug_query = $connection->prepare($slug_sql);
                 $slug_query->bindValue(':slug','%'.$slug.'%',PDO::PARAM_STR);
                 $slug_query->execute();
+                if($slug_query->rowCount()>0){
+
                 $result_slug = $slug_query->fetch(PDO::FETCH_OBJ);
                 $game_id = $result_slug->post_id;
+
+                }
 
                 $count = '1';
                 $view_count = 'post_views_count';
@@ -39,93 +43,6 @@
                 if($query->rowCount()>0){
                 foreach($result as $row){
     ?>
-        <!-- <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                 <div id="overlay">
-                    <div class="cv-spinner">
-                        <span class="spinner"></span>
-                    </div>
-                </div>
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="modalLabel">Modal Title</h4>
-                </div>
-                <div class="modal-body">
-                
-                <div class="container">
-                    <div class="row">
-                        <form id="payform" method="post">
-                            <div class="col-xs-12 col-md-4">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">
-                                            Payment Details
-                                        </h3>
-                                        <div class="checkbox pull-right">
-                                            <label>
-                                                <input type="checkbox" />
-                                                Remember
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body">
-                                            <div class="form-group">
-                                                <label for="cardNumber">CARD NUMBER</label>
-                                                <div class="input-group">
-
-                                                    <input type="hidden" name="user_id" id="m_user_id" />
-                                                    <input type="hidden" name="game_id" id="m_game_id"/>
-                                                    <input type="hidden" name="price" id="m_price"/>
-
-                                                    <input type="text" class="form-control" id="cardNumber" value="09-939393939393" placeholder="Valid Card Number"
-                                                        required autofocus />
-                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-7 col-md-7">
-                                                    <div class="form-group">
-                                                        <label for="expityMonth">
-                                                            EXPIRY DATE</label>
-                                                        <div class="col-xs-6 col-lg-6 pl-ziro">
-                                                            <input type="text" class="form-control" id="expityMonth" value="7" placeholder="MM" required />
-                                                        </div>
-                                                        <div class="col-xs-6 col-lg-6 pl-ziro">
-                                                            <input type="text" class="form-control" id="expityYear" value="2025" placeholder="YY" required /></div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-5 col-md-5 pull-right">
-                                                    <div class="form-group">
-                                                        <label for="cvCode">
-                                                            CV CODE</label>
-                                                        <input type="password" class="form-control" id="cvCode" value="888" placeholder="CV" required />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-                                </div>
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a>
-                                    </li>
-                                </ul>
-                                <br/>
-                                <input type="submit" value="Pay" class="btn btn-success btn-lg btn-block" role="button" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-        </div>
-    </div> -->
-
-    
         <div id="overlay">
             <div class="cv-spinner">
                 <span class="spinner"></span>
@@ -187,6 +104,7 @@
                             <pre class='price'><button name='download' id='buynow' class='btn btn-info btn-lg'>Download</button></pre> 
                             <!-- <button class="modal-toggle" id="modal-toggle">show modal popup</button> -->
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -249,12 +167,6 @@
         </div>
                     <?php 
                             }
-                        } 
-                        }else{
-                            echo "<script type='text/javascript'>
-                                    window.location.href = ".$baseurl."
-                                    </script>";
-                        }
                     ?>
                     <!--  the end -->
         
@@ -281,8 +193,7 @@
                                                 
                                             }
                                             $arr = implode(",",$category_ids);
-                                            print_r($arr);
-
+                                            
                                             $sql = "SELECT DISTINCT p.*
                                             FROM game_category AS gc
                                             INNER JOIN posts AS p ON gc.game_id = p.post_id
@@ -333,14 +244,48 @@
                                             </div>
                                         </div>
 
-                                            <?php }  }
+                                    <?php
+                                             }  }
+
+                                            }else{
+                                                echo '<div class="container notfoundpage text-center">
+                                                     <h1>Record Not Found !</h1>
+                                                     <p>Sorry, your requested page or keyword is not available at the moment</p>
+                                                     <a href='.$baseurl.'>Back to Home Page</a>
+                                                 </div>';
+                                             }
+                                             }else{
+                                                 echo "<script type='text/javascript'>
+                                                         window.location.href = ".$baseurl."
+                                                         </script>";
+                                             }
                                     ?>
                                     
                                 </div>
                         </div>
                     </div>
+                </div> 
+
+        <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog" id="adadtime">
+                        <!-- Modal content-->
+                        <div class="modal-content"> 
+                        <div class="modal-header">
+                            <!-- <button type="button" class="close" data-dismiss="modal" id="ad_close_custom">&times;</button> -->
+                            <h4 class="modal-title">Advertisement</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="https://neptune.link/ThemeOptions/images/ads.png" alt="Advertise at Gamehub Myanmar" srcset="">
+                        </div>
+                        <div class="modal-footer">
+                            <progress value="0" max="5" id="progressBar"></progress>
+                        </div>
+                        </div>
+
+                    </div>
                 </div>
-                                
         <!-- Footer -->
         <?php include("include/footer.php") ?>
         <!-- Footer -->
+

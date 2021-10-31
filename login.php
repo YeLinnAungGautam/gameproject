@@ -8,8 +8,6 @@
     <!-- Navigation -->
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
-
-    <link rel="stylesheet" href="css/front-enddevelop.css">
     <?php 
         checkIfUserIsLoggedInAndRedirect('/admin');
         if(ifItIsMethod('post')){
@@ -71,11 +69,17 @@
 <script type="text/javascript" >
 
     $(document).ready(function() {
+
+        window.onload=function(){
+        $('#preloader').fadeOut(3000, function(){
+                $(this).remove();
+            });
+        }
+
         var gId = window.sessionStorage.getItem("gameId");
 
         if(gId != ''){
             $("#gameId").val(gId);
-            window.sessionStorage.setItem("gameId","");
         }
     })
 

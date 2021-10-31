@@ -89,6 +89,7 @@
     <script src="<?php echo $baseurl;?>/js/bootstrap.min.js"></script>
 
     <!-- Splide Js  -->
+    
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 
     <script>
@@ -99,54 +100,60 @@
       var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
       var base_url = $('#base-url').val();
 
+          $(document).ready(function() {
 
-      $(document).ready(function() {
-
-        $('#ptsearch').typeahead({
-            source: function(query, result){
-              $.ajax({
-                url: base_url+"/fetch.php",
-                method: "POST",
-                data: {query:query},
-                dataType:"json",
-                success:function(data){
-                  result($.map(data, function(item){
-                    return item;
-                  }));
-                }
-              })
-            } 
-          });
-      });
-
-       $("#sub-form").submit(function(e) {
-          var email = $("#sub_email").val();
-          $.ajax({
-            type: "POST",
-            url: base_url+"/subscription.php",
-            data: {email: email},
-            beforeSend: function() {
-              $("#overlay").css({ 'display' : 'block'})
-            },
-            success: function(response)
-            {
-              $("#overlay").css({ 'display' : 'none'})
-              if(response == "1"){
-                $('#sub-alert-fail').fadeIn("fast", function(){        
-                  $("#sub-alert-fail").fadeOut(2000);
-                });
-              }else{
-                $('#sub-alert-success').fadeIn("fast", function(){        
-                  $("#sub-alert-success").fadeOut(2000);
-                });
+              window.onload=function(){
+                $('#preloader').fadeOut(3000, function(){
+                        $(this).remove();
+                    });
               }
-            }
-          
-        });
 
-        return false;
+              $('#ptsearch').typeahead({
+                source: function(query, result){
+                  $.ajax({
+                    url: base_url+"/fetch.php",
+                    method: "POST",
+                    data: {query:query},
+                    dataType:"json",
+                    success:function(data){
+                      result($.map(data, function(item){
+                        return item;
+                      }));  
+                    },
+                  });
+                },
+            });
+          });
+       
+          $("#sub-form").submit(function() {
+              var email = $("#sub_email").val();
 
-      });
+              $.ajax({
+                type: "POST",
+                url: base_url+"/subscription.php",
+                data: {email: email},
+                beforeSend: function() {
+                  $("#overlay").css({ 'display' : 'block'})
+                },
+                success: function(response)
+                {
+                  $("#overlay").css({ 'display' : 'none'})
+                  if(response == "1"){
+                    $('#sub-alert-fail').fadeIn("fast", function(){        
+                      $("#sub-alert-fail").fadeOut(2000);
+                    });
+                  }else{
+                    $('#sub-alert-success').fadeIn("fast", function(){        
+                      $("#sub-alert-success").fadeOut(2000);
+                    });
+                  }
+                }
+              
+            });
+
+                return false;
+
+          });
 
        $("#buynow").on('click',function() {
           var userId = $("#user_id").val();
@@ -158,6 +165,7 @@
             window.sessionStorage.setItem("gameId",gameId); 
             location.href = base_url+"/login"
           }else{
+            window.sessionStorage.setItem("gameId",""); 
             if(count < 20) {
             $.ajax({
             type: "POST",
@@ -168,11 +176,16 @@
             },
             success: function(response)
             {
-              gapi.load('client', start);
-              $("#overlay").css({ 'display' : 'none'})
+              $("#myModal").modal({
+                  backdrop: 'static',
+                  keyboard: false
+              });
+              setTimeout(function() {$('#myModal').modal('hide');}, 8000);
             },
             }).done(function() {
-              console.log('done');
+              setTimeout(function() {
+                gapi.load('client', start);
+              }, 10000);
             })
             }else{
               alert("Downloads time exceed");
@@ -180,73 +193,43 @@
           }
        })
 
-        new Splide( '.splide', {
-            type  : 'fade',
-            rewind: true,   
-            autoplay: true,
-          } ).mount();
-    
-        document.addEventListener("DOMContentLoaded", function () {
-          slider_one();
-          slider_two();
-        //   global_carousel__ctrl();
-        });
-
-        function slider_one() {
-          var one = new Splide("#one", {
-                    type  : 'fade',
-                  rewind: true,   
-                  autoplay: true,
-          }).mount();
-        }
-
-        function slider_two() {
-          var two = new Splide("#two", {
-            type     : 'loop',
-            perPage : 4,
-            breakpoints: {
-            '991.98': {
-              perPage: 3,
-            },
-            '577': {
-              perPage: 1,
-            }
-          },
-          // autoplay: true,
-          focus    : 'center',
-          }).mount();
-        }
-
        function getIdFromUrl(url) { return url.match(/[-\w]{25,}/); }
 
        function start() {
 
-        var download_url = $("#download-url").val();
-        var fileId = getIdFromUrl(download_url)[0]
-          var download_url = "https://www.googleapis.com/drive/v3/files/"+fileId+"?alt=media&key="+API_KEY
-          // window.open(download_url,"_self");
-        gapi.client.init({
-            apiKey: API_KEY,
-            clientId: CLIENT_ID,
-            discoveryDocs: DISCOVERY_DOCS,
-            scope: SCOPES
-                  
-        }).then(function() {
-            gapi.client.drive.files.get({
-            supportsAllDrives: true,
-            fileId: fileId,
-            fields:  'webContentLink'   
-            }).then(function (resp) {
-                if(resp.result.webContentLink) {
-                    window.location.assign(resp.result.webContentLink);
-                } else {
-                    var formatted = JSON.stringify(resp.data.result, null, 2);
-                }
+            var download_url = $("#download-url").val();
+            var fileId = getIdFromUrl(download_url)[0]
+              var download_url = "https://www.googleapis.com/drive/v3/files/"+fileId+"?alt=media&key="+API_KEY
+              // window.open(download_url,"_self");
+            gapi.client.init({
+                apiKey: API_KEY,
+                clientId: CLIENT_ID,
+                discoveryDocs: DISCOVERY_DOCS,
+                scope: SCOPES
+                      
+            }).then(function() {
+                gapi.client.drive.files.get({
+                supportsAllDrives: true,
+                fileId: fileId,
+                fields:  'webContentLink'   
+                }).then(function (resp) {
+                    if(resp.result.webContentLink) {
+                        window.location.assign(resp.result.webContentLink);
+                    } else {
+                        var formatted = JSON.stringify(resp.data.result, null, 2);
+                    }
+                })
             })
-        })
         };
-        // 1. Load the JavaScript client library.
-    </script>
-</body>
+</script>
+        <?php 
+          $url_index = basename($_SERVER['PHP_SELF'], ".php");
 
+            if($url_index == 'index'){
+              echo '<script src='.$baseurl.'/js/splide.js></script>';
+            }elseif($url_index == 'post'){
+              echo '<script src='.$baseurl.'/js/ads.js></script>';
+          }
+        ?>
+</body>
 </html>

@@ -6,7 +6,7 @@
     <?php include("include/header.php") ?>
     <!-- Header -->
 
-    <!-- Navigation -->
+    <!-- Navigation --> 
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
 
@@ -32,8 +32,11 @@
                             $search_page_result->execute();
                             $result = $search_page_result->fetchAll(PDO::FETCH_OBJ);
                             $answer = $search_page_result->rowCount();
-                            if( $answer < 0){
-                                echo "<h1>NO RESULT</h1>";
+                            if( $answer == 0){
+                                echo    '<div class="container notfoundpage text-center">
+                                            <h1>No result Found</h1>
+                                            <a href='.$baseurl.'>Back to Home Page</a>
+                                        </div>';
                             }else{
                                 foreach($result as $row){
                                     $post_id = $row->post_id;
