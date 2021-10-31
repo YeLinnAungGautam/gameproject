@@ -140,10 +140,12 @@
                   if(response == "1"){
                     $('#sub-alert-fail').fadeIn("fast", function(){        
                       $("#sub-alert-fail").fadeOut(2000);
+                      $("#sub_email").val('');
                     });
                   }else{
                     $('#sub-alert-success').fadeIn("fast", function(){        
                       $("#sub-alert-success").fadeOut(2000);
+                      $("#sub_email").val('');
                     });
                   }
                 }
