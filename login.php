@@ -21,9 +21,9 @@
     ?>
 <div class="container" class="well" style="min-height: calc(100vh - 300px);">
     <div class="row"> 
-            <h1 class="text-center" id="gamehubtitle"> Gamehub Myanmar</h1>
-            <h5 class="text-center" id="gamehubsubtitle">Play more, Pay less</h5>
-        <div class="col-xs-6 col-xs-offset-3" id="logincontainer">
+            <h3 class="text-center" id="gamehubtitle" style="margin-top: 30px;"> Login</h3>
+            <!-- <h5 class="text-center" id="gamehubsubtitle">Play more, Pay less</h5> -->
+        <div class="col-md-6 col-xs-12 col-md-offset-3" id="logincontainer">
                 <form action="include/login.php" method="POST">
                 <input type="hidden" value="" id="gameId" name="gameId"/>
 
@@ -66,15 +66,10 @@
 </div>
 
 
+
 <script type="text/javascript" >
 
     $(document).ready(function() {
-
-        window.onload=function(){
-        $('#preloader').fadeOut(3000, function(){
-                $(this).remove();
-            });
-        }
 
         var gId = window.sessionStorage.getItem("gameId");
 
@@ -86,7 +81,10 @@
 </script>
 
 
-
+    <!-- Footer -->
+    <?php include("include/footer.php") ?>
+    <!-- Footer -->
+    
 
                    
 

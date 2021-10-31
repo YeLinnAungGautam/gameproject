@@ -425,7 +425,13 @@ a.readmore:hover {
   border-radius: inherit;
 }
 
-#sub-btn{
+@media (max-width: 425px) {
+ .subscribe_form input {
+    width: 200px;
+  }
+}
+
+#sub-btn {
   height: 34px;
   width: 90px;
   background: var(--red);
@@ -443,7 +449,7 @@ a.readmore:hover {
 .copyright a {
   color: var(--white);
 }
-.soical-links a {
+.soical-links a i{
   margin-right: 5px;
   background: #444242;
   border-radius: 50%;
@@ -607,8 +613,10 @@ a.readmore:hover {
     display: block;
   }
   .nav-links {
+    display: flex;
     padding: 0;
-  }
+    justify-content: flex-end;
+}
   .navbar .container .search-bar {
     display: flex;
     position: absolute;
@@ -622,6 +630,13 @@ a.readmore:hover {
     justify-content: flex-end;
     padding: 0;
   }
+}
+@media (max-width: 767.98px) {
+ .nav-links {
+    display: initial;
+    padding: 0;
+    justify-content: initial;
+}
 }
 @media (max-width: 320px) {
   .site-icon h1 {
