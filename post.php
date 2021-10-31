@@ -273,7 +273,7 @@
                         <div class="modal-content"> 
                         <div class="modal-header">
                             <!-- <button type="button" class="close" data-dismiss="modal" id="ad_close_custom">&times;</button> -->
-                            <h4 class="modal-title">Advertisement</h4>
+                            <h4 class="modal-title">Advertisement : Please Be Patient </h4>
                         </div>
                         <div class="modal-body">
                             <img src="https://neptune.link/ThemeOptions/images/ads.png" alt="Advertise at Gamehub Myanmar" srcset="">
