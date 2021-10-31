@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-4 col-sm-3 col-xs-12 contact-us-box phone-mail-box">
               <i class="fas fa-phone-alt"></i>
-              <a href="tel:+959123456789">+959123456789</a>
+              <a href="tel:+959123456789">+95943039300</a>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 contact-us-box phone-mail-box">
               <i class="far fa-envelope"></i>
@@ -84,9 +84,6 @@
     </div>
     <!-- /.container -->
 </footer>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo $baseurl;?>/js/bootstrap.min.js"></script>
 
