@@ -20,8 +20,13 @@ $baseurl = "https://staging.gamehubmyanmar.com";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="theme-color" content="#860000" />
+    <meta property="og:image" content="commingsoon-thumbnail.jpg" />
+    <meta
+      name="description"
+      content="Gamehub Myanmar is the very first free-to-download PC Games Collection Community in Myanmar."
+    />
+    <link rel="icon" href="gm-icon.png" type="image/x-icon" />
 
     <title>Gamehub Myanmar -- <?php echo $activePage; ?></title>
 
