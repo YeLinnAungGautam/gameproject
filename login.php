@@ -9,7 +9,7 @@
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
     <?php 
-        checkIfUserIsLoggedInAndRedirect('/admin');
+        checkIfUserIsLoggedInAndRedirect();
         if(ifItIsMethod('post')){
             if(isset($_POST['username']) &&  isset($_POST['password'])){
                 login_user($_POST['username'],$_POST['password']);
@@ -51,8 +51,6 @@
                         <input name="password" type="password" class="form-control" placeholder="Enter Password">
                     </div>
 
-                    <h5 id="checkboxtitle"><input type="checkbox"> Remember me</h5>  
-
                     <div id="loginbutton">
                        <button class="btn" name="login" type="submit">Log In</button>
                     </div>
@@ -69,7 +67,7 @@
 
 <script type="text/javascript" >
 
-    $(document).ready(function() {
+    $(document).ready(function() {       
 
         var gId = window.sessionStorage.getItem("gameId");
 

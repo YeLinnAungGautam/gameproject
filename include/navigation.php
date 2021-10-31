@@ -59,12 +59,14 @@
                 <form action="<?php echo $baseurl;?>/search" method="post">
                 <input type="hidden" id="base-url" value="<?php echo $baseurl;?>">
 
+                <?php if ($activePage != 'login') {?>
                     <div class="search">
                         <input type="text" class="searchTerm" placeholder="What are you looking for?" name="ptsearch" id="ptsearch" >
                         <button type="submit" class="searchButton" name="search_btns">
                             <i class="fa fa-search"></i>
                         </button>
                     </div> 
+                <?php } ?>
                 </form>
                 </div>
             </div>

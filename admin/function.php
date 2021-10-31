@@ -4,6 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+ $baseurl="http://localhost/gameproject";
+
 // Forget Password
 function ifItIsMethod($method=null){
     
@@ -20,12 +22,13 @@ function isLoggedIn(){
     return false;
 }
 
-function checkIfUserIsLoggedInAndRedirect($redirectLocation = null){
+function checkIfUserIsLoggedInAndRedirect(){
+    global $baseurl;
     if(isLoggedIn()){
         echo "<script type='text/javascript'>
-                 window.location.href = 'admin';
+                 window.location.href = '".$baseurl."';
               </script>";
-
+      
     }
 }
 function email_exists($email){
