@@ -6,7 +6,7 @@ include("admin/function.php");
 
 $activePage = basename($_SERVER['PHP_SELF'], ".php");
 
-$baseurl = "https://gamehubmyanmar.com";
+$baseurl = "https://staging.gamehubmyanmar.com";
 //  $baseurl = "http://localhost/gameproject";
 
 ?>
@@ -58,7 +58,6 @@ $baseurl = "https://gamehubmyanmar.com";
 
 
     
-
 </head>
 
 <body>

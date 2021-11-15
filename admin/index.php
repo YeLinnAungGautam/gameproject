@@ -4,7 +4,7 @@
 
  if($_SESSION['userrole'] != 'admin'){
 
-    header("Location: $baseurl");
+    header("Location: 404");
 
 }
 
