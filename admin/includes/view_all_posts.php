@@ -18,14 +18,16 @@
 <div class="col-md-12">
 <table class="table table-bordered table-hover">
   <thead>
+    
     <tr>   
       <th><input type="checkbox" id="selectAllBoxes"></th>
       <th>ID</th>
       <th>Title</th> 
       <th>Image</th>
       <th>Created Date</th>
-      <th>Actions</th>
-      <th>View Post</th>             
+      <th>Status</th>
+      <th>Views</th> 
+      <th></th>            
     </tr>
   </thead>
   <tbody>

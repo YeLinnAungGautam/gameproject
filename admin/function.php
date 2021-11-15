@@ -4,8 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-//  $baseurl="http://localhost/gameproject";
-$baseurl = "https://gamehubmyanmar.com";
+ $baseurl="http://localhost/gameproject";
+// $baseurl = "https://gamehubmyanmar.com";
 
 
 // Forget Password
@@ -146,27 +146,18 @@ function viewAllPost(){
             <td><input type='checkbox' class='checkBoxes' name='checkBoxArray[]' value='<?php echo $row->post_id ?>' /></td>
             <?php 
             echo "<td>$row->post_id</td>";
-            $query_category = "SELECT * FROM categories WHERE cat_id =:postcategoryid";
-            $ready = $connection->prepare($query_category);
-            $ready-> bindParam(':postcategoryid',$row->post_category_id,PDO::PARAM_INT);
-            $ready->execute();
-            $finalresult = $ready->fetchAll(PDO::FETCH_OBJ);
-            if($ready->rowCount()>0){
-                foreach($finalresult as $asnwer){
-                    echo "<td>$asnwer->cat_title</td>";
-                } 
-            }
             echo "<td>$row->post_title</td>";
             // echo "<td>$row->post_status</td>";
             echo "<td><img src='../img/$row->post_img' alt='image' style='object-fit: cover;height: 50px;'></td>";
             echo "<td>$row->post_date</td>";
             // echo "<td><a href='../post.php?p_id={$row->post_id}'>View</a></td>";
+            echo "<td><span>{$row->post_status}</span></td>";
+            echo "<td><span>{$row->post_views_count}</span></td>";
             echo "<td>
                     <a href='posts.php?source=edit_post.php&p_id={$row->post_id}' class='btn btn-info'>Edit</a>
                     <a onClick=\"javascript: return confirm('Are You Sure You Want To Delete'); \" href='posts.php?delete={$row->post_id}' class='btn btn-danger'>Delete</a>
                     
                 </td>"; 
-            echo "<td><a href='posts.php?reset={$row->post_id}'>{$row->post_views_count}</a></td>";
             echo "</tr>";
         }
     } 
@@ -495,5 +486,82 @@ function usersOnline(){
             echo $count_user = $useronline_count_query->rowCount(); 
         }
     }
+}
+
+function viewAllDownloads(){
+    global $connection;
+    global $count;
+    global $page;
+    $per_page = 10;
+    if(isset($_GET['page'])){ 
+        $page = $_GET['page'];
+    }else{
+        $page = "";
+        // header("Location: posts.php");
+    }
+    if($page == "" || $page == 1){
+        $page_1 = 0;
+    }else{
+        $page_1 = ($page * $per_page) - $per_page;
+    }
+
+    $select_post_count_sql = "SELECT * FROM downloads_data";
+    $select_post_count_query = $connection->prepare($select_post_count_sql);
+    $select_post_count_query->execute();
+    $count = $select_post_count_query->rowCount();
+    
+    $count = ceil($count / $per_page);
+    
+    $sql = "SELECT * FROM posts as p INNER JOIN (SELECT game_id, SUM(count) as totcount from downloads_data GROUP BY game_id) as dd on p.post_id = dd.game_id  ORDER BY dd.game_id DESC LIMIT $page_1,$per_page";
+
+    $query = $connection->prepare($sql);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    $i = 1;
+    if($query->rowCount()>0){
+        foreach($result as $row){ 
+            echo "<tr>";
+            echo "<td>".$i++."</td>";
+            echo "<td>$row->post_title</td>";
+            echo "<td><img src='../img/$row->post_img' alt='image' style='object-fit: cover;height: 50px;'></td>";
+            echo "<td>$row->totcount</td>";
+            echo "<td><span>{$row->post_status}</span></td>";
+            echo "<td><span>{$row->post_views_count}</span></td>";
+            echo "</tr>";
+        }
+    } 
+}
+
+function viewAllSubs(){
+    global $connection;
+    global $count;
+    global $page;
+    $per_page = 10;
+    if(isset($_GET['page'])){ 
+        $page = $_GET['page'];
+    }else{
+        $page = "";
+        // header("Location: posts.php");
+    }
+    if($page == "" || $page == 1){
+        $page_1 = 0;
+    }else{
+        $page_1 = ($page * $per_page) - $per_page;
+    }
+
+    $sql = "SELECT * FROM subscriptions";
+
+    $query = $connection->prepare($sql);
+    $query->execute();
+    $i = 1;
+    $result = $query->fetchAll(PDO::FETCH_OBJ);
+    if($query->rowCount()>0){
+        foreach($result as $row){ 
+            echo "<tr>";
+            echo "<td>".$i++."</td>";
+            echo "<td>$row->email</td>";
+            echo "</tr>";
+        }
+    } 
 }
 ?>

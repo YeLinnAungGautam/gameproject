@@ -6,7 +6,7 @@
 
     include("include/header.php");
 
-    if(empty($_SESSION['user_id'])) {
+    if($_SESSION['userrole'] != 'admin'){
 
         header("Location: $baseurl");
 

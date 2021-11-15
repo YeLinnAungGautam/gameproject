@@ -4,7 +4,7 @@
     if(isset($_POST['query'])){
         $keywords = $_POST['query']; 
     }
-    $searchsql ="SELECT * FROM posts WHERE post_title LIKE :keywords";
+    $searchsql ="SELECT * FROM posts WHERE post_title LIKE :keywords and post_status='published'";
     $searchquery = $connection->prepare($searchsql);
     $searchquery->bindValue(':keywords','%' . $keywords . '%',PDO::PARAM_STR);
     $searchquery->execute(); 

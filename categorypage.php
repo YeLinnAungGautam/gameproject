@@ -30,7 +30,7 @@
                         }else{
                             $category_title_id = $_GET['category'];
                         }
-                        $sql = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id INNER JOIN categories as c on c.cat_id = gc.category_id WHERE cat_title = :postcategoryid";
+                        $sql = "SELECT * FROM posts as p INNER JOIN game_category as gc on p.post_id = gc.game_id INNER JOIN categories as c on c.cat_id = gc.category_id WHERE cat_title = :postcategoryid and p.post_status='published'";
                         $query = $connection->prepare($sql);
                         $query->bindParam(':postcategoryid',$category_title_id,PDO::PARAM_STR);
                         $query->execute();

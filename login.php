@@ -48,7 +48,14 @@
                     </div>
 
                     <div class="form-group">
-                        <input name="password" type="password" class="form-control" placeholder="Enter Password">
+                        <input name="password" class="form-control" id="password-input" type="password" placeholder="Enter Password">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" onclick="togglePassword()" style="float: left; margin-top: -10px;>">
+                        <div style="margin-left: 21px;color:#fff;">
+                            Show Password
+                        </div>
                     </div>
 
                     <div id="loginbutton">
@@ -75,6 +82,15 @@
             $("#gameId").val(gId);
         }
     })
+    
+    function togglePassword() {
+        var x = document.getElementById("password-input");
+        if (x.type === "password") {
+        x.type = "text";
+        } else {
+        x.type = "password";
+        }
+    }
 
 </script>
 
@@ -85,5 +101,4 @@
     
 
                    
-
 

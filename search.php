@@ -26,7 +26,7 @@
                     <?php 
                         if(isset($_POST['search_btns'])){
                             $search = $_POST['ptsearch'];
-                            $search_page_query = "SELECT * FROM posts WHERE post_title LIKE :searchpagekeyword";
+                            $search_page_query = "SELECT * FROM posts WHERE post_title LIKE :searchpagekeyword and post_status='published'";
                             $search_page_result = $connection->prepare($search_page_query);
                             $search_page_result->bindValue(':searchpagekeyword','%' . $search . '%',PDO::PARAM_STR);
                             $search_page_result->execute();
@@ -46,7 +46,7 @@
                                     $post_slug = $row->slug;
 
                     ?>
-                        <div class="col-md-4 col-sm-4 col-xs-4 prodouctbox"> 
+                        <div class="col-md-4 col-sm-6 col-xs-6 prodouctbox">
                             <div class="card" id="<?php echo $post_id?>">
                                 <div class="download-icon">
                                     <i class="fas fa-download"></i>

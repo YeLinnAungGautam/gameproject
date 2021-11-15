@@ -8,7 +8,11 @@
     <!-- Navigation -->
     <?php include("include/navigation.php") ?>
     <!-- Navigation -->
-
+    
+<!-- Preloader -->
+<div id="preloader">
+    <div id="loader"></div>
+</div>
 
     <!-- Slider -->
     
@@ -17,7 +21,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                     <?php 
-                        $slider_sql = "SELECT * FROM posts ORDER BY post_id DESC LIMIT 3";
+                        $slider_sql = "SELECT * FROM posts where post_status='published' ORDER BY post_id DESC LIMIT 3 ";
                         $slider_query = $connection->prepare($slider_sql);
                         $slider_query->execute();
                         $result = $slider_query->fetchAll(PDO::FETCH_OBJ);
@@ -139,7 +143,7 @@
                     <div class="splide__track">
                         <ul class="splide__list">
                             <?php 
-                                $best_seller_sql = "SELECT * FROM posts ORDER BY post_views_count DESC LIMIT 5";
+                                $best_seller_sql = "SELECT * FROM posts where post_status='published' ORDER BY post_views_count DESC LIMIT 5";
                                 $best_seller_query = $connection->prepare($best_seller_sql);
                                 $best_seller_query->execute();
                                 $result = $best_seller_query->fetchAll(PDO::FETCH_OBJ);

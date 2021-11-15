@@ -7,7 +7,7 @@
             <div class="col-md-4 col-sm-5 col-xs-12 contact-us-box request-box">
               <div class="request-description">
                 <i class="fas fa-info-circle"></i>
-                <h5>Have your find your game? If not, request us</h5>
+                <h5>Have your found your game? If not, request us</h5>
               </div>
               <div class="request_form">
                 <?php if(isset($_SESSION['user_id'])) { ?>
@@ -93,17 +93,20 @@
 
       var CLIENT_ID = '454988175560-0k6rof7thb937jjt8lg78jg99utrfp3r.apps.googleusercontent.com';
       var API_KEY = 'AIzaSyD6cYuYJ3laD-Cih6Ng74YCbBgnD0DxgPE';
+      var CLIENT_ID = '807451483068-lgac641p9jql4jdmbdaj4ajh8068uq36.apps.googleusercontent.com';
+      var API_KEY = 'AIzaSyB1B8AwEYq6a2ctQTprp61lNV8EV0d04GY';
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
       var SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
       var base_url = $('#base-url').val();
 
           $(document).ready(function() {
 
-              window.onload=function(){
-                $('#preloader').fadeOut(3000, function(){
+            //   window.onload=function(){
+                $('#preloader').fadeOut(5000, function(){
                         $(this).remove();
                     });
-              }
+                // $('#preloader').remove();
+            //   }
 
               $('#ptsearch').typeahead({
                 source: function(query, result){
@@ -160,17 +163,19 @@
           var id = $("#game-id").val();
           var price  = $("#price").val();
           var count = $('#d_count').val();
+          var download_url = $("#download-url").val();
+
           if(userId == '' || gameId == '') {
             window.sessionStorage.setItem("gameId",gameId); 
             location.href = base_url+"/login"
           }else{
             window.sessionStorage.setItem("gameId",""); 
-            if(count < 20) {
             $.ajax({
             type: "POST",
             url: base_url+"/payment.php",
             data: {user_id: userId, game_id: id},
             beforeSend: function() {
+              $("#ad_close_custom").hide();
               $("#overlay").css({ 'display' : 'block'})
             },
             success: function(response)
@@ -179,18 +184,28 @@
                   backdrop: 'static',
                   keyboard: false
               });
-              setTimeout(function() {$('#myModal').modal('hide');}, 8000);
+
+              var download_url = $("#download-url").val();
+
+              var timeleft = 6;
+              var downloadTimer = setInterval(function(){
+                if(timeleft <= 0){
+                  clearInterval(downloadTimer);
+                  document.getElementById("countdown").innerHTML = '<div><div class="button"><a href="'+download_url+'">Continue from here</a></div></div>';
+                  $("#ad_close_custom").show();
+                } else {
+                  document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+                }
+                timeleft -= 1;
+                console.log(timeleft);
+              }, 800);
+
+              $("#overlay").css({ 'display' : 'none'})
             },
-            }).done(function() {
-              setTimeout(function() {
-                gapi.load('client', start);
-              }, 10000);
             })
-            }else{
-              alert("Downloads time exceed");
-            }
+            
           }
-       })
+       });
 
        function getIdFromUrl(url) { return url.match(/[-\w]{25,}/); }
 
@@ -227,8 +242,26 @@
             if($url_index == 'index'){
               echo '<script src='.$baseurl.'/js/splide.js></script>';
             }elseif($url_index == 'post'){
-              echo '<script src='.$baseurl.'/js/ads.js></script>';
+              // echo '<script src='.$baseurl.'/js/ads.js></script>';
           }
         ?>
+        
+        <!-- Default Statcounter code for Gamehub Myanmar
+https://gamehubmyanmar.com/ -->
+<script type="text/javascript">
+var sc_project=12671829; 
+var sc_invisible=1; 
+var sc_security="3487adb1"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - Statcounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12671829/0/3487adb1/1/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
 </body>
 </html>

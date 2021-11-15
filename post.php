@@ -17,7 +17,7 @@
             if(is_numeric(basename($url)) != 1) {
                 
                 $slug = $_GET['p_slug'];
-                $slug_sql = "SELECT * FROM posts WHERE slug LIKE :slug";
+                $slug_sql = "SELECT * FROM posts WHERE slug LIKE :slug and post_status='published'";
                 $slug_query = $connection->prepare($slug_sql);
                 $slug_query->bindValue(':slug','%'.$slug.'%',PDO::PARAM_STR);
                 $slug_query->execute();
@@ -176,7 +176,7 @@
                 <div class="container" style="background-color: black;">
                     <div class="row">
                         <div class="col-md-7" id="background">
-                            <h3 class="youmayalso">You May Also Like:</h3>
+                            <h3 class="youmayalso">You May Also Like</h3>
                             <div class="row" id="card">
                                     <?php
                                         
@@ -221,7 +221,7 @@
                                 <?php  }}}}?>
                             </div>
                             <!-- second row -->
-                            <h3 class="youmayalso">OTHERS :</h3>
+                            <h3 class="youmayalso">New Arrivals</h3>
                                 <div class="row" id="card">
                                     <?php 
                                         $others_sql = "SELECT * FROM posts ORDER BY post_id DESC LIMIT 3";
@@ -272,14 +272,15 @@
                         <!-- Modal content-->
                         <div class="modal-content"> 
                         <div class="modal-header">
-                            <!-- <button type="button" class="close" data-dismiss="modal" id="ad_close_custom">&times;</button> -->
-                            <h4 class="modal-title">Advertisement : Please Be Patient </h4>
+                            <button type="button" class="close" data-dismiss="modal" id="ad_close_custom">&times;</button>
+                            <h4 class="modal-title">Ads</h4>
                         </div>
                         <div class="modal-body">
                             <img src="https://neptune.link/ThemeOptions/images/ads.png" alt="Advertise at Gamehub Myanmar" srcset="">
                         </div>
                         <div class="modal-footer">
-                            <progress value="0" max="5" id="progressBar"></progress>
+                            <!-- <progress value="0" max="10" id="progressBar"></progress> -->
+                            <div id="countdown"></div>
                         </div>
                         </div>
 

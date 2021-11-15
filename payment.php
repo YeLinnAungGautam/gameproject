@@ -11,9 +11,10 @@ $token = generateRandomString();
 
 if($_POST['user_id'] !='' && $_POST['game_id'] !='' ) {
 
-    $sql = "SELECT * FROM downloads_data WHERE game_id = :game_id";
+    $sql = "SELECT * FROM downloads_data WHERE game_id = :game_id and user_id = :user_id";
     $query = $connection->prepare($sql);
     $query->bindParam(':game_id',$_POST['game_id'],PDO::PARAM_STR);
+    $query->bindParam(':user_id',$_POST['user_id'],PDO::PARAM_STR);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_OBJ);
     if($query->rowCount() > 0){
@@ -61,7 +62,6 @@ if($_POST['user_id'] !='' && $_POST['game_id'] !='' ) {
           
     }
 
-    require("download.php");
 }
 
 echo $_POST['user_id'];

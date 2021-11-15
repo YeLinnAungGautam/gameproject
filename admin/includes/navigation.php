@@ -49,30 +49,36 @@
                     </li>
                      
                     <li> 
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-gamepad"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li> 
-                                <a href="./posts.php">View Posts</a>
+                                <a href="./posts.php"><i class="fa fa-fw fa-angle-double-right"></i> View Posts</a>
                             </li>
                             <li>
-                                <a href="posts.php?source=add_post.php">Add Post</a>
+                                <a href="posts.php?source=add_post.php"><i class="fa fa-fw fa-angle-double-right"></i> Add Post</a>
                             </li>
                         </ul> 
                     </li>
                     <li>
-                        <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                        <a href="categories.php"><i class="fa fa-fw fa-list-alt"></i> Categories</a>
+                    </li>
+                    <li>
+                        <a href="downloads.php"><i class="fa fa-fw fa-arrow-down"></i> Downloads</a>
+                    </li>
+                    <li>
+                        <a href="subscriptions.php"><i class="fa fa-fw fa-envelope"></i> Subscriptions</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#users">
-                        <i class="fa fa-fw fa-user"></i>Users<i class="fa fa-fw fa-caret-down"></i>
+                        <i class="fa fa-fw fa-users"></i>Users<i class="fa fa-fw fa-caret-down"></i>
                         </a>
                         <ul id="users" class="collapse">
-                            <li><a href="./user.php">View Users</a></li>
-                            <li><a href="user.php?source=add_user.php">Add Users</a></li>
+                            <li><a href="./user.php"><i class="fa fa-fw fa-angle-double-right"></i> View Users</a></li>
+                            <li><a href="user.php?source=add_user.php"><i class="fa fa-fw fa-angle-double-right"></i> Add Users</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="profile.php"><i class="fa fa-fw fa-file"></i> Profile</a>
+                        <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li> 
                 </ul>
             </div>

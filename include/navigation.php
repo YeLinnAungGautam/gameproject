@@ -7,24 +7,24 @@
             </a>
         </div>
         <!-- <div class="col-md-6 col-sm-6 col-xs-12 text-right site-profile">
-            <?php                         
-                if(!isset($_SESSION['userrole'])){
-            ?>
-
             <ul>
-                <li class="seperator <?= ($activePage == 'login') ? 'active':''; ?>">
-                    <a href="login">Login</a>
-                </li>
 
-                <li class="<?= ($activePage == 'registration') ? 'active':''; ?>">
-                    <a href="registration">Register</a>
-                </li>
+                <?php                         
+                    if(isset($_SESSION['user_id'])){
+                ?>
+                    <li class="btn btn-danger">
+                        <a href="<?php echo $baseurl;?>/include/logout.php">log-out</a>
+                    </li>
+                
+                <?php 
+                    } else {
+                    echo '<li>
+                            <a href="'.$baseurl.'/login">Login</a>
+                        </li>';
+                    }
+                ?>
 
             </ul>
-
-            <?php 
-                }
-            ?>
         </div> -->
     </div>
 </header>
@@ -48,7 +48,20 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <?php displayInNav(); ?>
-
+                    <?php                         
+                    if(isset($_SESSION['user_id'])){
+                    ?>
+                        <li style="background:#231;">
+                            <a href="<?php echo $baseurl;?>/include/logout.php" class="text-danger">Logout</a>
+                        </li>
+                    
+                    <?php 
+                        } else {
+                        echo '<li style="background:#231;">
+                                <a href="'.$baseurl.'/login">Login</a>
+                            </li>';
+                        }
+                    ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -73,7 +86,3 @@
         </div>
         <!-- /.container -->
     </nav>
-<!-- Preloader -->
-<div id="preloader">
-    <div id="loader"></div>
-</div>

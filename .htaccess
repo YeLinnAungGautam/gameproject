@@ -1,10 +1,10 @@
-ErrorDocument 404 https://gamehubmyanmar.com/404
+ErrorDocument 404 https://staging.gamehubmyanmar.com/404
 
 Options All -Indexes
 
 RewriteEngine on
 
-RewriteRule ^(index|registration|login|post|search|404|subscription)$ $1.php [NC,L]
+RewriteRule ^(index|registration|login|post|search|404|subscription|logout)$ $1.php [NC,L]
 
 RewriteRule ^post/(.*)$ post.php?p_slug=$1 [NC,L] 
 

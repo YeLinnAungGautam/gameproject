@@ -1,5 +1,14 @@
-<?php include('includes/header.php') ?>
+<?php
+ 
+ include('includes/header.php');
 
+ if($_SESSION['userrole'] != 'admin'){
+
+    header("Location: $baseurl");
+
+}
+
+?>
     <div id="wrapper"> 
         <!-- Navigation -->
         <?php include('includes/navigation.php') ?>
@@ -53,7 +62,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
+    <!-- <div class="col-lg-3 col-md-6">
         <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
@@ -74,7 +83,7 @@
                 </div> 
             </a>
         </div>
-    </div>
+    </div> -->
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-yellow">
             <div class="panel-heading">
